@@ -1,0 +1,102 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Utilitarios;
+
+import TratamentodeErros.ValidarEntrada;
+import java.util.Scanner;
+
+
+/**
+ * Essa Classe reune todos os menus utilizados nos Packge de Departamento, tendo mais o menos a mesma função.
+ * Quando é mostrado as opções na tela, é pedido a opção, que leva o programa para a classe "Validar Entrada", onde o usuario vai digitar o valor e será verificado se esse valor é coeso.
+ *
+ * @author pedro
+ */
+public class Menus {
+   
+    /***
+     * Menu Principal do programa.
+     * 
+     * @return Retorna a opção desejada, já verificado o tratamendo de erro.
+     */
+     public Integer MenuPrincipal() {
+         int  opcao=0;
+         int checar=0;
+        
+                         
+            opcao = 0;
+         System.out.println("\n  ==================================");
+			System.out.println("  |     1 - Gestão de Produtos      |");
+			System.out.println("  |     2 - Gestão de Vendas -Não implementado        |");
+			System.out.println("  |     3 - Gestão de Pessoas  -NI     |");
+			System.out.println("  |     0 - Sair    -- NI                |");
+			System.out.println("  ===================================\n");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         
+        return opcao;
+     }
+     /**
+      * 
+      * Menu de Gestão de Departamento.
+      * @return Retorna a opção desejada, já verificado o tratamendo de erro. 
+      */
+     public Integer MenuGestao(){
+         
+         int opcao =0;
+         System.out.println("\n  ==================================");
+			System.out.println("  |     1 - Adicionar Produtos         |");
+			System.out.println("  |     2 - Buscar Produto             |");			
+                        System.out.println("  |     3 - Remover Produtos  -        |");
+			System.out.println("  |     4 - Gestão de Departamentos F.Detalher|");
+			System.out.println("  |     0 - Voltar                     |");
+			System.out.println("  ===================================\n");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         return opcao;
+     }
+     
+     /**
+      * Menu Gestor
+      * 
+      * @return Retorna a opção desejada, já verificado o tratamendo de erro. 
+      */
+     public Integer MenuGestaoDepartamentos(){
+          int opcao =0;
+         System.out.println("\n  ==================================");
+			System.out.println("  |     1 - Mostrar Todos os Departamentos   |");
+			System.out.println("  |     2 - Mostrar Departamento Especifico |");                        
+			System.out.println("  |     3 - Editar Departamentos            |");
+			System.out.println("  |     4 - Excluir Departamento            |");
+			System.out.println("  |     0 - Voltar                            |");
+			System.out.println("  ===================================\n");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         return opcao;
+     }
+          public Integer Produtos() {
+         int  opcao=0;
+         int checar=0;
+        
+                         
+            opcao = 0;
+         System.out.println("\n  ==================================");
+			System.out.println("  |     1 - Mostrar Todos os produtos      |");
+			System.out.println("  |     2 - Buscar Produto Especifico        |");
+			System.out.println("  |     0 - Sair    -- NI                |");
+			System.out.println("  ===================================\n");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         
+        return opcao;
+     }
+
+    
+}
