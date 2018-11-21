@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Departamentos.BancoDeDados;
 
-import Departamentos.BancoDeDados.Criar_BD_departamentos;
-import Departamentos.BancoDeDados.Criar_Conexao_Departamento;
-import Departamentos.Departamento;
+
 import Utilitarios.ValidarNovoDepartamento;
 import TratamentodeErros.ValidarEntrada;
 import java.sql.PreparedStatement;
@@ -18,11 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
-import static java.util.Spliterators.iterator;
-import static java.util.Spliterators.iterator;
-import static java.util.Spliterators.iterator;
-import javax.swing.JOptionPane;
 
 /**
  *

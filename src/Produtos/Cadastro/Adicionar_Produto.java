@@ -22,7 +22,7 @@ import java.sql.Statement;
  */
 public class Adicionar_Produto {
     
-    static void addBanco(Produtos produto){
+    public static void addBanco(Produtos produto){
         Criar_Conexao_Produtos criarConexaoDP = new Criar_Conexao_Produtos();
         //conexao.conectar();
         String nome = produto.getNome();

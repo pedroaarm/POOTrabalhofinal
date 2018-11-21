@@ -14,30 +14,36 @@ import GestaoPessoas.Pessoa;
 public class Cliente extends Pessoa {
     
     private int idcliente;
-    private RG rg;
+    private String rg;
 
     public Cliente() {
     }
 
-    public Cliente(RG rg, String nome, String CPF, String telefone, String endereco) {
+    public Cliente(String rg, String nome, String CPF, String telefone, String endereco) {
         super(nome, CPF, telefone, endereco);
         this.rg = rg;
     }
 
-    public Cliente(RG rg) {
+    public Cliente(String rg) {
         this.rg = rg;
     }
 
-    
-    
-    public Cliente(int idcliente, String email, RG rg, String nome, String CPF, String telefone, String endereco) {
+    public Cliente(int idcliente, String rg, String nome, String CPF, String telefone, String endereco) {
         super(nome, CPF, telefone, endereco);
         this.idcliente = idcliente;
-
         this.rg = rg;
     }
 
-    public Cliente(int idcliente, String email, RG rg) {
+    public Cliente(int idcliente, String rg) {
+        this.idcliente = idcliente;
+        this.rg = rg;
+    }
+
+    
+    
+   
+
+    public Cliente(int idcliente, String email, String rg) {
         this.idcliente = idcliente;
         this.rg = rg;
     }
@@ -50,11 +56,11 @@ public class Cliente extends Pessoa {
         this.idcliente = idcliente;
     }
 
-    public RG getRg() {
+    public String getRg() {
         return rg;
     }
 
-    public void setRg(RG rg) {
+    public void setRg(String rg) {
         this.rg = rg;
     }
 }

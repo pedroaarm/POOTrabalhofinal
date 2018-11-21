@@ -6,6 +6,7 @@
 package GestaoPessoas.cliente;
 
 import GestaoPessoas.Pessoa;
+import GestaoPessoas.cliente.BancoDeDados.AdicionaCliente;
 import TratamentodeErros.ValidarEntrada;
 import Utilitarios.Cadastro;
 
@@ -13,9 +14,10 @@ import Utilitarios.Cadastro;
  *
  * @author pedro
  */
-class CadastroCliente extends Pessoa   {
+public class CadastroCliente extends Pessoa   {
 
-    public static Cliente cadastroCliente(){
+    public static void cadastroCliente(){
+        /*
         RG rg = new RG();
         
         System.out.println("---Cadastro Cliente---");
@@ -28,10 +30,10 @@ class CadastroCliente extends Pessoa   {
         String telefone = ValidarEntrada.validarString();
         Endereco endereco = cadastroEndereco();
         String enderecostring = endereco.toString();
-        Cliente cliente = new Cliente(rg, nome,cpf,telefone, enderecostring);
-        
-       return cliente;
-       
+        Cliente cliente = new Cliente(rg.getNumero(), nome,cpf,telefone, enderecostring);
+*/
+        Cliente cliente = new Cliente("12345","Pedro Augusto Alcantara","78392343394","99988764345","Rua 03 de agosto");
+        AdicionaCliente.addcliente(cliente);
     }
     
     public static Endereco cadastroEndereco() {

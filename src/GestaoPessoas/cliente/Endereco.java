@@ -52,7 +52,7 @@ public class Endereco {
         this.cidade = cidade;
     }
    @Override
-    public String toString(){
+    public java.lang.String toString(){
         
         return "Rua: "+rua+" Bairro: "+bairro+" Cidade: ";
     }

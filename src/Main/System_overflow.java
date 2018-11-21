@@ -10,6 +10,7 @@ import Departamentos.BancoDeDados.Criar_BD_departamentos;
 import Departamentos.BancoDeDados.Criar_Conexao_Departamento;
 import TratamentodeErros.ValidarEntrada;
 import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
+import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
 import Produtos.BancoDeDados.ArrayDeDadosProdutos;
 import Produtos.BancoDeDados.CriarBancoProdutos;
 import Produtos.Cadastro.CadastroProduto;
@@ -20,6 +21,7 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.TimerTask;
 import GestaoPessoas.cliente.BancoDeDados.CriarBancodeDados_Cliente;
+import GestaoPessoas.cliente.CadastroCliente;
 
 /**
  *
@@ -136,8 +138,43 @@ public class System_overflow {
                                 }while (interno!=0);
                             
                            
-                          break;  
-                        
+                          break;
+                          
+                          //Implementar case 2 do menu principal aqui
+                        case 3:
+                            int op ;
+                            do{
+                               op = acessorios.MenuGestaopessoas();
+                               switch(op){
+                                   case 1:
+                                       int opgcliente;
+                                       opgcliente = acessorios.MenuGestaopessoasCliente();
+                                   switch(opgcliente){
+                                       case 1:
+                                           int clientebusca;
+                                           do{
+                                               clientebusca = acessorios.MenuGestaopessoasClienteBusca();
+                                               switch(clientebusca){
+                                                   case 1:
+                                                       ArrayDadosCliente.imprimirArrayCliente();
+                                                       break;
+                                                   case 2:
+                                                       System.out.println("Digite o nome do Cliente: ");
+                                                       String nomecliente = ValidarEntrada.validarString();
+                                                     ArrayDadosCliente.buscarCliente(nomecliente);
+                                                       break;
+                                                       default:
+                                                           System.out.println("Opção inválida!");
+                                                           break;
+                                               }
+                                           }while(clientebusca != 0);
+                                           break;
+                                       case 2:
+                                         CadastroCliente.cadastroCliente();
+                                           break;
+                                   }
+                               }
+                    }while(op!=0);
                     }
                     
                 }while (opcao !=0);  

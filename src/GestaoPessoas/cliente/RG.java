@@ -19,18 +19,17 @@ public class RG {
         this.numero = numero;
     }
 
+    public RG() {
+    }
+    
+   
+
     public void cadastroRG(){
         
         System.out.println("Digite o numero do RG: ");
-        String rg = ValidarEntrada.validarString();
+       java.lang.String rg = ValidarEntrada.validarString();
         setNumero(rg);
     }
-    
-    RG() {
-        
-    }
-   
-    
     public String getNumero() {
         return numero;
     }

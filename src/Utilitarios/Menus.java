@@ -65,7 +65,7 @@ public class Menus {
       * Menu Gestor
       * 
       * @return Retorna a opção desejada, já verificado o tratamendo de erro. 
-      */
+3      */
      public Integer MenuGestaoDepartamentos(){
           int opcao =0;
          System.out.println("\n  ==================================");
@@ -98,5 +98,49 @@ public class Menus {
         return opcao;
      }
 
+               public Integer MenuGestaopessoas(){
+         
+         int opcao =0;
+         System.out.println("\n  ==================================");
+			System.out.println("  |     1 - Clientes        |");
+			System.out.println("  |     2 - Funcionários    |");			
+			System.out.println("  |     0 - Voltar          |");
+			System.out.println("  ===================================\n");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         return opcao;
+     }
+               
+                              public Integer MenuGestaopessoasCliente(){
+         
+         int opcao =0;
+         System.out.println("\n  ==================================");
+			System.out.println("  |     1 - Buscar Clientes        |");
+			System.out.println("  |     2 - Adicionar Clientes    |");
+			System.out.println("  |     3 - Excluir Cliente    |");   
+			System.out.println("  |     4 - Editar Cliente    |");                        
+			System.out.println("  |     0 - Voltar          |");
+			System.out.println("  ===================================\n");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         return opcao;
+     }
+     
+                                public Integer MenuGestaopessoasClienteBusca(){
+         
+         int opcao =0;
+         System.out.println("\n  ==================================");
+			System.out.println("  |     1 - Mostrar todos os clintes        |");
+			System.out.println("  |     2 - Buscar Especifico    |");                      
+			System.out.println("  |     0 - Voltar          |");
+			System.out.println("  ===================================\n");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         return opcao;
+     }
+     
     
 }

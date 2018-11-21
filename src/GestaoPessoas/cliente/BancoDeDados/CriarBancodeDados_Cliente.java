@@ -5,7 +5,6 @@
  */
 package GestaoPessoas.cliente.BancoDeDados;
 
-import GestaoPessoas.cliente.RG;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -17,7 +16,6 @@ public class CriarBancodeDados_Cliente {
  *
  * @author pedro
  */
-
 
      public static void criarTab() {
         // SQLite connection string
@@ -46,11 +44,3 @@ public class CriarBancodeDados_Cliente {
 }
     
 }
-
-
-    
-
-
-
-    
-

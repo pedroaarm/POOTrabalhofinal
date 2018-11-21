@@ -6,6 +6,7 @@
 package Utilitarios;
 
 import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
+import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
 import Produtos.BancoDeDados.ArrayDeDadosProdutos;
 
 /**
@@ -17,6 +18,7 @@ public class InicializarDados {
         
          ArraydeDadosDepartamento.inicializarArrayDepartamento();
          ArrayDeDadosProdutos.inicializarArrayProdutos();
+         ArrayDadosCliente.InicializararrayCliente();
     }
     
 }
