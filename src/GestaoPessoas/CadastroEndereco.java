@@ -13,7 +13,7 @@ import TratamentodeErros.ValidarEntrada;
  * @author pedro
  */
 public class CadastroEndereco {
-        public  Endereco cadendereco() {
+        public static  Endereco cadendereco() {
       
         System.out.println("---Cadastro de Endereco---");
         System.out.println("Digite o nome da rua: ");

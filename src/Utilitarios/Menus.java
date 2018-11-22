@@ -52,8 +52,24 @@ public class Menus {
 			System.out.println("  |     1 - Adicionar Produtos         |");
 			System.out.println("  |     2 - Buscar Produto             |");			
                         System.out.println("  |     3 - Remover Produtos  -        |");
-			System.out.println("  |     4 - Gestão de Departamentos F.Detalher|");
+			System.out.println("  |     4 - Editar Departamento    |");
+			System.out.println("  |     5 - Gestão de Departamentos    |");
 			System.out.println("  |     0 - Voltar                     |");
+			System.out.println("  ===================================\n");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         return opcao;
+     }
+          public Integer MenuGestaoProdutoEditar(){
+          int opcao =0;
+         System.out.println("\n  ==================================");
+         		System.out.println("  |     1 - Editar Nome            |");  
+			System.out.println("  |     2 - Adicionar Estoque      |");
+			System.out.println("  |     3 - Alterar Preço          |");                        
+			System.out.println("  |     4 - Editar Descricao       |");
+			System.out.println("  |     5 - Editar Referencia      |");
+			System.out.println("  |     0 - Voltar                 |");
 			System.out.println("  ===================================\n");
                         System.out.print(" Opção -> ");
                         opcao = ValidarEntrada.validaropcao();
@@ -69,10 +85,11 @@ public class Menus {
      public Integer MenuGestaoDepartamentos(){
           int opcao =0;
          System.out.println("\n  ==================================");
-			System.out.println("  |     1 - Mostrar Todos os Departamentos   |");
-			System.out.println("  |     2 - Mostrar Departamento Especifico |");                        
-			System.out.println("  |     3 - Editar Departamentos            |");
-			System.out.println("  |     4 - Excluir Departamento            |");
+         		System.out.println("  |     1 - Adicionar Departamento |");  
+			System.out.println("  |     2 - Mostrar Todos os Departamentos   |");
+			System.out.println("  |     3 - Mostrar Departamento Especifico |");                        
+			System.out.println("  |     4 - Editar Departamentos            |");
+			System.out.println("  |     5 - Excluir Departamento            |");
 			System.out.println("  |     0 - Voltar                            |");
 			System.out.println("  ===================================\n");
                         System.out.print(" Opção -> ");
@@ -156,5 +173,17 @@ public class Menus {
          
          return opcao;
      } 
-    
+                                  public Integer MenuGestaopessoasFuncionarioBusca(){
+         
+         int opcao =0;
+         System.out.println("\n  ==================================");
+			System.out.println("  |     1 - Mostrar todos os Funcionarios    |");
+			System.out.println("  |     2 - Buscar Funcionario Especifico    |");                      
+			System.out.println("  |     0 - Voltar                           |");
+			System.out.println("  ===================================\n");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         return opcao;
+     }
 }

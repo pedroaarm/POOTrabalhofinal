@@ -10,6 +10,7 @@ import Departamentos.BancoDeDados.Criar_BD_departamentos;
 import Departamentos.BancoDeDados.Criar_Conexao_Departamento;
 import TratamentodeErros.ValidarEntrada;
 import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
+import Departamentos.CadastroDepartamento;
 import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
 import Produtos.BancoDeDados.ArrayDeDadosProdutos;
 import Produtos.BancoDeDados.CriarBancoProdutos;
@@ -22,6 +23,8 @@ import java.util.Scanner;
 import java.util.TimerTask;
 import GestaoPessoas.cliente.BancoDeDados.CriarBancodeDados_Cliente;
 import GestaoPessoas.cliente.CadastroCliente;
+import GestaoPessoas.funcionario.BancoDedadosFuncionario.ArrayFuncionario;
+import GestaoPessoas.funcionario.cadastro.CadastroFuncionario;
 
 /**
  *
@@ -96,26 +99,46 @@ public class System_overflow {
                                             }
                                         }while (excluir!=0);
                                             
-
-                                    case 4: 
+                                    case 4:
+                                        //editar produtos
+                                       int editarproduto;
+                                        System.out.println("Digite o Id do produto");
+                                        int id = ValidarEntrada.validarInteiro();
+                                       do{
+                                          
+                                           editarproduto = acessorios.MenuGestaoProdutoEditar();
+        
+                                               
+                                              if(editarproduto != 0){
+                                           ArrayDeDadosProdutos.editarProduto(id);
+                                              }
+                                         
+                                       
+                                       }while (editarproduto != 0);
+                                       break;
+                                    case 5: 
+                                        //Gestão de Departamento 
                                      int internogestao;
                                             do{
                                        internogestao = acessorios.MenuGestaoDepartamentos();
                                              switch (internogestao){
                                                  case 1:
-                                                     ArraydeDadosDepartamento.imprimirTodosDepartamentos();
+                                                     CadastroDepartamento.cadastrar();
                                                      break;
                                                  case 2:
+                                                     ArraydeDadosDepartamento.imprimirTodosDepartamentos();
+                                                     break;
+                                                 case 3:
                                                      System.out.println("Digite o nome do departamendo que deseja buscar: ");
                                                      String nome = ValidarEntrada.validarString();
                                                      ArraydeDadosDepartamento.buscarDpNome(nome);
                                                      break;
-                                                 case 3:
+                                                 case 4:
                                                       System.out.println("Digite o nome do departamendo que deseja editar: ");
                                                      String nomeeditar = ValidarEntrada.validarString();
                                                      ArraydeDadosDepartamento.editardp(nomeeditar);
                                                      break;
-                                                 case 4:
+                                                 case 5:
                                                      System.out.println("Digite o nome do departamento que deseja excluir: ");
                                                      String nomeexcluir = ValidarEntrada.validarString();
                                                      ArraydeDadosDepartamento.excluirdepartamento(nomeexcluir);
@@ -195,14 +218,40 @@ public class System_overflow {
                               
                               switch(opfuncionario){
                                   case 1:
-                                      //ADD Func.
+                                      int opbfuncionarios=0;
+                                      do{
+                                    opbfuncionarios = acessorios.MenuGestaopessoasFuncionarioBusca();
+                                        switch(opbfuncionarios){
+                                            case 1:
+                                                ArrayFuncionario.imprimirArrayCliente();
+                                                break;
+                                            case 2:
+                                               
+                                                System.out.println("Digite o ID do funcionario: ");
+                                                int idfuncionaro = ValidarEntrada.validarInteiro();
+                                                ArrayFuncionario.buscarFuncionario(idfuncionaro);
+                                                break;
+                                                
+                                            }
+                                    
+                                      }while (opbfuncionarios != 0);
                                       break;
+                                  case 2:
+                                      CadastroFuncionario.cadastro();
+                                      break;
+                                  case 3:
+                                      System.out.println("Digite o ID do funcionario: ");
+                                      int idfuncionaro = ValidarEntrada.validarInteiro();
+                                      ArrayFuncionario.excluirfuncionario(idfuncionaro);
                               }
                               
                                
                                }while(opfuncionario!= 0);
                                break;
+                               
+                                
                                }
+                                
 
                     }while(op!=0);
                     }

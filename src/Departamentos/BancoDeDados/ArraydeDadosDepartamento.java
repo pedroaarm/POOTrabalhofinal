@@ -161,7 +161,7 @@ public class ArraydeDadosDepartamento {
                         if(resultset.getString("nomedp").equals(nome)){
                             prepareStatement = conexao.criarPreparedStatement(sql);
                               
-                                prepareStatement.setString(1,nome); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setString(1,Novonome); //primeiro numero = saldo (primeiro "?", o segundo é o valor
                                 prepareStatement.setInt(2, resultset.getInt("id")); // primeiro numero segunda? == segundo numero numero do id
                                 prepareStatement.executeUpdate();
                                 //System.out.println(prepareStatement.executeUpdate());
@@ -221,7 +221,7 @@ public class ArraydeDadosDepartamento {
                           ResultSet s = resultset;
                           
                             
-                          if (resultset.getString("nomedp").equals(nome)){
+                          if (resultset.getString("nomedp").equalsIgnoreCase(nome)){
 
                                   PreparedStatement prepared= null;
                                   String delete = "DELETE FROM departamento"

@@ -26,11 +26,11 @@ public class CadastroDepartamento {
  
        
         Departamento depart = new Departamento();
-         ValidarNovoDepartamento validarDP = new ValidarNovoDepartamento();
-        String Nome;
+         static ValidarNovoDepartamento validarDP = new ValidarNovoDepartamento();
+        static String Nome;
         Integer codigo;
         
-        public void cadastrar(){
+        public static  void cadastrar(){
             for (int i=0;i<20;i++){
                 System.out.println("");
             }

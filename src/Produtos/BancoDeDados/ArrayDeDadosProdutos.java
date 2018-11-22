@@ -1,8 +1,11 @@
 package Produtos.BancoDeDados;
 
 
+import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
+import Departamentos.BancoDeDados.Criar_Conexao_Departamento;
 import Produtos.Produtos;
 import TratamentodeErros.ValidarEntrada;
+import Utilitarios.ValidarNovoDepartamento;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -131,51 +134,6 @@ public abstract class ArrayDeDadosProdutos  {
        
    }
    
- /*  public static void editarProduto(int id, int novoid){
-       
-       Criar_Conexao_Produtos conexaoprodutos = new Criar_Conexao_Produtos();
-    conexaoprodutos.conectar();
-    
-                      try{
-                                  PreparedStatement prepareStatement = null;
-                                  ResultSet resulset = null;
-
-                                   Statement statement;
- 
-                                    String tabelaAtualuzacao = "UPDATE produto"
-                                     + " SET "
-                                      + " id = nome_produto ?"
-                                      + "WHERE codigo = ?";
-                                       String select = "SELECT * FROM produto;";
- 
-                                     statement = conexaoprodutos.CriarStatement();
-
-                resulset = statement.executeQuery(select);
-                 
-                while (resulset.next()){
-                    if(resulset.getInt("id") == id){
-                           System.out.println("---Atualização produto---");
-                          
-                        String nn = JOptionPane.showInputDialog("Digite o novo nome: ");
-                         prepareStatement = conexaoprodutos.criarPreparedStatement(tabelaAtualuzacao);
-                                    prepareStatement.setString(1, "nome"); //primeiro numero = saldo (primeiro "?", o segundo é o valor
-                                        prepareStatement.setInt(2, resulset.getInt("id")); // primeiro numero segunda? == segundo numero numero do id
-                                
-                                        prepareStatement.executeUpdate();
-                    }
-                        
-                    }
-                }catch (Exception e){
-                                System.out.println("erro "+e);
-                              } }
-       
-       
-       
-       
-       
-       
-   }
-   */ 
     
    public static void imprimirArryProdutos(){
         System.out.println("---Produtos Cadastrados---");
@@ -185,9 +143,107 @@ public abstract class ArrayDeDadosProdutos  {
         
         
     }
-       
+   
+
+    static public void editarProduto(int opcao){
         
-    }
+                    System.out.println("Digite o ID do produto: ");
+                    int id = ValidarEntrada.validarInteiro();
+                    boolean verificaid = verificarexistencia(id);
+                    
+                    if(verificaid == true){
+            Criar_Conexao_Produtos conexao = new Criar_Conexao_Produtos();
+             conexao.conectar();
+
+                PreparedStatement prepareStatement = null;
+                ResultSet resultset = null;
+
+                Statement statement;
+
+                if(opcao == 1){
+
+                    
+                    System.out.println("Digite um novo nome para o produto: ");
+                    String nome = ValidarEntrada.validarString();
+                    
+                String sql = "UPDATE produto"
+                + " SET "
+                + " nome_produto = ?"
+                + "WHERE id = ?";
+                String select = "SELECT * FROM produto;";
+                
+                    try{
+                statement = conexao.CriarStatement();
+                        
+                resultset = statement.executeQuery(select);
+
+                while (resultset.next()){
+
+
+                        if(resultset.getString("nome_produto").equalsIgnoreCase(nome)){
+                            prepareStatement = conexao.criarPreparedStatement(sql);
+                              
+                                prepareStatement.setString(1,nome); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                        }
+                    
+                }
+                }catch(SQLException e){
+                        System.err.println("Ocorreu o seguinte erro: "+e);
+                    }
+                    
+                    }if(opcao == 2){ 
+                    System.out.println("Digite a nova quantidade no estoque: ");
+                    int estoque = ValidarEntrada.validarInteiro();
+                    
+                String sql = "UPDATE produto"
+                + " SET "
+                + " estoque = ?"
+                + "WHERE id = ?";
+                String select = "SELECT * FROM produto;";
+                
+                    try{
+                statement = conexao.CriarStatement();
+                        
+                resultset = statement.executeQuery(select);
+
+                while (resultset.next()){
+
+
+                        if(resultset.getInt("id") == id){
+                            prepareStatement = conexao.criarPreparedStatement(sql);
+                              
+                                prepareStatement.setInt(1,estoque); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                        }
+                        
+                    
+                }
+                 prepareStatement.close();
+                }catch(SQLException e){
+                        System.err.println("Ocorreu o seguinte erro: "+e);
+                    }
+                        
+                        
+                        
+                    }
+                  // codigo++;
+               
+                 // conexao.desconectar();
+                    
+            
+            
+        }else{
+            System.out.println("Esse departamento não existe");
+        }
+       
+   }
+    }        
+    
     
     
     
