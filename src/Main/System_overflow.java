@@ -31,18 +31,10 @@ public class System_overflow {
 
     static Scanner in = new Scanner (System.in);
     public static void main(String[] args) {
-     
-     CriarBancoProdutos.criarTab();
+             InicializarDados.inicializar();
+//Atentear para os possiveis erros de inicialização
     Menus acessorios = new Menus();
     Integer opcao=0;  
-        Criar_BD_departamentos BdDep = new Criar_BD_departamentos();
-       Criar_Conexao_Departamento conexaoDp = new Criar_Conexao_Departamento();
-        Criar_BD_departamentos.criarTab();
-        conexaoDp.conectar();
-        InicializarDados.inicializar();
-        CriarBancodeDados_Cliente.criarTab();
-                
-  
 
      // conexaoDp.CriarStatement();
       // Criar_BD_departamentos.criarTab();
@@ -144,6 +136,7 @@ public class System_overflow {
                         case 3:
                             int op ;
                             do{
+                                //Meunu Gestão de pessoas;
                                op = acessorios.MenuGestaopessoas();
                                switch(op){
                                    case 1:
@@ -163,17 +156,54 @@ public class System_overflow {
                                                        String nomecliente = ValidarEntrada.validarString();
                                                      ArrayDadosCliente.buscarCliente(nomecliente);
                                                        break;
-                                                       default:
-                                                           System.out.println("Opção inválida!");
-                                                           break;
+                                                   
                                                }
                                            }while(clientebusca != 0);
                                            break;
                                        case 2:
                                          CadastroCliente.cadastroCliente();
                                            break;
+                                           case 3:
+                                               int opc;
+                                                       
+                                               do{
+                                              System.out.println("---Excluir Cliente---");
+                                              System.out.println("Digite: 1 - Ver os clientes cadastrados | 2 - Excluir pelo ID do cliente | 0 - Voltar: ");
+                                                     
+                                                               opc = ValidarEntrada.validaropcao();
+                                                       
+                                                        switch(opc){
+                                                            case 1:
+                                                                ArrayDadosCliente.imprimirArrayCliente();
+                                                                break;
+                                                            case 2:
+                                                                System.out.println("Digite o ID do cliente: ");
+                                                                int id = ValidarEntrada.validarInteiro();
+                                                                ArrayDadosCliente.excluircliente(id);
+                                                                break;
+                                                        }
+
+                                                           
+                                               }while(opc !=0);
+                                                       break;
                                    }
+                                 case 2:
+                               int opfuncionario;
+                               do{
+
+                              opfuncionario = acessorios.MenuGestaopessoasFuncionario();
+                              
+                              switch(opfuncionario){
+                                  case 1:
+                                      //ADD Func.
+                                      break;
+                              }
+                              
+                               
+                               }while(opfuncionario!= 0);
+                               break;
                                }
+
                     }while(op!=0);
                     }
                     

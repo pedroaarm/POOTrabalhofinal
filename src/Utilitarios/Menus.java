@@ -112,15 +112,15 @@ public class Menus {
          return opcao;
      }
                
-                              public Integer MenuGestaopessoasCliente(){
+   public Integer MenuGestaopessoasCliente(){
          
          int opcao =0;
          System.out.println("\n  ==================================");
-			System.out.println("  |     1 - Buscar Clientes        |");
-			System.out.println("  |     2 - Adicionar Clientes    |");
+			System.out.println("  |     1 - Buscar Clientes    |");
+			System.out.println("  |     2 - Adicionar Clientes |");
 			System.out.println("  |     3 - Excluir Cliente    |");   
-			System.out.println("  |     4 - Editar Cliente    |");                        
-			System.out.println("  |     0 - Voltar          |");
+			System.out.println("  |     4 - Editar Cliente     |");                        
+			System.out.println("  |     0 - Voltar             |");
 			System.out.println("  ===================================\n");
                         System.out.print(" Opção -> ");
                         opcao = ValidarEntrada.validaropcao();
@@ -141,6 +141,20 @@ public class Menus {
          
          return opcao;
      }
-     
+                                  public Integer MenuGestaopessoasFuncionario(){
+         
+         int opcao =0;
+         System.out.println("\n  ==================================");
+			System.out.println("  |     1 - Buscar Funcionario    |");
+			System.out.println("  |     2 - Adicionar Funcionario |");
+			System.out.println("  |     3 - Excluir Funcionario   |");   
+			System.out.println("  |     4 - Editar Funcionario    |");                        
+			System.out.println("  |     0 - Voltar                |");
+			System.out.println("  ===================================\n");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         return opcao;
+     } 
     
 }

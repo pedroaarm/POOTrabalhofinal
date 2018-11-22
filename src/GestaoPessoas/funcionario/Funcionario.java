@@ -12,26 +12,32 @@ import GestaoPessoas.Pessoa;
  *
  * @author pedro
  */
-public class funcionario extends Pessoa {
+public class Funcionario extends Pessoa {
     
     private float salario;
     private int jornadaTrabalho;
     private int IDfuncionario;
 
-    public funcionario(float salario, int jornadaTrabalho, int IDfuncionario, String nome, String CPF, String telefone, String endereco) {
+     public Funcionario(float salario, int jornadaTrabalho, String nome, String CPF, String telefone, String endereco) {
+        super(nome, CPF, telefone, endereco);
+        this.salario = salario;
+        this.jornadaTrabalho = jornadaTrabalho;
+    }
+    
+    public Funcionario(float salario, int jornadaTrabalho, int IDfuncionario, String nome, String CPF, String telefone, String endereco) {
         super(nome, CPF, telefone, endereco);
         this.salario = salario;
         this.jornadaTrabalho = jornadaTrabalho;
         this.IDfuncionario = IDfuncionario;
     }
 
-    public funcionario(float salario, int jornadaTrabalho, int IDfuncionario) {
+    public Funcionario(float salario, int jornadaTrabalho, int IDfuncionario) {
         this.salario = salario;
         this.jornadaTrabalho = jornadaTrabalho;
         this.IDfuncionario = IDfuncionario;
     }
 
-    public funcionario() {
+    public Funcionario() {
     }
 
     public float getSalario() {

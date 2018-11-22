@@ -52,8 +52,8 @@ public class Endereco {
         this.cidade = cidade;
     }
    @Override
-    public java.lang.String toString(){
+    public String toString(){
         
-        return "Rua: "+rua+" Bairro: "+bairro+" Cidade: ";
+        return "Rua: "+rua+" Bairro: "+bairro+" Cidade: "+cidade;
     }
 }

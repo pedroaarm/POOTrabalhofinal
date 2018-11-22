@@ -5,8 +5,6 @@
  */
 package GestaoPessoas;
 
-import GestaoPessoas.cliente.Endereco;
-
 /**
  *
  * @author pedro

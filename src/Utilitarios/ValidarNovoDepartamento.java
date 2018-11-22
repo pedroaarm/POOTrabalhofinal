@@ -30,7 +30,7 @@ public class ValidarNovoDepartamento {
         
             for (int i=0;i<ArraydeDadosDepartamento.Hashdepartamento.size();i++){
                     for (Map.Entry<Integer,String> hashdp : Hashdepartamento.entrySet()) {
-                        if (hashdp.getValue().equals(nome)){
+                        if (hashdp.getValue().equalsIgnoreCase(nome)){
                             return false;
                         }
                     }
