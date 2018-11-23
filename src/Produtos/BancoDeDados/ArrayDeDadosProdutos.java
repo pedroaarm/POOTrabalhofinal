@@ -347,9 +347,15 @@ public abstract class ArrayDeDadosProdutos  {
         }
        
    }
+    public static Produtos retornaprodutoespecifico(int id){
+        
+        for (Produtos arrayproduto : arrayprodutos) {
+            if(arrayproduto.getId() == id){
+                return arrayproduto;
+            }
+            
+        }
+        
+        return null;
+    }
     }        
-    
-    
-    
-    
-
