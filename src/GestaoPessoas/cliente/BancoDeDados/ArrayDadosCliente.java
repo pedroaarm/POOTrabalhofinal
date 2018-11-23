@@ -5,8 +5,12 @@
  */
 package GestaoPessoas.cliente.BancoDeDados;
 
+import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
 import GestaoPessoas.cliente.Cliente;
+import static Produtos.BancoDeDados.ArrayDeDadosProdutos.verificarexistencia;
+import Produtos.BancoDeDados.Criar_Conexao_Produtos;
 import TratamentodeErros.ValidarEntrada;
+import Utilitarios.InicializarDados;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,7 +43,7 @@ public class ArrayDadosCliente {
                       while (resultset.next()) {
                           ResultSet s = resultset;
          // public Cliente(int idcliente, String rg, String nome, String CPF, String telefone, String endereco);
-                          Cliente cliente = new Cliente (resultset.getInt("id"),resultset.getString("rg"),resultset.getString("nome_cliente"),resultset.getString("cpf"), resultset.getString("telefone"), resultset.getString("endereco"));
+                          Cliente cliente = new Cliente (resultset.getInt("id"),resultset.getString("rg"),resultset.getString("nome_cliente"),resultset.getString("cpf"), resultset.getString("telefone"), resultset.getString("endereco"),0);
                           arraycliente.add(cliente);
                       
                       }
@@ -121,5 +125,228 @@ public static void excluircliente(int id){
                    
 
 }
+
+static public boolean verificarexistenciacliente(int id){
+    
+    for (Cliente cliente : arraycliente) {
+        if(cliente.getIdcliente() == id){
+            return true;
+        }
         
     }
+    
+    return false;
+    
+}
+
+public static void editarcliente (int opcao, int id){
+
+
+
+                    boolean verificaid = verificarexistenciacliente(id);
+                    
+                    if(verificaid == true){
+            Conexao_cliente conexao = new Conexao_cliente();
+             conexao.conectar();
+
+                PreparedStatement prepareStatement = null;
+                ResultSet resultset = null;
+
+                Statement statement;
+
+                if(opcao == 1){
+
+                    
+                    System.out.println("Digite o novo nome do cliente: ");
+                    String nome = ValidarEntrada.validarString();
+                    
+                String sql = "UPDATE cliente"
+                + " SET "
+                + " nome_cliente = ?"
+                + "WHERE id = ?";
+                String select = "SELECT * FROM cliente;";
+                
+                    try{
+                statement = conexao.CriarStatement();
+                        
+                resultset = statement.executeQuery(select);
+
+                while (resultset.next()){
+
+
+                        if(resultset.getInt("id") == id){
+                            prepareStatement = conexao.criarPreparedStatement(sql);
+                              
+                                prepareStatement.setString(1,nome); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                        }
+                    
+                }
+                }catch(SQLException e){
+                        System.err.println("Ocorreu o seguinte erro: "+e);
+                    }
+                    
+                    
+                }if(opcao == 2){
+                    
+                    System.out.println("Digite o Novo CPF: ");
+                    String cpf = ValidarEntrada.validarString();
+                    
+                String sql = "UPDATE cliente"
+                + " SET "
+                + "cpf = ?"
+                + "WHERE id = ?";
+                String select = "SELECT * FROM cliente;";
+                
+                    try{
+                statement = conexao.CriarStatement();
+                        
+                resultset = statement.executeQuery(select);
+
+                while (resultset.next()){
+
+
+                        if(resultset.getInt("id") == id){
+                            prepareStatement = conexao.criarPreparedStatement(sql);
+                              
+                                prepareStatement.setString(1,cpf); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                        }
+                        
+                    
+                }
+                 prepareStatement.close();
+                }catch(SQLException e){
+                        System.err.println("Ocorreu o seguinte erro: "+e);
+                    }
+                           
+                    
+                    
+                }if(opcao == 3){
+                    
+                        
+                    System.out.println("Digite o Novo RG: ");
+                    String rg = ValidarEntrada.validarString();
+                    
+                String sql = "UPDATE cliente"
+                + " SET "
+                + "rg = ?"
+                + "WHERE id = ?";
+                String select = "SELECT * FROM cliente;";
+                
+                    try{
+                statement = conexao.CriarStatement();
+                        
+                resultset = statement.executeQuery(select);
+
+                while (resultset.next()){
+
+
+                        if(resultset.getInt("id") == id){
+                            prepareStatement = conexao.criarPreparedStatement(sql);
+                              
+                                prepareStatement.setString(1,rg); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                        }
+                        
+                    
+                }
+                 prepareStatement.close();
+                }catch(SQLException e){
+                        System.err.println("Ocorreu o seguinte erro: "+e);
+                    }
+                           
+                    
+                    
+                    
+                    
+                }if(opcao == 4){
+                       
+                        
+                    System.out.println("Digite o Novo Endereco: ");
+                    String endereco = ValidarEntrada.validarString();
+                    
+                String sql = "UPDATE cliente"
+                + " SET "
+                + "endereco = ?"
+                + "WHERE id = ?";
+                String select = "SELECT * FROM cliente;";
+                
+                    try{
+                statement = conexao.CriarStatement();
+                        
+                resultset = statement.executeQuery(select);
+
+                while (resultset.next()){
+
+
+                        if(resultset.getInt("id") == id){
+                            prepareStatement = conexao.criarPreparedStatement(sql);
+                              
+                                prepareStatement.setString(1,endereco); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                        }
+                        
+                    
+                }
+                 prepareStatement.close();
+                }catch(SQLException e){
+                        System.err.println("Ocorreu o seguinte erro: "+e);
+                    }
+                           
+  
+                }
+                if(opcao == 5){
+                       
+                    System.out.println("Digite o novo endereco: ");
+                    String novotelefone = ValidarEntrada.validarString();
+                    
+                String sql = "UPDATE cliente"
+                + " SET "
+                + "telefone = ?"
+                + "WHERE id = ?";
+                String select = "SELECT * FROM cliente;";
+                
+                    try{
+                statement = conexao.CriarStatement();
+                        
+                resultset = statement.executeQuery(select);
+
+                while (resultset.next()){
+
+
+                        if(resultset.getInt("id") == id){
+                            prepareStatement = conexao.criarPreparedStatement(sql);
+                              
+                                prepareStatement.setString(1,novotelefone); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                        }
+                        
+                    
+                }
+                 prepareStatement.close();
+                }catch(SQLException e){
+                        System.err.println("Ocorreu o seguinte erro: "+e);
+                    }
+                           
+                    
+                    
+                    
+                    
+                }
+                }
+        
+    }
+}
+
+

@@ -27,6 +27,7 @@ public class CriarTabelaFuncionario {
                 + "telefone text,\n"
                 + "salario float NOT NULL,\n"
                 + "jornadatrabalho integer,\n"
+                + "funcao text NOT NULL,\n"
                 + "endereco text\n"
                 + ")";
 

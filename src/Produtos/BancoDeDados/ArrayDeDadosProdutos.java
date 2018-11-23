@@ -145,10 +145,9 @@ public abstract class ArrayDeDadosProdutos  {
     }
    
 
-    static public void editarProduto(int opcao){
+    static public void editarProduto(int opcao, int id){
         
-                    System.out.println("Digite o ID do produto: ");
-                    int id = ValidarEntrada.validarInteiro();
+
                     boolean verificaid = verificarexistencia(id);
                     
                     if(verificaid == true){
@@ -200,7 +199,7 @@ public abstract class ArrayDeDadosProdutos  {
                     
                 String sql = "UPDATE produto"
                 + " SET "
-                + " estoque = ?"
+                + "quantidade = ?"
                 + "WHERE id = ?";
                 String select = "SELECT * FROM produto;";
                 
@@ -227,9 +226,115 @@ public abstract class ArrayDeDadosProdutos  {
                 }catch(SQLException e){
                         System.err.println("Ocorreu o seguinte erro: "+e);
                     }
+                           
+                    }
+                    if(opcao == 3){
+                         System.out.println("Digite o novo preco: ");
+                    float novopreco = ValidarEntrada.validarFloat();
+                    
+                String sql = "UPDATE produto"
+                + " SET "
+                + "preco_produto = ?"
+                + "WHERE id = ?";
+                String select = "SELECT * FROM produto;";
+                
+                    try{
+                statement = conexao.CriarStatement();
+                        
+                resultset = statement.executeQuery(select);
+
+                while (resultset.next()){
+
+
+                        if(resultset.getInt("id") == id){
+                            prepareStatement = conexao.criarPreparedStatement(sql);
+                              
+                                prepareStatement.setFloat(1,novopreco); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                        }
+                        
+                    
+                }
+                 prepareStatement.close();
+                }catch(SQLException e){
+                        System.err.println("Ocorreu o seguinte erro: "+e);
+                    }
+                        
+                    }if(opcao == 4){
+                System.out.println("Digite a nova referencia: ");
+                   String novaref = ValidarEntrada.validarString();
+                    
+                String sql = "UPDATE produto"
+                + " SET "
+                + "referencia_prod = ?"
+                + "WHERE id = ?";
+                String select = "SELECT * FROM produto;";
+                
+                    try{
+                statement = conexao.CriarStatement();
+                        
+                resultset = statement.executeQuery(select);
+
+                while (resultset.next()){
+
+
+                        if(resultset.getInt("id") == id){
+                            prepareStatement = conexao.criarPreparedStatement(sql);
+                              
+                                prepareStatement.setString(1,novaref); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                        }
+                        
+                    
+                }
+                 prepareStatement.close();
+                }catch(SQLException e){
+                        System.err.println("Ocorreu o seguinte erro: "+e);
+                    }
+                      
+                    }if(opcao == 5){
+                        
+                       System.out.println("Digite a nova referencia: ");
+                    String novadescricao = ValidarEntrada.validarString();
+                    
+                String sql = "UPDATE produto"
+                + " SET "
+                + "referencia_prod = ?"
+                + "WHERE id = ?";
+                String select = "SELECT * FROM produto;";
+                
+                    try{
+                statement = conexao.CriarStatement();
+                        
+                resultset = statement.executeQuery(select);
+
+                while (resultset.next()){
+
+
+                        if(resultset.getInt("id") == id){
+                            prepareStatement = conexao.criarPreparedStatement(sql);
+                              
+                                prepareStatement.setString(1,novadescricao); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                        }
+                        
+                    
+                }
+                 prepareStatement.close();
+                }catch(SQLException e){
+                        System.err.println("Ocorreu o seguinte erro: "+e);
+                    }
                         
                         
                         
+                    }if(opcao<0 || opcao > 5){
+                        System.out.println("Opção invalida");
                     }
                   // codigo++;
                

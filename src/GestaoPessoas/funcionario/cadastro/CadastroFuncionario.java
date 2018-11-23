@@ -20,7 +20,7 @@ public class CadastroFuncionario {
         Endereco endereco = cadastroendereco.cadendereco();
         trabalhista.cadastrotrabalhistas();
 
-        Funcionario funcionario = new Funcionario(trabalhista.getSalario(),trabalhista.getJornadadetrabalho(),cadastropessoas.getNome(),cadastropessoas.getCpf(),cadastropessoas.getTelefone(),endereco.toString());
+        Funcionario funcionario = new Funcionario(trabalhista.getSalario(),trabalhista.getJornadadetrabalho(),cadastropessoas.getNome(),cadastropessoas.getCpf(),cadastropessoas.getTelefone(),endereco.toString(), trabalhista.getFuncao());
         AdicionarFuncionario.addfuncionario(funcionario);
         ArrayFuncionario.inicializarArrayDepartamento();
 

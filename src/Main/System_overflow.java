@@ -110,7 +110,7 @@ public class System_overflow {
         
                                                
                                               if(editarproduto != 0){
-                                           ArrayDeDadosProdutos.editarProduto(id);
+                                           ArrayDeDadosProdutos.editarProduto(editarproduto,id);
                                               }
                                          
                                        
@@ -186,7 +186,7 @@ public class System_overflow {
                                        case 2:
                                          CadastroCliente.cadastroCliente();
                                            break;
-                                           case 3:
+                                        case 3:
                                                int opc;
                                                        
                                                do{
@@ -209,6 +209,23 @@ public class System_overflow {
                                                            
                                                }while(opc !=0);
                                                        break;
+                                        case 4: // edicao cliente
+                                        int editarcliente;
+                                            System.out.println("Digite o ID do cliente: ");
+                                        int id = ValidarEntrada.validarInteiro();
+                                        do{
+                                            
+                                           editarcliente =  acessorios.MenuClienteEditar();
+                                           
+                                                if(editarcliente!=0){
+                                                    ArrayDadosCliente.editarcliente(editarcliente, id);
+                                                    
+                                                }
+                                            
+                                        }while(editarcliente !=0);
+                                            
+                                        
+                                        
                                    }
                                  case 2:
                                int opfuncionario;
@@ -243,13 +260,25 @@ public class System_overflow {
                                       System.out.println("Digite o ID do funcionario: ");
                                       int idfuncionaro = ValidarEntrada.validarInteiro();
                                       ArrayFuncionario.excluirfuncionario(idfuncionaro);
+                                      break;
+                                  case 4:
+                                     System.out.println("Digite o ID do funcionario: ");
+                                     int idfunceditar = ValidarEntrada.validarInteiro();
+                                    
+                                     int opcaomenu;
+                                     do{
+                                         opcaomenu = acessorios.MenuFuncionarioEditar();
+                                             
+                                                     ArrayFuncionario.editarfuncionaro(opcaomenu, idfunceditar);
+                                                
+                                         
+                                     }while(opcaomenu!=0);
                               }
                               
                                
                                }while(opfuncionario!= 0);
                                break;
-                               
-                                
+
                                }
                                 
 

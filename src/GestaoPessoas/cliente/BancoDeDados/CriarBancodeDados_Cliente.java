@@ -28,7 +28,8 @@ public class CriarBancodeDados_Cliente {
                 + "cpf text,\n"
                 + "telefone text,\n"
                 + "endereco text,\n"
-                + "rg integer NOT NULL\n"
+                + "rg text NOT NULL,\n"
+                + "pontos integer NOT NULL"
                 + ")";
 
         try (Connection conn = DriverManager.getConnection(url);

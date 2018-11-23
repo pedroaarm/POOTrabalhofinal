@@ -46,8 +46,9 @@ public static void addcliente(Cliente cliente){
                              + "cpf,"
                              + "telefone,"
                              + "endereco,"
-                             + "rg"
-                          + ") VALUES(?,?,?,?,?)"
+                             + "rg,"
+                             + "pontos"
+                          + ") VALUES(?,?,?,?,?,?)"
                           + ";";
                     
                       PreparedStatement preparedstatment = conexaocliente.criarPreparedStatement(Insert);
@@ -58,6 +59,7 @@ public static void addcliente(Cliente cliente){
           preparedstatment.setString(3, cliente.getTelefone());
           preparedstatment.setString(4, cliente.getEndereco());
           preparedstatment.setString(5, cliente.getRg());
+          preparedstatment.setInt(6, 0);
 
             
             int resulado = preparedstatment.executeUpdate();

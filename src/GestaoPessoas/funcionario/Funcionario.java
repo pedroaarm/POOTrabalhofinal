@@ -17,18 +17,21 @@ public class Funcionario extends Pessoa {
     private float salario;
     private int jornadaTrabalho;
     private int IDfuncionario;
+    private String funcao;
 
-     public Funcionario(float salario, int jornadaTrabalho, String nome, String CPF, String telefone, String endereco) {
+     public Funcionario(float salario, int jornadaTrabalho, String nome, String CPF, String telefone, String endereco, String funcao) {
         super(nome, CPF, telefone, endereco);
         this.salario = salario;
         this.jornadaTrabalho = jornadaTrabalho;
+        this.funcao = funcao;
     }
     
-    public Funcionario(float salario, int jornadaTrabalho, int IDfuncionario, String nome, String CPF, String telefone, String endereco) {
+    public Funcionario(float salario, int jornadaTrabalho, int IDfuncionario, String nome, String CPF, String telefone, String endereco,String funcao) {
         super(nome, CPF, telefone, endereco);
         this.salario = salario;
         this.jornadaTrabalho = jornadaTrabalho;
         this.IDfuncionario = IDfuncionario;
+        this.funcao = funcao;
     }
 
     public Funcionario(float salario, int jornadaTrabalho, int IDfuncionario) {
@@ -38,6 +41,14 @@ public class Funcionario extends Pessoa {
     }
 
     public Funcionario() {
+    }
+
+    public String getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
     }
 
     public float getSalario() {

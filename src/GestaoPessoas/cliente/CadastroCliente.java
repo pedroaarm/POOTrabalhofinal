@@ -26,7 +26,7 @@ public class CadastroCliente   {
         rg.cadastroRG();
         Endereco endereco = CadastroEndereco.cadendereco();
         String enderecostring = endereco.toString();
-        Cliente cliente = new Cliente(rg.getNumero(), cadastropessoal.getNome(),cadastropessoal.getCpf(),cadastropessoal.getTelefone(), endereco.toString());
+        Cliente cliente = new Cliente(rg.getNumero(), cadastropessoal.getNome(),cadastropessoal.getCpf(),cadastropessoal.getTelefone(), endereco.toString(),0);
      
         AdicionaCliente.addcliente(cliente);
     }

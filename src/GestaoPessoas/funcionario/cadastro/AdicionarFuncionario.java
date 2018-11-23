@@ -47,8 +47,9 @@ public class AdicionarFuncionario {
                              + "telefone,"
                              + "salario,"
                              + "jornadatrabalho,"
-                             + "endereco"
-                          + ") VALUES(?,?,?,?,?,?)"
+                             + "endereco,"
+                             + "funcao"
+                          + ") VALUES(?,?,?,?,?,?,?)"
                           + ";";
                     
                       PreparedStatement preparedstatment = conexaofuncionario.criarPreparedStatement(Insert);
@@ -60,6 +61,7 @@ public class AdicionarFuncionario {
           preparedstatment.setFloat(4, funcionario.getSalario());
           preparedstatment.setInt(5, funcionario.getJornadaTrabalho());
           preparedstatment.setString(6, funcionario.getEndereco());
+          preparedstatment.setString(7, funcionario.getFuncao());
 
             
             int resulado = preparedstatment.executeUpdate();

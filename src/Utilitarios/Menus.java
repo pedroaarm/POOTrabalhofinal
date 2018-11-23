@@ -52,7 +52,7 @@ public class Menus {
 			System.out.println("  |     1 - Adicionar Produtos         |");
 			System.out.println("  |     2 - Buscar Produto             |");			
                         System.out.println("  |     3 - Remover Produtos  -        |");
-			System.out.println("  |     4 - Editar Departamento    |");
+			System.out.println("  |     4 - Editar Produto             |");
 			System.out.println("  |     5 - Gestão de Departamentos    |");
 			System.out.println("  |     0 - Voltar                     |");
 			System.out.println("  ===================================\n");
@@ -186,4 +186,58 @@ public class Menus {
          
          return opcao;
      }
+                                  
+         public Integer MenuClienteEditar(){
+          int opcao =0;
+         System.out.println("\n  ==================================");
+         		System.out.println("  |     1 - Editar Nome            |");  
+			System.out.println("  |     2 - Editar CPF      |");
+			System.out.println("  |     3 - Editar RG          |");                        
+			System.out.println("  |     4 - Editar Endereco       |");
+			System.out.println("  |     5 - Editar telefone      |");
+			System.out.println("  |     0 - Voltar                 |");
+			System.out.println("  ===================================\n");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         return opcao;
+     }
+         
+                  public Integer MenuFuncionarioEditar(){
+          int opcao =0;
+         System.out.println("\n  ==================================");
+         		System.out.println("  |     1 - Editar Nome            |");  
+			System.out.println("  |     2 - Editar CPF      |");
+			System.out.println("  |     3 - Editar salario        |");     
+                        System.out.println("  |     4 - Editar Jornada de trabalho        |");   
+			System.out.println("  |     5 - Editar Endereco       |");
+			System.out.println("  |     6 - Editar telefone      |");
+			System.out.println("  |     0 - Voltar                 |");
+			System.out.println("  ===================================\n");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         return opcao;
+     }
+     
+                  
+                  
+                                public Integer Menuvendas(){
+          int opcao =0;
+         System.out.println("\n  ==================================");
+         		System.out.println("  |     1 - NOVA VENDA            |");  
+			System.out.println("  |     2 - Verificar Vendas nessa sessao      |");
+			System.out.println("  |     3 - Dados de comprar por cliente        |");     
+                        System.out.println("  |     4 - Editar Jornada de trabalho        |");   
+			System.out.println("  |     5 - Editar Endereco       |");
+			System.out.println("  |     6 - Editar telefone      |");
+			System.out.println("  |     0 - Voltar                 |");
+			System.out.println("  ===================================\n");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         return opcao;
+     }
+     
+     
 }

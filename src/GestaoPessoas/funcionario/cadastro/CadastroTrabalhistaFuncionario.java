@@ -15,13 +15,27 @@ import TratamentodeErros.ValidarEntrada;
 public class CadastroTrabalhistaFuncionario {
     private float salario;
     private int jornadadetrabalho;
+    private String funcao; 
     public void cadastrotrabalhistas(){
+        
         System.out.println("---Cadastro Trabalhista---");
+        System.out.println("Digite a Funcao: ");
+       funcao = ValidarEntrada.validarString();
         System.out.println("Digite o salário: ");
         salario = ValidarEntrada.validarFloat();
         System.out.println("Digite a jornada de Trabalho");
         jornadadetrabalho = ValidarEntrada.validarInteiro();
     }
+
+    public String getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
+    }
+    
+    
 
     public float getSalario() {
         return salario;
