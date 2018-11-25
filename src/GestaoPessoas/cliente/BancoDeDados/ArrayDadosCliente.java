@@ -139,6 +139,17 @@ static public boolean verificarexistenciacliente(int id){
     
 }
 
+static public Cliente verificaexistenciaretornacliente(int id){
+       for (Cliente cliente : arraycliente) {
+        if(cliente.getIdcliente() == id){
+            return cliente;
+        }
+        
+    }
+    
+    return null;
+}
+
 public static void editarcliente (int opcao, int id){
 
 

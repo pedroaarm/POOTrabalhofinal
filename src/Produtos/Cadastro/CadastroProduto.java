@@ -8,7 +8,8 @@ package Produtos.Cadastro;
 import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
 import Produtos.Produtos;
 import TratamentodeErros.ValidarEntrada;
-import java.util.Scanner;
+import java.math.BigDecimal;
+
 
 /**
  public 
@@ -29,7 +30,7 @@ public class CadastroProduto {
         System.out.println("Digite uma descrição: ");
         String descricao = ValidarEntrada.validarString();
         System.out.println("Digite o Valor: ");
-        Float valor = ValidarEntrada.validarFloat();
+        BigDecimal valor = ValidarEntrada.validarBigDecimal();
         System.out.println("Digite a quantidade em estoque: ");
         Integer estoque = ValidarEntrada.validarInteiro();
         System.out.println("Digite a referencia: ");

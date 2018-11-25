@@ -225,19 +225,34 @@ public class Menus {
                                 public Integer Menuvendas(){
           int opcao =0;
          System.out.println("\n  ==================================");
-         		System.out.println("  |     1 - NOVA VENDA            |");  
-			System.out.println("  |     2 - Verificar Vendas nessa sessao      |");
-			System.out.println("  |     3 - Dados de comprar por cliente        |");     
+         		System.out.println("  |     1 - NOVA VENDA                        |");  
+			System.out.println("  |     2 - Verificar Vendas nessa sessao     |");
+			System.out.println("  |     3 - Dados de comprar por cliente      |");     
                         System.out.println("  |     4 - Editar Jornada de trabalho        |");   
-			System.out.println("  |     5 - Editar Endereco       |");
-			System.out.println("  |     6 - Editar telefone      |");
-			System.out.println("  |     0 - Voltar                 |");
+			System.out.println("  |     5 - Editar Endereco                   |");
+			System.out.println("  |     6 - Editar telefone                   |");
+			System.out.println("  |     0 - Voltar                            |");
 			System.out.println("  ===================================\n");
                         System.out.print(" Opção -> ");
                         opcao = ValidarEntrada.validaropcao();
          
          return opcao;
      }
+                                
+     public Integer MenuEscolhaproduto(){
+          int opcao =0;
+         System.out.println("\n  ==================================");
+         		System.out.println("  |     1 -Colocar um produto no carrinho    |");  
+			System.out.println("  |     2 -Mostrar Produtos no carrinho      |");
+			System.out.println("  |     3 -Cancelar essa venda      |");                        
+                        System.out.println("  |     0 -Sair                              |");
+                         System.out.println("\n  ==================================");
+                        System.out.print(" Opção -> ");
+                        opcao = ValidarEntrada.validaropcao();
+         
+         return opcao;
+     }
+     
      
      
 }

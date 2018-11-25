@@ -6,6 +6,7 @@
 package TratamentodeErros;
 
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -25,11 +26,16 @@ public class ValidarEntrada {
         * 
         */
        public static int validaropcao(){
-            Integer numero;
+            Integer numero = 0;
             do{
             try{
+               do{
                 numero = in.nextInt();
                 in.nextLine(); // Impedir o Erro do Teclado
+                    if(numero <0){
+                        System.err.println("Nao é permitido digitar numeros negativos!");
+                    }
+                }while(numero<-1);
                 return numero;
             }catch (InputMismatchException e){
                 in.nextLine();
@@ -43,8 +49,13 @@ public class ValidarEntrada {
                       Integer numero;
             do{
             try{
+                 do{
                 numero = in.nextInt();
-                in.nextLine();
+                in.nextLine(); // Impedir o Erro do Teclado
+                    if(numero <0){
+                        System.err.println("Nao é permitido digitar numeros negativos!");
+                    }
+                }while(numero<-1);
                 return numero;
             }catch (InputMismatchException e){
                 in.nextLine();
@@ -83,6 +94,21 @@ public class ValidarEntrada {
            try{
   
                numero = in.nextFloat();
+               return numero;
+           }catch (Exception e){
+                in.nextLine();
+               System.err.println("Aconceteu o seguinte erro: "+e);
+           }
+       }while (true);   
+   }
+   
+      public static BigDecimal validarBigDecimal(){
+       BigDecimal numero;      
+
+       do{
+           try{
+  
+               numero = in.nextBigDecimal();
                return numero;
            }catch (Exception e){
                 in.nextLine();

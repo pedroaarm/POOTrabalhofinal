@@ -25,6 +25,9 @@ import GestaoPessoas.cliente.BancoDeDados.CriarBancodeDados_Cliente;
 import GestaoPessoas.cliente.CadastroCliente;
 import GestaoPessoas.funcionario.BancoDedadosFuncionario.ArrayFuncionario;
 import GestaoPessoas.funcionario.cadastro.CadastroFuncionario;
+import Venda.CancelarVenda;
+import Venda.ControleVendas;
+import Venda.Vender;
 
 /**
  *
@@ -154,8 +157,42 @@ public class System_overflow {
                             
                            
                           break;
-                          
-                          //Implementar case 2 do menu principal aqui
+                        case 2:
+                            int opcaovendas;
+                            
+                            do{
+                                opcaovendas = acessorios.Menuvendas();
+                                 int op1;
+                                switch (opcaovendas){
+                                   
+                                    case 1:
+                                        do{
+                                        op1  = acessorios.MenuEscolhaproduto();
+                                        switch(op1){
+                                            case 1:
+                                                Vender.venda();
+                                                break;
+                                            case 2:
+                                                ControleVendas.mostrarcarrinho();
+                                                break;
+                                            case 3:
+                                                //encerrarVenda;
+                                            case 4:
+                                                CancelarVenda.cancelar();
+                                                op1 = 0;
+                                                break;
+                                        }
+                                        }while (op1!=0);
+                                        break;
+                                    case 2:
+                                        break;
+                                }
+                                
+                                
+                            }while (opcaovendas!=0);
+                            
+                            Vender.venda();
+                         break;
                         case 3:
                             int op ;
                             do{

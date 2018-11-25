@@ -61,7 +61,7 @@ public class Adicionar_Produto {
 
           preparedstatment.setString(1,produto.getNome());
           preparedstatment.setInt(2, produto.getQuantidadeestoque());
-          preparedstatment.setFloat(3, produto.getValor());
+          preparedstatment.setBigDecimal(3, produto.getValor());
           preparedstatment.setString(4, produto.getDescricao());
           preparedstatment.setString(5, produto.getReferencia());
           preparedstatment.setString(6, produto.getMarca());

@@ -46,7 +46,7 @@ public class CriarBancoProdutos {
                 + "marca_produto text NOT NULL,\n"
                 + "departamento text NOT NULL,\n"
                 + "quantidade integer NOT NULL,\n"
-                + "preco_produto float NOT NULL,\n"
+                + "preco_produto text NOT NULL,\n"
                 + "descricao_produto text,\n"
                 + "referencia_prod text NOT NULL\n"
                 + ")";

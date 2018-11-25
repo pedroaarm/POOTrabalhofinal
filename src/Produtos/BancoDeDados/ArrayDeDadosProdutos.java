@@ -42,7 +42,7 @@ public abstract class ArrayDeDadosProdutos  {
                       while (resultset.next()) {
                           ResultSet s = resultset;
         // public Produtos(String nome, String Descricao, int quantidadeestoque, float valor, Integer id, String referencia, String marca, int departamento)
-                         Produtos produto = new Produtos (resultset.getString("nome_produto"),resultset.getString("descricao_produto"),resultset.getInt("quantidade"),resultset.getFloat("preco_produto"),resultset.getInt("id"),resultset.getString("referencia_prod"), resultset.getString("marca_produto"),resultset.getInt("departamento"));
+                         Produtos produto = new Produtos (resultset.getString("nome_produto"),resultset.getString("descricao_produto"),resultset.getInt("quantidade"),resultset.getBigDecimal("preco_produto"),resultset.getInt("id"),resultset.getString("referencia_prod"), resultset.getString("marca_produto"),resultset.getInt("departamento"));
                           arrayprodutos.add(produto);
 
                       
@@ -358,4 +358,6 @@ public abstract class ArrayDeDadosProdutos  {
         
         return null;
     }
+    
+
     }        

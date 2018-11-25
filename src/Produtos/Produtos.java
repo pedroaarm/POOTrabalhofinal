@@ -5,6 +5,8 @@
  */
 package Produtos;
 
+import java.math.BigDecimal;
+
 /**
  *Tipos de produtos:
  * Casa;
@@ -22,13 +24,13 @@ public class Produtos {
     private String nome;
     private String Descricao;
     private int quantidadeestoque;
-    private float valor;
+    private BigDecimal valor;
     private Integer id;
    private String referencia;
    private String marca;
    private int departamento;
 
-    public Produtos(String nome, String Descricao, int quantidadeestoque, float valor, String referencia, String marca, int departamento) {
+    public Produtos(String nome, String Descricao, int quantidadeestoque,BigDecimal valor, String referencia, String marca, int departamento) {
         this.nome = nome;
         this.Descricao = Descricao;
         this.quantidadeestoque = quantidadeestoque;
@@ -38,7 +40,7 @@ public class Produtos {
         this.departamento = departamento;
     }
 
-    public Produtos(String nome, String Descricao, int quantidadeestoque, float valor, Integer id, String referencia, String marca, int departamento) {
+    public Produtos(String nome, String Descricao, int quantidadeestoque, BigDecimal valor, Integer id, String referencia, String marca, int departamento) {
         this.nome = nome;
         this.Descricao = Descricao;
         this.quantidadeestoque = quantidadeestoque;
@@ -108,11 +110,11 @@ public class Produtos {
         this.quantidadeestoque = quantidadeestoque;
     }
 
-    public float getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
     
