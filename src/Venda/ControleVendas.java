@@ -29,14 +29,47 @@ public class ControleVendas {
 
             for (Vendas vendas : arrayvendaslocal) {
                 System.out.println("Produtos: "+vendas.getNomeproduto()+ " |Valor unitario"+vendas.getPrecounitario()+" |Quantidade: "+vendas.getQuantidade()+"Valor total: "+vendas.getPrecototal());
-               valortotal =valortotal.add(vendas.getPrecototal());
+                
             }
             System.out.println("VALOR TOTAL DA COMPRA: "+valortotal);
         }
         
     }
+    public static void adicionarcarrinho(Vendas vendas){
+        arrayvendaslocal.add(vendas);
+      valortotal= valortotal.add(vendas.getPrecototal());
+        
+        
+    }
+    
+    public static void removerprodutocarrinho(int id){
+        
+       boolean existe = ArrayDeDadosProdutos.verificarexistencia(id);
+        
+       if(existe == true){
+      for (int i=0; i<arrayvendaslocal.size();i++){
+          if(arrayvendaslocal.get(i).getIdproduto() == id){
+              
+              valortotal = valortotal.subtract(arrayvendaslocal.get(i).getPrecototal());
+               for (int j=0; j<arraycloneproduto.size();j++){
+                  if(arraycloneproduto.get(j).getId() == id){
+                      arraycloneproduto.get(j).setQuantidadeestoque(arrayvendaslocal.get(i).getQuantidade()+arraycloneproduto.get(j).getQuantidadeestoque());
+                  }
+                  
+              }
+              arrayvendaslocal.remove(i);
+          }
+            
+        }
+       }else{
+           System.err.println("Produto nao encontrado!");
+       }
+        
+        
+    }
     
     public static void inicializarclone(){
+        arraycloneproduto.clear();
             for (Produtos ArrayVendas : ArrayDeDadosProdutos.arrayprodutos) {
                 arraycloneproduto.add(ArrayVendas);
         }

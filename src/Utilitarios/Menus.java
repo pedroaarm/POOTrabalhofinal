@@ -244,7 +244,9 @@ public class Menus {
          System.out.println("\n  ==================================");
          		System.out.println("  |     1 -Colocar um produto no carrinho    |");  
 			System.out.println("  |     2 -Mostrar Produtos no carrinho      |");
-			System.out.println("  |     3 -Cancelar essa venda      |");                        
+			System.out.println("  |     3 -Remover Produto do carrinho     |");   
+                        System.out.println("  |     4 -FINALIZAR COMPRA     |"); 
+                         System.out.println("  |    5 - cancelar compra     |"); 
                         System.out.println("  |     0 -Sair                              |");
                          System.out.println("\n  ==================================");
                         System.out.print(" Opção -> ");

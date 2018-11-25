@@ -25,6 +25,7 @@ import GestaoPessoas.funcionario.BancoDedadosFuncionario.ArrayFuncionario;
 import GestaoPessoas.funcionario.cadastro.CadastroFuncionario;
 import Venda.CancelarVenda;
 import Venda.ControleVendas;
+import Venda.EncerrarCompra;
 import Venda.Vender;
 
 /**
@@ -167,6 +168,7 @@ public class System_overflow {
                                         do{
                                         op1  = acessorios.MenuEscolhaproduto();
                                         switch(op1){
+                                            
                                             case 1:
                                                 Vender.venda();
                                                 break;
@@ -174,8 +176,14 @@ public class System_overflow {
                                                 ControleVendas.mostrarcarrinho();
                                                 break;
                                             case 3:
-                                                //encerrarVenda;
+                                                System.out.println("Digite o id do produto: ");
+                                                int idprodutoremover = ValidarEntrada.validarInteiro();
+                                                ControleVendas.removerprodutocarrinho(idprodutoremover);
+                                                break;
                                             case 4:
+                                                EncerrarCompra.encerrar();
+                                                break;
+                                            case 5:
                                                 CancelarVenda.cancelar();
                                                 op1 = 0;
                                                 break;

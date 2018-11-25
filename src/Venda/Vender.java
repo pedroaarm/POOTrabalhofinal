@@ -71,7 +71,7 @@ public class Vender {
             if(quantidade<1){
                 System.out.println("Quantidade invalida");
             }
-        }while (quantidade>0);
+        }while (quantidade<0);
         
             if(quantidade > produto.getQuantidadeestoque()){
                 System.out.println("");
@@ -89,8 +89,9 @@ public class Vender {
                     if(opcao == 1){ 
                         //int idproduto, int quantidade, float precounitario, float precototal, String nomeproduto)
                         Vendas vender = new Vendas(id,quantidade,produto.getValor(),preco,produto.getNome());
-                        ControleVendas.arrayvendaslocal.add(vender);
-                        valortotal.add(preco);
+                     //   ControleVendas.arrayvendaslocal.add(vender);
+                        ControleVendas.adicionarcarrinho(vender);
+                       
                         ControleVendas.subtrair(id, quantidade);
                           saida = true;
                           sair =true;

@@ -32,8 +32,9 @@ public class EncerrarCompra {
                         System.out.println("O cliente é cadastrado? 1-SIM | 2-NAO");
                         ecadastrado = ValidarEntrada.validarInteiro();
                         if(ecadastrado == 1){
-    
+                                    boolean verificacliente=false;
                                     int idcliente1;
+                                    do{
                                         System.out.println("1 - Mostrar Lista de Clientes | 2 - Fazer identificacao:");
                                         idcliente1 = ValidarEntrada.validarInteiro();
                                             if(idcliente1 == 1){
@@ -46,11 +47,16 @@ public class EncerrarCompra {
                                                 cliente = ArrayDadosCliente.verificaexistenciaretornacliente(idcliente);
                                                 if(cliente  == null){
                                                     System.out.println("Cliente nao encontrado, tente novamente.");
+                                                }else{
+                                                    verificacliente = true;
                                                 }
                                                 }while(cliente == null);
+                                               
                                             }if(idcliente1>2){
                                                 System.out.println("Opcao invalida");
-                                            }
+                                            }}while (verificacliente == false);
+                                                
+                                                
                     }if(ecadastrado == 2){
                        
                         CadastroCliente.cadastroCliente();
@@ -128,4 +134,18 @@ public class EncerrarCompra {
     }
     
 }
+    public static void encerrarcomcadastro(Cliente cliente){
+        
+        System.out.println("O cliente tem "+cliente.getPontos()+ " no programa de vantagens, deseja utilizar como desconto? ");
+        System.out.println("1 - SIM | 2 - NAO");
+          int op = ValidarEntrada.validarInteiro();
+          do{
+            if(op == 1){
+                ProgramadeDesconto.programadevantagens(cliente);
+                System.out.println("O valor da compra com o uso dos pontos eh: "+ControleVendas.valortotal);
+            }if(op > 2){
+                System.out.println("Opcao invalida!");
+            }
+          } while(op == 1 || op ==2);
+    }
 }
