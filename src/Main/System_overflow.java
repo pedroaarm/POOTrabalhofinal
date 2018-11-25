@@ -20,8 +20,6 @@ import java.io.Console;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-import java.util.TimerTask;
-import GestaoPessoas.cliente.BancoDeDados.CriarBancodeDados_Cliente;
 import GestaoPessoas.cliente.CadastroCliente;
 import GestaoPessoas.funcionario.BancoDedadosFuncionario.ArrayFuncionario;
 import GestaoPessoas.funcionario.cadastro.CadastroFuncionario;

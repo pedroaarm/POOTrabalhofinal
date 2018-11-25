@@ -106,14 +106,18 @@ public class EncerrarCompra {
                 BigDecimal valorparcelas = Vender.valortotal.divide(BigDecimal.valueOf(parcelas));
                 System.out.println(parcelas+ " parcelas de "+valorparcelas);
                     System.out.println("Deseja confirmar a compa? 1-SIM | 2-NAO");
-                int encerrar = ValidarEntrada.validarInteiro();
+                    int encerrar;
+                    do{
+                encerrar = ValidarEntrada.validarInteiro();
                     if(encerrar == 1){
                         //fazer o Banco encerrar a compra
+                        encerrar = 1;
                     }if(encerrar == 2){
-                        //voltar pro inicio
+                        encerrar =1;
                     }if(encerrar > 3){
                         System.out.println("opcao invalida");
                     }
+                    }while(encerrar == 1);
                 
         
         
