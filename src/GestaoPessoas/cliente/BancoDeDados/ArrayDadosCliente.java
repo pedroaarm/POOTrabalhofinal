@@ -11,6 +11,7 @@ import static Produtos.BancoDeDados.ArrayDeDadosProdutos.verificarexistencia;
 import Produtos.BancoDeDados.Criar_Conexao_Produtos;
 import TratamentodeErros.ValidarEntrada;
 import Utilitarios.InicializarDados;
+import Venda.ControleVendas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,7 +44,7 @@ public class ArrayDadosCliente {
                       while (resultset.next()) {
                           ResultSet s = resultset;
          // public Cliente(int idcliente, String rg, String nome, String CPF, String telefone, String endereco);
-                          Cliente cliente = new Cliente (resultset.getInt("id"),resultset.getString("rg"),resultset.getString("nome_cliente"),resultset.getString("cpf"), resultset.getString("telefone"), resultset.getString("endereco"),0);
+                          Cliente cliente = new Cliente (resultset.getInt("id"),resultset.getString("rg"),resultset.getString("nome_cliente"),resultset.getString("cpf"), resultset.getString("telefone"), resultset.getString("endereco"),resultset.getInt("pontos"));
                           arraycliente.add(cliente);
                       
                       }
@@ -358,6 +359,51 @@ public static void editarcliente (int opcao, int id){
                 }
         
     }
+public static void retirarpontos(int id) throws SQLException{
+     Conexao_cliente conexao = new Conexao_cliente();
+             conexao.conectar();
+
+                PreparedStatement prepareStatement = null;
+                ResultSet resultset = null;
+
+                Statement statement;
+
+                    
+                String sql = "UPDATE cliente"
+                + " SET "
+                + " pontos = ?"
+                + "WHERE id = ?";
+                String select = "SELECT * FROM cliente;";
+                
+                    try{
+                statement = conexao.CriarStatement();
+                        
+                resultset = statement.executeQuery(select);
+
+                while (resultset.next()){
+
+
+                        if(resultset.getInt("id") == id){
+                            prepareStatement = conexao.criarPreparedStatement(sql);
+                            int pontosatual = resultset.getInt("pontos") - ControleVendas.valortotal.intValue();
+                                if(pontosatual >0){
+                                prepareStatement.setInt(1,pontosatual); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+
+                                }else{
+                                    prepareStatement.setInt(1,0); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+
+                        }
+                    
+                }}
+                }catch(SQLException e){
+                        System.err.println("Ocorreu o seguinte erro: "+e);
+                    }
+
+}
 }
 
 

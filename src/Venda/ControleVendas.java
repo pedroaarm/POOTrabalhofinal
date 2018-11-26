@@ -6,7 +6,6 @@
 package Venda;
 
 import Produtos.BancoDeDados.*;
-import static Produtos.BancoDeDados.ArrayDeDadosProdutos.arrayprodutos;
 import Produtos.Produtos;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -104,7 +103,14 @@ public class ControleVendas {
                 }
             }
        } 
-        
+      
+    public static String retornaendereco() {
+        String concatena = ControleVendas.arrayvendaslocal.get(0).getNomeproduto()+ "quantidade: "+arrayvendaslocal.get(0).getQuantidade();
+        for (int i=1;i<ControleVendas.arrayvendaslocal.size();i++){
+            concatena = concatena + "produto: "+ControleVendas.arrayvendaslocal.get(i).getNomeproduto();
+        }
+        return concatena; //To change body of generated methods, choose Tools | Templates.
+    }
     }
     
 

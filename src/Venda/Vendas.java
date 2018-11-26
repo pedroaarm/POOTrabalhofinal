@@ -1,9 +1,10 @@
 package Venda;
 
-import Produtos.BancoDeDados.ArrayDeDadosProdutos;
-import Produtos.Produtos;
-import TratamentodeErros.ValidarEntrada;
+
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -73,6 +74,13 @@ public class Vendas {
     public void setPrecototal(BigDecimal precototal) {
         this.precototal = precototal;
     }
+
+  
+    
+    
+
+    
+    
 } 
 
    

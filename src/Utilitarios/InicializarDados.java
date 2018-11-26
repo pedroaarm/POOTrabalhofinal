@@ -15,6 +15,8 @@ import GestaoPessoas.funcionario.BancoDedadosFuncionario.ConexaoFuncionario;
 import GestaoPessoas.funcionario.BancoDedadosFuncionario.CriarTabelaFuncionario;
 import Produtos.BancoDeDados.ArrayDeDadosProdutos;
 import Produtos.BancoDeDados.CriarBancoProdutos;
+import Venda.BancoDeDados.CriaBdVenda;
+import Venda.BancoDeDados.CriaConexaoVendas;
 
 /**
  *
@@ -36,6 +38,10 @@ public class InicializarDados {
          CriarTabelaFuncionario.criarTab();
          ConexaoFuncionario conexaofunc = new ConexaoFuncionario();
          ArrayFuncionario.inicializarArrayDepartamento();
+         CriaBdVenda.criarTab();
+         CriaConexaoVendas conexaovendas = new CriaConexaoVendas();
+         conexaovendas.conectar();
+                 
          
     }
     

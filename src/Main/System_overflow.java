@@ -27,6 +27,7 @@ import Venda.CancelarVenda;
 import Venda.ControleVendas;
 import Venda.EncerrarCompra;
 import Venda.Vender;
+import java.io.IOException;
 
 /**
  *
@@ -35,7 +36,7 @@ import Venda.Vender;
 public class System_overflow {
 
     static Scanner in = new Scanner (System.in);
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
              InicializarDados.inicializar();
 //Atentear para os possiveis erros de inicialização
     Menus acessorios = new Menus();

@@ -8,7 +8,10 @@ package Venda;
 import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
 import GestaoPessoas.cliente.CadastroCliente;
 import GestaoPessoas.cliente.Cliente;
+import Produtos.BancoDeDados.ArrayDeDadosProdutos;
 import TratamentodeErros.ValidarEntrada;
+import Venda.BancoDeDados.ManipulacaoBDVendas;
+import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
@@ -17,7 +20,7 @@ import java.math.BigDecimal;
  */
 public class EncerrarCompra {
     static Cliente cliente;
-    public static void encerrar(){
+    public static void encerrar() throws IOException{
         int idcliente;
         boolean verificarexistenciacliente;
     
@@ -48,6 +51,40 @@ public class EncerrarCompra {
                                                 if(cliente  == null){
                                                     System.out.println("Cliente nao encontrado, tente novamente.");
                                                 }else{
+                                                    //parte do cliente identificado a vista
+                                                    System.out.println("O cliente deseja participar do programa de pontos? o cliente possui"+cliente.getPontos()+" pontos ");
+                                                    System.out.println("1 - SIM | 2 - NAO");
+                                                    int opcaopontos = ValidarEntrada.validarInteiro();
+                                                        if(opcaopontos == 1){
+                                                            ProgramadeDesconto.programadevantagens(cliente);
+                                                            if(ControleVendas.valortotal.doubleValue()>0){
+                                                                boolean verificar=false;
+                                                                do{
+                                                                System.out.println("Valor final da compra: "+ControleVendas.valortotal);
+                                                                System.out.println("Digite o valor em R$ dado pelo cliente: ");
+                                                                BigDecimal valordado = ValidarEntrada.validarBigDecimal();
+                                                                    if(valordado.compareTo(ControleVendas.valortotal)>=0){//verifica se o valor total com descontos eh maios que 0;
+                                                                        System.out.println("Troco: "+valordado.subtract(ControleVendas.valortotal));
+                                                                        System.out.println("Compra efetivada!");
+                                                                        System.out.println("Press Enter to continue...");
+                                                     System.in.read(); // esperar digitar enter pra sair;
+                                                                        //efetivar compra, gravar no banco;
+                                                                        ManipulacaoBDVendas.adicionaraobanco(cliente);
+                                                                        for (int i=0;i<ControleVendas.arrayvendaslocal.size();i++){
+                                                                        ArrayDeDadosProdutos.subtrairestoque(cliente.getIdcliente(), ControleVendas.arrayvendaslocal.get(i));
+                                                                        verificar = true;
+                                                                        }
+                                                                    }else{
+                                                                        System.out.println("Valor insuficiente");
+                                                                        verificar = false;
+                                                                    }
+                                                                }while(verificar == false);
+                                                            }else{
+                                                                System.out.println("Compra Efetivada!");
+                                                                
+                                                            }
+                                                        }
+                                                    
                                                     verificacliente = true;
                                                 }
                                                 }while(cliente == null);

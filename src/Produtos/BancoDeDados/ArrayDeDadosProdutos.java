@@ -2,10 +2,9 @@ package Produtos.BancoDeDados;
 
 
 import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
-import Departamentos.BancoDeDados.Criar_Conexao_Departamento;
 import Produtos.Produtos;
 import TratamentodeErros.ValidarEntrada;
-import Utilitarios.ValidarNovoDepartamento;
+import Venda.Vendas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -143,6 +142,47 @@ public abstract class ArrayDeDadosProdutos  {
         
         
     }
+   
+   public static void subtrairestoque(int id, Vendas vendas){
+       
+        Criar_Conexao_Produtos conexao = new Criar_Conexao_Produtos();
+             conexao.conectar();
+
+                PreparedStatement prepareStatement = null;
+                ResultSet resultset = null;
+
+                Statement statement;
+                 String sql = "UPDATE produto"
+                + " SET "
+                + " quantidade = ?"
+                + "WHERE id = ?";
+                String select = "SELECT * FROM produto;";
+                
+                  try{
+                statement = conexao.CriarStatement();
+                        
+                resultset = statement.executeQuery(select);
+
+                while (resultset.next()){
+
+
+                        if(resultset.getInt("id") == id){
+                            prepareStatement = conexao.criarPreparedStatement(sql);
+                              int quantidadeatual = resultset.getInt("quantidade") - vendas.getQuantidade();
+                                prepareStatement.setInt(1,quantidadeatual); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+                                inicializarArrayProdutos();
+                        }
+                    
+                }
+                }catch(SQLException e){
+                        System.err.println("Ocorreu o seguinte erro: "+e);
+                    }
+       
+       
+       
+   }
    
 
     static public void editarProduto(int opcao, int id){

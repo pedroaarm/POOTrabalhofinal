@@ -14,19 +14,21 @@ import java.math.BigDecimal;
  */
 public class ProgramadeDesconto {
     public static void programadevantagens(Cliente cliente){
-        BigDecimal valorcomdesconto;
         
-        if(cliente.getPontos()>0){
-       valorcomdesconto = ControleVendas.valortotal.subtract(new BigDecimal(cliente.getPontos()));
-            if(valorcomdesconto.compareTo(BigDecimal.ZERO)>=0){
+        if(cliente.getPontos()>0){//verificar se os pontos que o cliente possui é maior que 0
+             
+               if((ControleVendas.valortotal.intValue() - cliente.getPontos()) <=0 ){
+                   System.out.println("Com o desconto dos pontos o valor da compra eh: 0 reais");
+               }else{
+                   ControleVendas.valortotal = ControleVendas.valortotal.subtract(new BigDecimal (cliente.getPontos()));
+                   System.out.println("O valor da compra eh: "+ControleVendas.valortotal);
 
        ControleVendas.valortotal = ControleVendas.valortotal.subtract(new BigDecimal(cliente.getPontos()));
-               }else{
-                System.out.println("Com o uso dos pontos, o valor da compra é 0 reais");
-            }
+       //Tirar o valor dos pontos no BD do cliente;
             
+        }
         }else{
-            System.out.println("Quantidade de pontos insuficiente");
+            System.out.println("O cliente tem 0 pontos");
         }
         
     }
