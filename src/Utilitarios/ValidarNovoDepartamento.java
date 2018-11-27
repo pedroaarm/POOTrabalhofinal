@@ -20,9 +20,9 @@ public class ValidarNovoDepartamento {
     /**
      * 
      * 
-     * 
+     * @param id
 
-     * @return Retorna true caso o departamento seja encontrado, ou false caso o departamento não exista no banco de dados. 
+     * @return  Retorna true caso o departamento seja encontrado, ou false caso o departamento não exista no banco de dados. 
      */
    public static boolean validar(int id){
        

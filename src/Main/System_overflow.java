@@ -39,7 +39,7 @@ public class System_overflow {
      // conexaoDp.CriarStatement();
       // Criar_BD_departamentos.criarTab();
         System.out.println("\n\n### System Overflow - Sistema Comercial de Controle de Compras e Vendas ###");
-			     System.out.println(EnumS.SAUDACAO);
+			     System.out.println("\t\t\t"+EnumS.Welcome);
                         
                 do{
                   opcao = acessorios.MenuPrincipal(); //Menu Principal
@@ -430,6 +430,9 @@ public class System_overflow {
                                    }
 
                     }while(op!=0);
+                        default:
+                            System.out.println(EnumS.Bay+" Até a proxima!");
+                            break;
                     }
                     
                 }while (opcao !=0);  

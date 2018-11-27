@@ -10,8 +10,8 @@ package Utilitarios;
  * @author pedro
  */
 public enum EnumS {
-   SAUDACAO("SEJA BEM VINDO!"),
-   PROXIMA("ATE A PROXIMA!");
+   Welcome("SEJA BEM VINDO!"),
+   Bay("ATE A PROXIMA!");
 
    private String descricao;
    EnumS(String descricao) {
