@@ -8,15 +8,19 @@ package GestaoPessoas;
 
 import TratamentodeErros.ValidarEntrada;
 
-/**
+/**Esse metodo faz o cadastro de informacoes pessoas
  *
  * @author pedro
  */
 public class CadastroInformacoesPessoais {
-    private static String nome;
+    
+    private static String nome; 
     private static String cpf;
     private static String telefone;
     
+   /**Aqui é pedido as informações e passado para o Gets
+    * 
+    */
  public void cadastroinformacoespessoais(){
         
         System.out.println("---Cadastro Informacoes Pessoais---");

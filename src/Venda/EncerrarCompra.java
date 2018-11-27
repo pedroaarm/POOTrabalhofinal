@@ -5,10 +5,10 @@
  */
 package Venda;
 
-import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
+import GestaoPessoas.cliente.BancoDeDados.ArrayDeDados_Cliente;
 import GestaoPessoas.cliente.CadastroCliente;
 import GestaoPessoas.cliente.Cliente;
-import Produtos.BancoDeDados.ArrayDeDadosProdutos;
+import Produtos.BancoDeDados.ArrayDeDados_Produtos;
 import TratamentodeErros.ValidarEntrada;
 import Venda.BancoDeDados.BDTabelaComprasParceladas;
 import Venda.BancoDeDados.ManipulacaoBDVendas;
@@ -53,7 +53,7 @@ public class EncerrarCompra {
                                         idcliente1 = ValidarEntrada.validarInteiro();
                                             if(idcliente1 == 1){
                                                 System.out.println("\n\n");
-                                                ArrayDadosCliente.imprimirArrayCliente();
+                                                ArrayDeDados_Cliente.imprimirArrayCliente();
                                                System.out.println("Press Enter to continue...");
                                                 System.in.read();
                                                 System.out.println("");
@@ -65,7 +65,7 @@ public class EncerrarCompra {
                                                 System.out.println("\nDigite o id do cliente: ");
                                                 System.out.print("ID -> ");
                                                 idcliente = ValidarEntrada.validarInteiro();
-                                                cliente = ArrayDadosCliente.verificaexistenciaretornacliente(idcliente);
+                                                cliente = ArrayDeDados_Cliente.verificaexistenciaretornacliente(idcliente);
                                                 if(cliente  == null){
                                                     System.out.println("\nCliente nao encontrado, tente novamente.");
                                                 }else{
@@ -92,7 +92,7 @@ public class EncerrarCompra {
                                                                         //efetivar compra, gravar no banco;
                                                                         ManipulacaoBDVendas.adicionaraobanco(cliente);
                                                                         for (int i=0;i<ControleVendas.arrayvendaslocal.size();i++){
-                                                                        ArrayDeDadosProdutos.subtrairestoque(ControleVendas.arrayvendaslocal.get(i).getIdproduto(), ControleVendas.arrayvendaslocal.get(i));
+                                                                        ArrayDeDados_Produtos.subtrairestoque(ControleVendas.arrayvendaslocal.get(i).getIdproduto(), ControleVendas.arrayvendaslocal.get(i));
                                                                         verificar = true;
                                                                         }
                                                                     }else{
@@ -102,7 +102,7 @@ public class EncerrarCompra {
                                                                 }
                                                                     System.out.println("\nCompra Efetivada!");
                                                                     ManipulacaoBDVendas.adicionaraobanco(cliente);
-                                                                    ArrayDadosCliente.retirarpontos(idcliente);
+                                                                    ArrayDeDados_Cliente.retirarpontos(idcliente);
                                                                      System.out.println("\nPress Enter to continue...");
                                                                      System.in.read();
                                                                 }while(verificar == false);
@@ -111,8 +111,8 @@ public class EncerrarCompra {
                             ControleVendas.arraycloneproduto.clear();
                             ControleVendas.valortotal = new BigDecimal("0");
                             ControleVendas.arrayvendaslocal.clear();
-                            ArrayDeDadosProdutos.inicializarArrayProdutos();
-                            ArrayDadosCliente.InicializararrayCliente();
+                            ArrayDeDados_Produtos.inicializarArrayProdutos();
+                            ArrayDeDados_Cliente.InicializararrayCliente();
                                                                                  
                                                                 System.out.println("\nPress Enter to continue...");
                                                               System.in.read();
@@ -154,7 +154,7 @@ public class EncerrarCompra {
                                                                         //efetivar compra, gravar no banco;
  
                      for (int i=0;i<ControleVendas.arrayvendaslocal.size();i++){
-                      ArrayDeDadosProdutos.subtrairestoque(ControleVendas.arrayvendaslocal.get(i).getIdproduto(),ControleVendas.arrayvendaslocal.get(i));
+                      ArrayDeDados_Produtos.subtrairestoque(ControleVendas.arrayvendaslocal.get(i).getIdproduto(),ControleVendas.arrayvendaslocal.get(i));
                         verificar = true;
                               }
                         }else{

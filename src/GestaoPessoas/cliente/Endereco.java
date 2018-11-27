@@ -5,7 +5,7 @@
  */
 package GestaoPessoas.cliente;
 
-/**
+/** Classe onde reune as informações de endereço
  *
  * @author pedro
  */

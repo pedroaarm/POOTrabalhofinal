@@ -5,10 +5,9 @@
  */
 package Venda;
 
-import Produtos.BancoDeDados.ArrayDeDadosProdutos;
+import Produtos.BancoDeDados.ArrayDeDados_Produtos;
 import Produtos.Produtos;
 import TratamentodeErros.ValidarEntrada;
-import Utilitarios.LimparTela;
 import java.io.IOException;
 import java.math.BigDecimal;
 
@@ -52,7 +51,7 @@ public class Vender {
             System.out.println("\nDigite o ID do produto: ");
             System.out.print("ID -> ");
                          id = ValidarEntrada.validarInteiro();
-             verifica = ArrayDeDadosProdutos.verificarexistencia(id);
+             verifica = ArrayDeDados_Produtos.verificarexistencia(id);
              if(verifica == false){
                  System.err.println("ID inválido, tente novamente");
              }
@@ -121,13 +120,13 @@ public class Vender {
             
     }while (sair == false);
         }
-            LimparTela.limparpouco();
+               System.out.println("\n\n\n");
             ControleVendas.mostrarcarrinho();
-             LimparTela.limparpouco();
+            System.out.println("\n\n\n");
             System.out.println("\nDeseja continuar comprando? 1-SIM | 2-NAO ");
             System.out.print("Opção -> ");
             saidageral = ValidarEntrada.validarInteiro();
-             LimparTela.limparpouco();
+           
            }
 }while(saidageral==1);
         

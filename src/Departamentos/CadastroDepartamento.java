@@ -5,10 +5,10 @@
  */
 package Departamentos;
 
-import Departamentos.BancoDeDados.Criar_BD_departamentos;
-import Departamentos.BancoDeDados.Criar_Conexao_Departamento;
+import Departamentos.BancoDeDados.CriarBD_departamentos;
+import Departamentos.BancoDeDados.CriarConexao_Departamento;
 import TratamentodeErros.ValidarEntrada;
-import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
+import Departamentos.BancoDeDados.ArraydeDados_Departamento;
 import Utilitarios.ValidarNovoDepartamento;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,14 +37,14 @@ public class CadastroDepartamento {
 
         
                
-            Criar_Conexao_Departamento criarConexaoDP = new Criar_Conexao_Departamento();
-            Criar_BD_departamentos novoBD = new Criar_BD_departamentos();
-            Criar_BD_departamentos.criarTab();
+            CriarConexao_Departamento criarConexaoDP = new CriarConexao_Departamento();
+            CriarBD_departamentos novoBD = new CriarBD_departamentos();
+            CriarBD_departamentos.criarTab();
             criarConexaoDP.conectar();
            
             ResultSet resulset;
             Statement statement;
-                     
+                     //cria uma string select dentro do sql
             String query = "SELECT * FROM Departamento";
             statement = criarConexaoDP.CriarStatement();
                      
@@ -54,7 +54,7 @@ public class CadastroDepartamento {
                     } catch (SQLException e) {
                          System.err.println("Aconteceu algum erro: "+e);
                     }
-                     
+                     //insert dentro do sqlite
                      String sqlInsert = "INSERT INTO departamento("
                           + "nomedp"
                           + ") VALUES(?)"
@@ -92,8 +92,9 @@ public class CadastroDepartamento {
                     
        
                 }
+                      //se nao ocorrer nenhum erro.
                       System.out.println("Departamento Cadastrado!");
-                      ArraydeDadosDepartamento.inicializarArrayDepartamento(); // Atualizando o Array de Departamentos.
+                      ArraydeDados_Departamento.inicializarArrayDepartamento(); // Atualizando o Array de Departamentos.
               criarConexaoDP.desconectar();
   
                 

@@ -8,11 +8,15 @@ package GestaoPessoas;
 import GestaoPessoas.cliente.Endereco;
 import TratamentodeErros.ValidarEntrada;
 
-/**
+/**Essa classe faz o cadastro do endereço
  *
  * @author pedro
  */
 public class CadastroEndereco {
+    /**Esse metodo pede as informacoes de endereco do pessoa e retorna um objeto de endereco
+     * 
+     * @return objeto de endereco
+     */
         public static  Endereco cadendereco() {
       
         System.out.println("---Cadastro de Endereco---");

@@ -5,9 +5,9 @@
  */
 package Venda;
 
-import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
+import GestaoPessoas.cliente.BancoDeDados.ArrayDeDados_Cliente;
 import GestaoPessoas.cliente.Cliente;
-import Produtos.BancoDeDados.ArrayDeDadosProdutos;
+import Produtos.BancoDeDados.ArrayDeDados_Produtos;
 import Produtos.BancoDeDados.MovimentacaoArray;
 import TratamentodeErros.ValidarEntrada;
 import Venda.BancoDeDados.BDTabelaComprasParceladas;
@@ -36,7 +36,7 @@ public class VendaParcelada {
         idcliente1 = ValidarEntrada.validarInteiro();
             if(idcliente1 == 1){
                 System.out.println("\n\n");
-              ArrayDadosCliente.imprimirArrayCliente();
+              ArrayDeDados_Cliente.imprimirArrayCliente();
                System.out.println("Pressione Enter para continuar...");
                      System.in.read(); 
                                           
@@ -44,7 +44,7 @@ public class VendaParcelada {
               do{
                  System.out.println("Digite o id do cliente: ");
                 idcliente = ValidarEntrada.validarInteiro();
-                cliente = ArrayDadosCliente.verificaexistenciaretornacliente(idcliente);
+                cliente = ArrayDeDados_Cliente.verificaexistenciaretornacliente(idcliente);
                   if(cliente  == null){
                       System.out.println("Cliente nao encontrado, tente novamente.");
                    }
@@ -80,13 +80,13 @@ public class VendaParcelada {
                    VendaParcelada vendaparcelada = new VendaParcelada(parcelas, vapar, cliente);
                        BDTabelaComprasParceladas.adicionarcompraparcelada(cliente, vendaparcelada);
                         for (int i=0;i<ControleVendas.arrayvendaslocal.size();i++){
-                ArrayDeDadosProdutos.subtrairestoque(ControleVendas.arrayvendaslocal.get(i).getIdproduto(), ControleVendas.arrayvendaslocal.get(i));
+                ArrayDeDados_Produtos.subtrairestoque(ControleVendas.arrayvendaslocal.get(i).getIdproduto(), ControleVendas.arrayvendaslocal.get(i));
 
                             ControleVendas.arraycloneproduto.clear();
                             ControleVendas.valortotal = new BigDecimal("0");
                             ControleVendas.arrayvendaslocal.clear();
-                            ArrayDeDadosProdutos.inicializarArrayProdutos();
-                            ArrayDadosCliente.InicializararrayCliente();                                                 }
+                            ArrayDeDados_Produtos.inicializarArrayProdutos();
+                            ArrayDeDados_Cliente.InicializararrayCliente();                                                 }
                    
                        System.out.println("Press Enter to continue...");
                      System.in.read(); // esperar digitar enter pra sair;

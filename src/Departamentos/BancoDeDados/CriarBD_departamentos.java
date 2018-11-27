@@ -3,40 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GestaoPessoas.cliente.BancoDeDados;
+package Departamentos.BancoDeDados;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-public class CriarBancodeDados_Cliente {
 /**
- *
+ * Cria um bando de dados para o departamento, tendo com o nome do arquivo .bd "Departamentos"
+ * 
+ * @author pedro
+ */
+
+public class CriarBD_departamentos {
+/**
+ *esse metodo cria a tabela usada no programa
  * @author pedro
  */
 
      public static void criarTab() {
         // SQLite connection string
-        String url = "jdbc:sqlite:Clientes.db";
+        String url = "jdbc:sqlite:Departamento.db";
         
         // SQL statement for creating a new table
-        String sql = "CREATE TABLE IF NOT EXISTS cliente (\n"
+        String sql = "CREATE TABLE IF NOT EXISTS departamento (\n"
                 + "id integer PRIMARY KEY AUTOINCREMENT,\n"
-                + "nome_cliente text NOT NULL,\n"
-                + "cpf text,\n"
-                + "telefone text,\n"
-                + "endereco text,\n"
-                + "rg text NOT NULL,\n"
-                + "pontos integer NOT NULL"
+                + "nomedp text NOT NULL\n"
                 + ")";
-
+        
         try (Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement()) {
             // create a new table
             stmt.execute(sql);
-            System.out.println("Tabela Criada com Sucesso!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -45,3 +44,7 @@ public class CriarBancodeDados_Cliente {
 }
     
 }
+
+
+    
+

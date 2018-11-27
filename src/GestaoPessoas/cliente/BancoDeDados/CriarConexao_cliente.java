@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GestaoPessoas.funcionario.BancoDedadosFuncionario;
+package GestaoPessoas.cliente.BancoDeDados;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,22 +11,21 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
+/**Cria conexao com a tabela cliente
  *
  * @author pedro
  */
-public class ConexaoFuncionario {
-    Connection c = null;
+public class CriarConexao_cliente {
+     Connection c = null;
         public boolean conectar(){
                                                               
       try {
          Class.forName("org.sqlite.JDBC");
-         c = DriverManager.getConnection("jdbc:sqlite:Funcionarios.db");
+         c = DriverManager.getConnection("jdbc:sqlite:Clientes.db");
       } catch ( ClassNotFoundException | SQLException e ) {
          System.err.println( e.getClass().getName() + ": " + e.getMessage() );
          System.exit(0);
       }
-      System.out.println("Banco de Dados aberto!!");
       return true;
    } 
         
@@ -35,7 +34,6 @@ public class ConexaoFuncionario {
             
             try{                  
                     c.close();    
-                    System.out.println("Desconectou");
                  }catch(SQLException e){
                      System.err.println(e.getMessage());
                     return false;
@@ -83,7 +81,6 @@ public class ConexaoFuncionario {
                 public Connection getC(){
                  return this.c;   
                 }
-    
     
     
     

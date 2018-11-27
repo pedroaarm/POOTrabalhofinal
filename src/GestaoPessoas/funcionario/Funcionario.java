@@ -5,10 +5,10 @@
  */
 package GestaoPessoas.funcionario;
 
-import GestaoPessoas.cliente.Endereco;
+
 import GestaoPessoas.Pessoa;
 
-/**
+/**Objeto de funcionarios
  *
  * @author pedro
  */

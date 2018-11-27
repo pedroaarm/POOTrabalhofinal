@@ -9,12 +9,17 @@ package Utilitarios;
  *
  * @author pedro
  */
-public class LimparTela {
-    
-    public static void limparpouco(){
-        for (int i=0;i<2;i++){
-        System.out.println("");
+public enum Saudacao {
+   SAUDACAO("sEJA BEM VINDO!");
+
+   private String descricao;
+   Saudacao(String descricao) {
+        this.descricao = descricao;
     }
+ 
+    public String getDescricao() {
+        return descricao;
     }
-    
-}
+
+
+    }

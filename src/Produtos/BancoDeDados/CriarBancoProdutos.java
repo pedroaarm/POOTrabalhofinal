@@ -55,7 +55,6 @@ public class CriarBancoProdutos {
                 Statement stmt = conn.createStatement()) {
             
             stmt.execute(sql);
-            System.out.println("Tabela Criada com Sucesso!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

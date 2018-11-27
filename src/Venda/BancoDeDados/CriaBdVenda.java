@@ -33,7 +33,7 @@ public class CriaBdVenda {
                 Statement stmt = conn.createStatement()) {
             // create a new table
             stmt.execute(sql);
-            System.out.println("Tabela Criada com Sucesso!");
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

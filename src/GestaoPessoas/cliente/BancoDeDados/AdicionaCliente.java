@@ -1,27 +1,31 @@
 package GestaoPessoas.cliente.BancoDeDados;
 
-import Departamentos.BancoDeDados.Criar_BD_departamentos;
+import Departamentos.BancoDeDados.CriarBD_departamentos;
 import GestaoPessoas.cliente.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
+/**essa classe adiciona o cliente cadastrado no Banco de Dados
  *
  * @author pedro
  */
 public class AdicionaCliente {
+    /**Adiciona o cliente no BD
+     * 
+     * @param cliente o parametro é o cliente (vai ser criado na classe  CadastroCliente)
+     */
 
 public static void addcliente(Cliente cliente){
     
     
         //conexao.conectar();
-        Criar_BD_departamentos.criarTab();
-        Conexao_cliente conexaocliente = new Conexao_cliente();
+        CriarBD_departamentos.criarTab();
+        CriarConexao_cliente conexaocliente = new CriarConexao_cliente();
           conexaocliente.conectar();
             ResultSet resulset = null;
-            Statement statement = null;
+            Statement statement;
                      
             String query = "SELECT * FROM cliente";
             statement = conexaocliente.CriarStatement();
@@ -59,7 +63,7 @@ public static void addcliente(Cliente cliente){
           preparedstatment.setString(3, cliente.getTelefone());
           preparedstatment.setString(4, cliente.getEndereco());
           preparedstatment.setString(5, cliente.getRg());
-          preparedstatment.setInt(6, 0);
+          preparedstatment.setInt(6, 0); //aqui está zero pq consta o numero de pontos no programa de vantagem.
 
             
             int resulado = preparedstatment.executeUpdate();
@@ -69,7 +73,7 @@ public static void addcliente(Cliente cliente){
             
                     System.out.println("Clinte Cadastrado");
                 }else{
-                        System.out.println("Cliente não foi cadastrado, tente novamente!");
+                        System.err.println("Cliente não foi cadastrado, tente novamente!");
                         }
         } catch (SQLException e) {
                     System.out.println(e);
@@ -86,7 +90,7 @@ public static void addcliente(Cliente cliente){
                         }
                     }  
                 }  
-                      ArrayDadosCliente.InicializararrayCliente();
+                      ArrayDeDados_Cliente.InicializararrayCliente();
                       conexaocliente.desconectar();
     }
 

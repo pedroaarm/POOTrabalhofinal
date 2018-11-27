@@ -5,9 +5,9 @@
  */
 package Produtos.Cadastro;
 
-import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
-import Departamentos.BancoDeDados.Criar_BD_departamentos;
-import Produtos.BancoDeDados.ArrayDeDadosProdutos;
+import Departamentos.BancoDeDados.ArraydeDados_Departamento;
+import Departamentos.BancoDeDados.CriarBD_departamentos;
+import Produtos.BancoDeDados.ArrayDeDados_Produtos;
 import Produtos.BancoDeDados.CriarBancoProdutos;
 import Produtos.BancoDeDados.Criar_Conexao_Produtos;
 import Produtos.Produtos;
@@ -26,7 +26,7 @@ public class Adicionar_Produto {
         Criar_Conexao_Produtos criarConexaoDP = new Criar_Conexao_Produtos();
         //conexao.conectar();
         String nome = produto.getNome();
-        Criar_BD_departamentos.criarTab();
+        CriarBD_departamentos.criarTab();
             criarConexaoDP.conectar();
            
             ResultSet resulset = null;
@@ -94,7 +94,7 @@ public class Adicionar_Produto {
                     
        
                 }  
-                      ArrayDeDadosProdutos.inicializarArrayProdutos(); // Atualizando o Array de Departamentos.
+                      ArrayDeDados_Produtos.inicializarArrayProdutos(); // Atualizando o Array de Departamentos.
               criarConexaoDP.desconectar();
     }
     

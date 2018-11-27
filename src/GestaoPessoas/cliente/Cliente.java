@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GestaoPessoas.cliente;
 
 import GestaoPessoas.Pessoa;
 
-/**
+/** Essa reune todas as informações necessárias para cadastrar Clientes
  *
  * @author pedro
  */

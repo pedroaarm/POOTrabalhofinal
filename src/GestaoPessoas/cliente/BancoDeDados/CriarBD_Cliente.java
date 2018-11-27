@@ -1,17 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Departamentos.BancoDeDados;
+package GestaoPessoas.cliente.BancoDeDados;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+/**
+ * Cria o BD cliente usado nesse programa
+ * @author pedro
+ */
 
-
-public class Criar_BD_departamentos {
+public class CriarBD_Cliente {
 /**
  *
  * @author pedro
@@ -19,19 +17,23 @@ public class Criar_BD_departamentos {
 
      public static void criarTab() {
         // SQLite connection string
-        String url = "jdbc:sqlite:Departamento.db";
+        String url = "jdbc:sqlite:Clientes.db";
         
         // SQL statement for creating a new table
-        String sql = "CREATE TABLE IF NOT EXISTS departamento (\n"
+        String sql = "CREATE TABLE IF NOT EXISTS cliente (\n"
                 + "id integer PRIMARY KEY AUTOINCREMENT,\n"
-                + "nomedp text NOT NULL\n"
+                + "nome_cliente text NOT NULL,\n"
+                + "cpf text,\n"
+                + "telefone text,\n"
+                + "endereco text,\n"
+                + "rg text NOT NULL,\n"
+                + "pontos integer NOT NULL"
                 + ")";
 
         try (Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement()) {
             // create a new table
             stmt.execute(sql);
-            System.out.println("Tabela Criada com Sucesso!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -40,7 +42,3 @@ public class Criar_BD_departamentos {
 }
     
 }
-
-
-    
-

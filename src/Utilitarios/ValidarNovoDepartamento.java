@@ -5,8 +5,8 @@
  */
 package Utilitarios;
 
-import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
-import static Departamentos.BancoDeDados.ArraydeDadosDepartamento.Hashdepartamento;
+import Departamentos.BancoDeDados.ArraydeDados_Departamento;
+import static Departamentos.BancoDeDados.ArraydeDados_Departamento.Hashdepartamento;
 import java.util.Map;
 
 /**
@@ -28,7 +28,7 @@ public class ValidarNovoDepartamento {
        
         //Saber se o departamento existe;
         
-            for (int i=0;i<ArraydeDadosDepartamento.Hashdepartamento.size();i++){
+            for (int i=0;i<ArraydeDados_Departamento.Hashdepartamento.size();i++){
                     for (Map.Entry<Integer,String> hashdp : Hashdepartamento.entrySet()) {
                         if (hashdp.getKey() == id){
                             return false;

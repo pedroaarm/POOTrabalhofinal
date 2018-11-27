@@ -19,5 +19,10 @@ public class RetornaData {
 	Date date = new Date(); 
 	return dateFormat.format(date); 
 }
+        public static String getData()
+{
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    return formatter.format( new Date() );
+}
     
 }

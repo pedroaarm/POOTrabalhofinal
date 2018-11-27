@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GestaoPessoas.funcionario.BancoDedadosFuncionario;
 
 
-import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
-import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
-import GestaoPessoas.cliente.BancoDeDados.Conexao_cliente;
-import GestaoPessoas.cliente.Cliente;
+import Departamentos.BancoDeDados.ArraydeDados_Departamento;
+import GestaoPessoas.cliente.BancoDeDados.ArrayDeDados_Cliente;
 import GestaoPessoas.funcionario.Funcionario;
 import TratamentodeErros.ValidarEntrada;
 import java.sql.PreparedStatement;
@@ -18,22 +11,28 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
+/**Classe Abstrata de Array que guarda os dados dos funcionarios
  *
  * @author pedro
  */
-public abstract class ArrayFuncionario {
+public abstract class ArrayDeDados_Funcionario {
+    /**
+     * Array que guarda as informacoes dos funcionarios
+     */
    private static ArrayList<Funcionario> arrayfuncionario = new ArrayList<>();
     
-     static public void inicializarArrayDepartamento(){
+        /**Esse metodo inicializa o array, ou seja, passa todas as informacoes dos funcionarios do BD pro array
+         * 
+         */
+     static public void inicializarArrayFuncionario(){
          arrayfuncionario.clear();
          
-         ConexaoFuncionario conexaofuncionario = new ConexaoFuncionario();
+         CriarConexao_Funcionario conexaofuncionario = new CriarConexao_Funcionario();
          conexaofuncionario.conectar();
          
        
-          ResultSet resultset = null;
-           Statement statement = null;
+          ResultSet resultset;
+           Statement statement;
         
           
           String select = "SELECT * FROM funcionarios;";
@@ -53,7 +52,6 @@ public abstract class ArrayFuncionario {
                      arrayfuncionario.add(funcionario);
                       
                       }
-                        System.out.println("Array Inicializado");
                               statement.close();
                     conexaofuncionario.desconectar();
                     }catch (SQLException e){
@@ -62,6 +60,9 @@ public abstract class ArrayFuncionario {
                    conexaofuncionario.desconectar();
      }
      
+     /**Imprime todos os funcionario Cadastrados
+      * 
+      */
           public static void imprimirArrayCliente(){
         System.out.println("---Produtos Cadastrados---");
               for (Funcionario funcionario : arrayfuncionario) {
@@ -70,6 +71,10 @@ public abstract class ArrayFuncionario {
               }
     }
           
+          /**Faz a busca de um determinado funcionario pelo id e imprime o resultado, caso seja encontrado
+           * 
+           * @param id 
+           */
               public static void buscarFuncionario(int id){
     
        for (Funcionario funcionario : arrayfuncionario) {
@@ -81,6 +86,11 @@ public abstract class ArrayFuncionario {
          }
      }    
      }
+              /**Metodo para saber se um determinado id esta associado a algum funcionario
+               * 
+               * @param id 
+               * @return retorna verdadeiro caso seja encontrado ou falso caso nao seja
+               */
     public static boolean saberseexistefuncionario(int id){
         
         for (Funcionario funcionario : arrayfuncionario) {
@@ -92,10 +102,15 @@ public abstract class ArrayFuncionario {
         
         
     }
+    
+    /**Exclui um funcionario do BD
+     * 
+     * @param id 
+     */
     public static void excluirfuncionario(int id){
 
            
-       ConexaoFuncionario conexao = new ConexaoFuncionario(); 
+       CriarConexao_Funcionario conexao = new CriarConexao_Funcionario(); 
          conexao.conectar();
        
           ResultSet resultset = null;
@@ -126,7 +141,7 @@ public abstract class ArrayFuncionario {
                                   prepared= conexao.criarPreparedStatement(delete);
                                   prepared.setInt(1, id);
                                   prepared.executeUpdate();
-                                 ArrayDadosCliente.InicializararrayCliente();
+                                 ArrayDeDados_Cliente.InicializararrayCliente();
                               }catch(Exception e){
                                       System.out.println("erro "+e);
                                       
@@ -142,28 +157,21 @@ public abstract class ArrayFuncionario {
                    }catch(SQLException e){
                        System.err.println("Erro: "+e);
                    }
-                   
-
 }
     
-    private static boolean verificarexistencia(int id){
-        
-        for (Funcionario funcionario : arrayfuncionario) {
-            if (funcionario.getIDfuncionario() == id){
-                return true;
-            }
-            
-        }
-        return false;
-        
-    }
-    
+
+    /**Faz a edicao dos dados funcionario
+     * 
+     * 
+     * @param opcao opcao do menu que faz referencia a nome, salario, etc
+     * @param id 
+     */
     public static void editarfuncionaro(int opcao, int id){
 
-        boolean verifica = verificarexistencia(id);
+        boolean verifica = saberseexistefuncionario(id);
         System.out.println(verifica);
          if(verifica == true){
-            ConexaoFuncionario conexao = new ConexaoFuncionario();
+            CriarConexao_Funcionario conexao = new CriarConexao_Funcionario();
              conexao.conectar();
 
                 PreparedStatement prepareStatement = null;
@@ -197,7 +205,7 @@ public abstract class ArrayFuncionario {
                                 prepareStatement.setString(1,nome); //primeiro numero = saldo (primeiro "?", o segundo é o valor
                                 prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
                                 prepareStatement.executeUpdate();
-                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                                ArraydeDados_Departamento.inicializarArrayDepartamento(); 
                         }
                     
                 }
@@ -231,7 +239,7 @@ public abstract class ArrayFuncionario {
                                 prepareStatement.setString(1,cpf); //primeiro numero = saldo (primeiro "?", o segundo é o valor
                                 prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
                                 prepareStatement.executeUpdate();
-                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                                ArraydeDados_Departamento.inicializarArrayDepartamento(); 
                         }
                     
                 }
@@ -267,7 +275,7 @@ public abstract class ArrayFuncionario {
                                 prepareStatement.setString(1,cpf); //primeiro numero = saldo (primeiro "?", o segundo é o valor
                                 prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
                                 prepareStatement.executeUpdate();
-                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                                ArraydeDados_Departamento.inicializarArrayDepartamento(); 
                         }
                     
                 }
@@ -300,10 +308,10 @@ public abstract class ArrayFuncionario {
                         if(resultset.getInt("id") == id){
                             prepareStatement = conexao.criarPreparedStatement(sql);
                               
-                                prepareStatement.setFloat(1,novosalario); //primeiro numero = saldo (primeiro "?", o segundo é o valor
-                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.setFloat(1,novosalario); 
+                                prepareStatement.setInt(2, id); 
                                 prepareStatement.executeUpdate();
-                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                                ArraydeDados_Departamento.inicializarArrayDepartamento(); 
                         }
                     
                 }
@@ -339,7 +347,7 @@ public abstract class ArrayFuncionario {
                                 prepareStatement.setString(1,endereco); //primeiro numero = saldo (primeiro "?", o segundo é o valor
                                 prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
                                 prepareStatement.executeUpdate();
-                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                                ArraydeDados_Departamento.inicializarArrayDepartamento(); 
                         }
                     
                 }
@@ -373,7 +381,7 @@ public abstract class ArrayFuncionario {
                                 prepareStatement.setString(1,telefone); //primeiro numero = saldo (primeiro "?", o segundo é o valor
                                 prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
                                 prepareStatement.executeUpdate();
-                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                                ArraydeDados_Departamento.inicializarArrayDepartamento(); 
                         }
                     
                 }
@@ -383,6 +391,11 @@ public abstract class ArrayFuncionario {
     }
 }
     }
+    /**Reforna um objeto de um determinado funcionario caso seja encontrado;
+     * 
+     * @param id
+     * @return 
+     */
     
     public static Funcionario retornafuncionario(int id){
     

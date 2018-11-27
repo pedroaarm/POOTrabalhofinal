@@ -1,24 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Main;
 
 import Utilitarios.Menus;
 
 import TratamentodeErros.ValidarEntrada;
-import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
+import Departamentos.BancoDeDados.ArraydeDados_Departamento;
 import Departamentos.CadastroDepartamento;
-import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
-import Produtos.BancoDeDados.ArrayDeDadosProdutos;
+import GestaoPessoas.cliente.BancoDeDados.ArrayDeDados_Cliente;
+import Produtos.BancoDeDados.ArrayDeDados_Produtos;
 import Produtos.Cadastro.CadastroProduto;
 import Utilitarios.InicializarDados;
 import java.util.Scanner;
 import GestaoPessoas.cliente.CadastroCliente;
-import GestaoPessoas.funcionario.BancoDedadosFuncionario.ArrayFuncionario;
+import GestaoPessoas.funcionario.BancoDedadosFuncionario.ArrayDeDados_Funcionario;
 import GestaoPessoas.funcionario.GerarContraCheque;
 import GestaoPessoas.funcionario.cadastro.CadastroFuncionario;
+import Utilitarios.Saudacao;
 import Venda.CancelarVenda;
 import Venda.ControleVendas;
 import Venda.EncerrarCompra;
@@ -27,7 +23,7 @@ import Venda.Vender;
 import java.io.IOException;
 import java.sql.SQLException;
 
-/**
+/**Classe Principal onde são utilizadas todos as classes e metodos do programa
  *
  * @author pedro
  */
@@ -39,11 +35,11 @@ public class System_overflow {
 //Atentear para os possiveis erros de inicialização
     Menus acessorios = new Menus();
     Integer opcao=0;  
-
+  
      // conexaoDp.CriarStatement();
       // Criar_BD_departamentos.criarTab();
         System.out.println("\n\n### System Overflow - Sistema Comercial de Controle de Compras e Vendas ###");
-			
+			     System.out.println(Saudacao.SAUDACAO);
                         
                 do{
                   opcao = acessorios.MenuPrincipal(); //Menu Principal
@@ -58,27 +54,30 @@ public class System_overflow {
                                      interno= acessorios.MenuGestao();//Entrando na opção de gestão
                                 switch(interno){
                                     case 1:
+                                        //cadastro dos produtos
                                         CadastroProduto.cadastro();
                                         break;
                                     case 2:
                                         int gerenciaprotudos;
                                             do{
+                                                    
                                                 gerenciaprotudos = acessorios.Produtos();
                                             
                                                 switch (gerenciaprotudos){
                                                     case 1:
-                                                         ArrayDeDadosProdutos.imprimirArryProdutos();
+                                                        //imprime os produtos cadastrados
+                                                         ArrayDeDados_Produtos.imprimirArryProdutos();
                                                          break;
                                                     case 2:
-                                                       
+                                                       //procura um produto
                                                         int nproduto;
                                                          boolean produtoexiste;
                                                         do{
                                                         System.out.println("Digite o id do produto: ");
                                                         nproduto = ValidarEntrada.validarInteiro();
-                                                        produtoexiste = ArrayDeDadosProdutos.verificarexistencia(nproduto);
+                                                        produtoexiste = ArrayDeDados_Produtos.verificarexistencia(nproduto);
                                                         if(produtoexiste == true){
-                                                        ArrayDeDadosProdutos.buscarProdutoNome(nproduto);
+                                                        ArrayDeDados_Produtos.buscarProdutoNome(nproduto);
                                                 System.out.println("Pressione Enter para continuar...");
                                                 System.in.read();
                                                         }else{
@@ -100,16 +99,16 @@ public class System_overflow {
                                         if(excluir!=0){
                                             switch(excluir){
                                                 case 1:
-                                                    ArrayDeDadosProdutos.imprimirArryProdutos();
+                                                    ArrayDeDados_Produtos.imprimirArryProdutos();
                                                 System.out.println("Pressione Enter para continuar...");
                                                 System.in.read();
                                                     break;
                                                 case 2:
                                                     System.out.println("Digite o ID do produto: ");
                                                     int idproduto = ValidarEntrada.validarInteiro();
-                                                    boolean verifica = ArrayDeDadosProdutos.verificarexistencia(idproduto);
+                                                    boolean verifica = ArrayDeDados_Produtos.verificarexistencia(idproduto);
                                                     if(verifica == true){
-                                                    ArrayDeDadosProdutos.exluirProduto(idproduto);
+                                                    ArrayDeDados_Produtos.exluirProduto(idproduto);
                                                        
                                                System.out.println("Pressione Enter para continuar...");
                                                 System.in.read();
@@ -129,6 +128,7 @@ public class System_overflow {
                                         //editar produtos
                                        int editarproduto;
                                         System.out.println("Digite o Id do produto");
+                                        System.out.print("ID ->");
                                         int id = ValidarEntrada.validarInteiro();
                                        do{
                                           
@@ -137,7 +137,7 @@ public class System_overflow {
                                             System.in.read();
                                                
                                               if(editarproduto != 0){
-                                           ArrayDeDadosProdutos.editarProduto(editarproduto,id);
+                                           ArrayDeDados_Produtos.editarProduto(editarproduto,id);
                                               }
                                          
                                        
@@ -155,24 +155,27 @@ public class System_overflow {
                                                 System.in.read();
                                                      break;
                                                  case 2:
-                                                     ArraydeDadosDepartamento.imprimirTodosDepartamentos();
+                                                     ArraydeDados_Departamento.imprimirTodosDepartamentos();
                                                      break;
                                                  case 3:
-                                                     System.out.println("Digite o ID do departamendo que deseja buscar: ");
+                                                     System.out.println("\nDigite o ID do departamendo que deseja buscar: ");
+                                                     System.out.print("ID ->");
                                                      int idbusca = ValidarEntrada.validarInteiro();
-                                                     ArraydeDadosDepartamento.buscarDPId(idbusca);
+                                                     ArraydeDados_Departamento.buscarDPId(idbusca);
                                                  System.out.println("Pressione Enter para continuar...");
                                                 System.in.read();
                                                      break;
                                                  case 4:
-                                                      System.out.println("Digite o ID do departamendo que deseja editar: ");
+                                                      System.out.println("\nDigite o ID do departamendo que deseja editar: ");
+                                                      System.out.print("ID ->");
                                                      int nomeeditar = ValidarEntrada.validarInteiro();
-                                                     ArraydeDadosDepartamento.editardp(nomeeditar);
+                                                     ArraydeDados_Departamento.editardp(nomeeditar);
                                                      break;
                                                  case 5:
-                                                     System.out.println("Digite o ID do departamento que deseja excluir: ");
+                                                     System.out.println("\nDigite o ID do departamento que deseja excluir: ");
+                                                     System.out.print("ID ->");
                                                      int nomeexcluir = ValidarEntrada.validarInteiro();
-                                                     ArraydeDadosDepartamento.excluirdepartamento(nomeexcluir);
+                                                     ArraydeDados_Departamento.excluirdepartamento(nomeexcluir);
                                                 System.out.println("Pressione Enter para continuar...");
                                                 System.in.read();  
                                                      break;
@@ -209,7 +212,7 @@ public class System_overflow {
                                                 System.in.read();  
                                                 break;
                                             case 3:
-                                                System.out.println("Digite o id do produto: ");
+                                                System.out.println("\nDigite o id do produto: ");
                                                 System.out.print("ID -> ");
                                                 int idprodutoremover = ValidarEntrada.validarInteiro();
                                                 ControleVendas.removerprodutocarrinho(idprodutoremover);
@@ -231,10 +234,11 @@ public class System_overflow {
                                         int idcliente;
                                          boolean sabexexiste; 
                                        do{
-                                           System.out.println("Digite o ID do cliente: ");
+                                           System.out.println("\nDigite o ID do cliente: ");
+                                           System.out.print("ID ->");
                                         idcliente = ValidarEntrada.validarInteiro();
                                        
-                                         sabexexiste = ArrayDadosCliente.verificarexistenciacliente(idcliente);
+                                         sabexexiste = ArrayDeDados_Cliente.verificarexistenciacliente(idcliente);
                                             if(sabexexiste == true){
                                                 
                                                 VendasPorcliente.vendascliente(idcliente);
@@ -270,17 +274,18 @@ public class System_overflow {
                                                switch(clientebusca){
                                                    case 1:
                                                        System.out.println("\n\n");
-                                                       ArrayDadosCliente.imprimirArrayCliente();
+                                                       ArrayDeDados_Cliente.imprimirArrayCliente();
                                                         System.out.println("\n\nPressione Enter para continuar...");
                                                 System.in.read(); 
                                                        break;
                                                    case 2:
                                                        boolean existeverifica;
-                                                       System.out.println("Digite o ID do Cliente: ");
+                                                       System.out.println("\nDigite o ID do Cliente: ");
+                                                       System.out.print("ID -> ");
                                                        int idcliente = ValidarEntrada.validarInteiro();
-                                                      existeverifica = ArrayDadosCliente.verificarexistenciacliente(idcliente);
+                                                      existeverifica = ArrayDeDados_Cliente.verificarexistenciacliente(idcliente);
                                                       if(existeverifica == true){
-                                                      ArrayDadosCliente.buscarClienteID(idcliente);                                                       System.out.println("\n\n");
+                                                      ArrayDeDados_Cliente.buscarClienteID(idcliente);                                                       System.out.println("\n\n");
  
                                                         System.out.println("\n\nPressione Enter para continuar...");
                                                         System.in.read();
@@ -301,21 +306,23 @@ public class System_overflow {
                                                        
                                                do{
                                               System.out.println("---Excluir Cliente---");
-                                              System.out.println("Digite: 1 - Ver os clientes cadastrados | 2 - Excluir pelo ID do cliente | 0 - Voltar: ");
+                                              System.out.println("\nDigite: 1 - Ver os clientes cadastrados | 2 - Excluir pelo ID do cliente | 0 - Voltar: ");
+                                              System.out.print("Opcao -> ");
                                                      
                                                                opc = ValidarEntrada.validaropcao();
                                                        
                                                         switch(opc){
                                                             case 1:
                                                                 System.out.println("\n\n");
-                                                                ArrayDadosCliente.imprimirArrayCliente();
+                                                                ArrayDeDados_Cliente.imprimirArrayCliente();
                                                                  System.out.println("Pressione Enter para continuar...");
                                                                  System.in.read(); 
                                                                 break;
                                                             case 2:
-                                                                System.out.println("Digite o ID do cliente: ");
+                                                                System.out.println("\nDigite o ID do cliente: ");
+                                                                System.out.print("ID -> ");
                                                                 int id = ValidarEntrada.validarInteiro();
-                                                                ArrayDadosCliente.excluircliente(id);
+                                                                ArrayDeDados_Cliente.excluircliente(id);
                                                                 break;
                                                         }
 
@@ -324,14 +331,15 @@ public class System_overflow {
                                                        break;
                                         case 4: // edicao cliente
                                         int editarcliente;
-                                            System.out.println("Digite o ID do cliente: ");
+                                            System.out.println("\nDigite o ID do cliente: ");
+                                            System.out.print("ID -> ");
                                         int id = ValidarEntrada.validarInteiro();
                                         do{
                                             
                                            editarcliente =  acessorios.MenuClienteEditar();
                                            
                                                 if(editarcliente!=0){
-                                                    ArrayDadosCliente.editarcliente(editarcliente, id);
+                                                    ArrayDeDados_Cliente.editarcliente(editarcliente, id);
                                                     
                                                 }
                                             
@@ -353,17 +361,19 @@ public class System_overflow {
                                     opbfuncionarios = acessorios.MenuGestaopessoasFuncionarioBusca();
                                         switch(opbfuncionarios){
                                             case 1:
+                                                //imprimir funcionario
                                                 System.out.println("\n\n");
-                                                ArrayFuncionario.imprimirArrayCliente();
+                                                ArrayDeDados_Funcionario.imprimirArrayCliente();
                                                 System.out.println("\n\n");
                                                  System.out.println("Pressione Enter para continuar...");
                                                 System.in.read(); 
                                                 break;
                                             case 2:
-                                               
-                                                System.out.println("Digite o ID do funcionario: ");
+                                               //buscar funcionario especifico para imprimir
+                                                System.out.println("\nDigite o ID do funcionario: ");
+                                                System.out.print("ID -> ");
                                                 int idfuncionaro = ValidarEntrada.validarInteiro();
-                                                ArrayFuncionario.buscarFuncionario(idfuncionaro);
+                                                ArrayDeDados_Funcionario.buscarFuncionario(idfuncionaro);
                                                  System.out.println("\n\nPressione Enter para continuar...");
                                                 System.in.read(); 
                                                 break;
@@ -376,31 +386,36 @@ public class System_overflow {
                                       CadastroFuncionario.cadastro();
                                       break;
                                   case 3:
-                                      System.out.println("Digite o ID do funcionario: ");
+                                      //excluir funcionario
+                                      System.out.println("\nDigite o ID do funcionario: ");
+                                      System.out.print("ID -> ");
                                       int idfuncionaro = ValidarEntrada.validarInteiro();
-                                      ArrayFuncionario.excluirfuncionario(idfuncionaro);
+                                      ArrayDeDados_Funcionario.excluirfuncionario(idfuncionaro);
                                       break;
                                   case 4:
-                                     System.out.println("Digite o ID do funcionario: ");
+                                      //editar funcionario
+                                     System.out.println("\nDigite o ID do funcionario: ");
+                                     System.out.print("ID -> ");
                                      int idfunceditar = ValidarEntrada.validarInteiro();
                                     
                                      int opcaomenu;
                                      do{
                                          opcaomenu = acessorios.MenuFuncionarioEditar();
                                              
-                                                     ArrayFuncionario.editarfuncionaro(opcaomenu, idfunceditar);
+                                                     ArrayDeDados_Funcionario.editarfuncionaro(opcaomenu, idfunceditar);
                                                 
                                          
                                      }while(opcaomenu!=0);
                                      break;
-                                                                    case 5:
+                                   case 5:
                                    //gerar contracheque
                                    boolean existe;
                                    int idfuncionario;
                                    do{
-                                   System.out.println("Digite o ID do funcionario: ");
+                                   System.out.println("\nDigite o ID do funcionario: ");
+                                   System.out.print("ID -> ");
                                    idfuncionario = ValidarEntrada.validarInteiro();
-                                    existe = ArrayFuncionario.saberseexistefuncionario(idfuncionario);
+                                    existe = ArrayDeDados_Funcionario.saberseexistefuncionario(idfuncionario);
                                    if(existe == true){
                                        GerarContraCheque.gerarcontracheque(idfuncionario);
                                    }else{

@@ -5,7 +5,7 @@
  */
 package GestaoPessoas;
 
-/**
+/** Essa classe é onde vão ser pego informacoes basicas sobre pessoas, sendo usada em outras classes como herança
  *
  * @author pedro
  */

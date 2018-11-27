@@ -5,16 +5,16 @@
  */
 package GestaoPessoas.funcionario.cadastro;
 
-import Departamentos.BancoDeDados.Criar_BD_departamentos;
-import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
-import GestaoPessoas.funcionario.BancoDedadosFuncionario.ConexaoFuncionario;
+import Departamentos.BancoDeDados.CriarBD_departamentos;
+import GestaoPessoas.cliente.BancoDeDados.ArrayDeDados_Cliente;
+import GestaoPessoas.funcionario.BancoDedadosFuncionario.CriarConexao_Funcionario;
 import GestaoPessoas.funcionario.Funcionario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
+/**Adiciona um funcionario ao banco de dados (usado na classe CadastroFuncionario.
  *
  * @author pedro
  */
@@ -24,11 +24,11 @@ public class AdicionarFuncionario {
     
     
         //conexao.conectar();
-        Criar_BD_departamentos.criarTab();
-        ConexaoFuncionario conexaofuncionario = new ConexaoFuncionario();
+        CriarBD_departamentos.criarTab();
+        CriarConexao_Funcionario conexaofuncionario = new CriarConexao_Funcionario();
           conexaofuncionario.conectar();
             ResultSet resulset = null;
-            Statement statement = null;
+            Statement statement ;
                      
             String query = "SELECT * FROM funcionarios";
             statement = conexaofuncionario.CriarStatement();
@@ -88,7 +88,7 @@ public class AdicionarFuncionario {
                         }
                     }  
                 }  
-                      ArrayDadosCliente.InicializararrayCliente();
+                      ArrayDeDados_Cliente.InicializararrayCliente();
                       conexaofuncionario.desconectar();
     }
     

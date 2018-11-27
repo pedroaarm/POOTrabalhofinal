@@ -5,9 +5,9 @@
  */
 package Venda.BancoDeDados;
 
-import Departamentos.BancoDeDados.Criar_BD_departamentos;
-import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
-import GestaoPessoas.cliente.BancoDeDados.Conexao_cliente;
+import Departamentos.BancoDeDados.CriarBD_departamentos;
+import GestaoPessoas.cliente.BancoDeDados.ArrayDeDados_Cliente;
+import GestaoPessoas.cliente.BancoDeDados.CriarConexao_cliente;
 import GestaoPessoas.cliente.Cliente;
 import Utilitarios.RetornaData;
 import Venda.ControleVendas;

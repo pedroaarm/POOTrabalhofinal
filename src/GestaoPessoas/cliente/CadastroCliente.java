@@ -7,16 +7,17 @@ package GestaoPessoas.cliente;
 
 import GestaoPessoas.CadastroEndereco;
 import GestaoPessoas.CadastroInformacoesPessoais;
-import GestaoPessoas.Pessoa;
 import GestaoPessoas.cliente.BancoDeDados.AdicionaCliente;
-import TratamentodeErros.ValidarEntrada;
-import Utilitarios.Cadastro;
 
-/**
+
+/**Aqui é feito o cadastro do cliente
  *
  * @author pedro
  */
 public class CadastroCliente   {
+    /**Nesse metodo é clamadas e instanciada todas as classes necessarias para obter informações suficientes para o cadastro de clientes
+     * 
+     */
 
     public static void cadastroCliente(){
         
@@ -25,7 +26,6 @@ public class CadastroCliente   {
         cadastropessoal.cadastroinformacoespessoais();
         rg.cadastroRG();
         Endereco endereco = CadastroEndereco.cadendereco();
-        String enderecostring = endereco.toString();
         Cliente cliente = new Cliente(rg.getNumero(), cadastropessoal.getNome(),cadastropessoal.getCpf(),cadastropessoal.getTelefone(), endereco.toString(),0);
      
         AdicionaCliente.addcliente(cliente);

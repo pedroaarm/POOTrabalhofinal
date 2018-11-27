@@ -5,15 +5,15 @@
  */
 package Utilitarios;
 
-import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
-import Departamentos.BancoDeDados.Criar_BD_departamentos;
-import Departamentos.BancoDeDados.Criar_Conexao_Departamento;
-import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
-import GestaoPessoas.cliente.BancoDeDados.CriarBancodeDados_Cliente;
-import GestaoPessoas.funcionario.BancoDedadosFuncionario.ArrayFuncionario;
-import GestaoPessoas.funcionario.BancoDedadosFuncionario.ConexaoFuncionario;
-import GestaoPessoas.funcionario.BancoDedadosFuncionario.CriarTabelaFuncionario;
-import Produtos.BancoDeDados.ArrayDeDadosProdutos;
+import Departamentos.BancoDeDados.ArraydeDados_Departamento;
+import Departamentos.BancoDeDados.CriarBD_departamentos;
+import Departamentos.BancoDeDados.CriarConexao_Departamento;
+import GestaoPessoas.cliente.BancoDeDados.ArrayDeDados_Cliente;
+import GestaoPessoas.cliente.BancoDeDados.CriarBD_Cliente;
+import GestaoPessoas.funcionario.BancoDedadosFuncionario.ArrayDeDados_Funcionario;
+import GestaoPessoas.funcionario.BancoDedadosFuncionario.CriarConexao_Funcionario;
+import GestaoPessoas.funcionario.BancoDedadosFuncionario.CriarBD_Funcionario;
+import Produtos.BancoDeDados.ArrayDeDados_Produtos;
 import Produtos.BancoDeDados.CriarBancoProdutos;
 import Venda.BancoDeDados.BDTabelaComprasParceladas;
 import Venda.BancoDeDados.BDTabelaVendasMistas;
@@ -27,19 +27,19 @@ import Venda.BancoDeDados.CriaConexaoVendas;
 public class InicializarDados {
     public static void inicializar(){
              CriarBancoProdutos.criarTab();
-        CriarBancodeDados_Cliente.criarTab(); 
-        Criar_BD_departamentos BdDep = new Criar_BD_departamentos();
-       Criar_Conexao_Departamento conexaoDp = new Criar_Conexao_Departamento();
-        Criar_BD_departamentos.criarTab();
+        CriarBD_Cliente.criarTab(); 
+        CriarBD_departamentos BdDep = new CriarBD_departamentos();
+       CriarConexao_Departamento conexaoDp = new CriarConexao_Departamento();
+        CriarBD_departamentos.criarTab();
         conexaoDp.conectar();
         
         
-         ArraydeDadosDepartamento.inicializarArrayDepartamento();
-         ArrayDeDadosProdutos.inicializarArrayProdutos();
-         ArrayDadosCliente.InicializararrayCliente();
-         CriarTabelaFuncionario.criarTab();
-         ConexaoFuncionario conexaofunc = new ConexaoFuncionario();
-         ArrayFuncionario.inicializarArrayDepartamento();
+         ArraydeDados_Departamento.inicializarArrayDepartamento();
+         ArrayDeDados_Produtos.inicializarArrayProdutos();
+         ArrayDeDados_Cliente.InicializararrayCliente();
+         CriarBD_Funcionario.criarTab();
+         CriarConexao_Funcionario conexaofunc = new CriarConexao_Funcionario();
+         ArrayDeDados_Funcionario.inicializarArrayFuncionario();
          CriaBdVenda.criarTab();
          CriaConexaoVendas conexaovendas = new CriaConexaoVendas();
          conexaovendas.conectar();

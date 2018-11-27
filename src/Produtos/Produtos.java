@@ -7,16 +7,7 @@ package Produtos;
 
 import java.math.BigDecimal;
 
-/**
- *Tipos de produtos:
- * Casa;
- * informática e acessórios
- * alimentos e bebidas
- * eletro
- * brinquedos
- * Musica
- * Livos
- * Esporte & lazer
+/**Classe para a criação de novos objetos produtos
  * @author pedro
  */
 public class Produtos {

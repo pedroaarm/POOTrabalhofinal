@@ -4,6 +4,11 @@ package Departamentos;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/** Essa classe serve como objeto para a criacão de derpartamentos.
+@autor pedro
+* 
+
+*/
 
 public class Departamento {
     Scanner in = new Scanner (System.in); 
@@ -35,18 +40,12 @@ public class Departamento {
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
-    public Integer sizedep(){
-        return departamento.size();
-    }
+    //retorna 
+  
     
-    public void mostrarDepartamentos(){
-        for (Departamento departamento1 : departamento) {
-            System.out.println("Código: "+departamento1.getCodigo()+"| Nome: "+departamento1.getNome());
-        }
-        
+
+    
         
         
     }
 
-        
-}

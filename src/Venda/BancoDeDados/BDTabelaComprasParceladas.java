@@ -41,7 +41,6 @@ public class BDTabelaComprasParceladas {
                 Statement stmt = conn.createStatement()) {
             // create a new table
             stmt.execute(sql);
-            System.out.println("Tabela Criada com Sucesso!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -88,9 +87,7 @@ public class BDTabelaComprasParceladas {
             
             if(resulado == 1){
             
-                    System.out.println("Clinte Cadastrado");
                 }else{
-                        System.out.println("Cliente não foi cadastrado, tente novamente!");
                         }
         } catch (SQLException e) {
                     System.out.println(e);

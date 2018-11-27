@@ -1,7 +1,7 @@
 package Produtos.BancoDeDados;
 
 
-import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
+import Departamentos.BancoDeDados.ArraydeDados_Departamento;
 import Produtos.Produtos;
 import TratamentodeErros.ValidarEntrada;
 import Venda.Vendas;
@@ -12,11 +12,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 
-/**
+/**Classe responsavel por manipular operacoes no array de produtos 
  *
  * @author pedro
  */
-public abstract class ArrayDeDadosProdutos  {
+public abstract class ArrayDeDados_Produtos  {
     
     public static ArrayList<Produtos> arrayprodutos = new ArrayList<Produtos>();
     
@@ -27,8 +27,8 @@ public abstract class ArrayDeDadosProdutos  {
          criarConex.conectar();
          
        
-          ResultSet resultset = null;
-           Statement statement = null;
+          ResultSet resultset;
+           Statement statement;
         
           
           String sql = "SELECT * FROM produto;";
@@ -40,13 +40,9 @@ public abstract class ArrayDeDadosProdutos  {
             resultset = statement.executeQuery(sql);
                       while (resultset.next()) {
                           ResultSet s = resultset;
-        // public Produtos(String nome, String Descricao, int quantidadeestoque, float valor, Integer id, String referencia, String marca, int departamento)
                          Produtos produto = new Produtos (resultset.getString("nome_produto"),resultset.getString("descricao_produto"),resultset.getInt("quantidade"),resultset.getBigDecimal("preco_produto"),resultset.getInt("id"),resultset.getString("referencia_prod"), resultset.getString("marca_produto"),resultset.getInt("departamento"));
-                          arrayprodutos.add(produto);
-
-                      
+                          arrayprodutos.add(produto);                      
                       }
-                        System.out.println("Array Inicializado");
                               statement.close();
                     criarConex.desconectar();
                     }catch (SQLException e){
@@ -57,6 +53,10 @@ public abstract class ArrayDeDadosProdutos  {
 
     }
     
+    /**busta um produto
+     * 
+     * @param id 
+     */
    static public void buscarProdutoNome(int id){
           for (Produtos arrayproduto : arrayprodutos) {
              
@@ -114,8 +114,8 @@ public abstract class ArrayDeDadosProdutos  {
                                   prepared= conexao.criarPreparedStatement(delete);
                                   prepared.setInt(1, id);
                                   prepared.executeUpdate();
-                                 ArrayDeDadosProdutos.inicializarArrayProdutos();
-                              }catch(Exception e){
+                                 ArrayDeDados_Produtos.inicializarArrayProdutos();
+                              }catch(SQLException e){
                                       System.out.println("erro "+e);
                                       
                               }
@@ -140,7 +140,9 @@ public abstract class ArrayDeDadosProdutos  {
        
    }
    
-    
+    /**Imprime todos os produtos
+     * 
+     */
    public static void imprimirArryProdutos(){
         System.out.println("---Produtos Cadastrados---");
         for (Produtos arrayproduto : arrayprodutos) {
@@ -232,7 +234,7 @@ public abstract class ArrayDeDadosProdutos  {
                                 prepareStatement.setString(1,nome); //primeiro numero = saldo (primeiro "?", o segundo é o valor
                                 prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
                                 prepareStatement.executeUpdate();
-                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                                ArraydeDados_Departamento.inicializarArrayDepartamento(); 
                         }
                     
                 }
@@ -264,7 +266,7 @@ public abstract class ArrayDeDadosProdutos  {
                                 prepareStatement.setInt(1,estoque); //primeiro numero = saldo (primeiro "?", o segundo é o valor
                                 prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
                                 prepareStatement.executeUpdate();
-                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                                ArraydeDados_Departamento.inicializarArrayDepartamento(); 
                         }
                         
                     
@@ -299,7 +301,7 @@ public abstract class ArrayDeDadosProdutos  {
                                 prepareStatement.setFloat(1,novopreco); //primeiro numero = saldo (primeiro "?", o segundo é o valor
                                 prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
                                 prepareStatement.executeUpdate();
-                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                                ArraydeDados_Departamento.inicializarArrayDepartamento(); 
                         }
                         
                     
@@ -333,7 +335,7 @@ public abstract class ArrayDeDadosProdutos  {
                                 prepareStatement.setString(1,novaref); //primeiro numero = saldo (primeiro "?", o segundo é o valor
                                 prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
                                 prepareStatement.executeUpdate();
-                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                                ArraydeDados_Departamento.inicializarArrayDepartamento(); 
                         }
                         
                     
@@ -368,7 +370,7 @@ public abstract class ArrayDeDadosProdutos  {
                                 prepareStatement.setString(1,novadescricao); //primeiro numero = saldo (primeiro "?", o segundo é o valor
                                 prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
                                 prepareStatement.executeUpdate();
-                                ArraydeDadosDepartamento.inicializarArrayDepartamento(); 
+                                ArraydeDados_Departamento.inicializarArrayDepartamento(); 
                         }
                         
                     

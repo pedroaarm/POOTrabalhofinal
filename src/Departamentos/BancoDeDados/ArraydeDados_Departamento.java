@@ -9,13 +9,13 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
+/**Essa classe serve para a manipulacao do Array que guarda as informações dos departamentos
  *
  * @author pedro
  */
 
 //Falta arrumar a questão de atualizar Departamento, ver isso se tiver tempo.
-public class ArraydeDadosDepartamento {
+public class ArraydeDados_Departamento {
    static public HashMap<Integer,String> Hashdepartamento = new HashMap<>();
     
    /**
@@ -27,7 +27,7 @@ public class ArraydeDadosDepartamento {
     static public void inicializarArrayDepartamento(){
         Hashdepartamento.clear();
         //Criar_BD_departamentos.criarTab();
-       Criar_Conexao_Departamento criarConex = new Criar_Conexao_Departamento();
+       CriarConexao_Departamento criarConex = new CriarConexao_Departamento();
          criarConex.conectar();
          
        
@@ -49,7 +49,7 @@ public class ArraydeDadosDepartamento {
                       Hashdepartamento.put(resultset.getInt("id"), resultset.getString("nomedp"));
                       
                       }
-                        System.out.println("Array Inicializado");
+        
                               statement.close();
                     criarConex.desconectar();
                     }catch (SQLException e){
@@ -92,11 +92,16 @@ public class ArraydeDadosDepartamento {
                 }
           }
    }
+   /**
+    * 
+    * @param id o id do departamento
+    * @return retorna true caso encontre o departamento ou false caso não seja encontrado
+    */
    
-   static public boolean buscarDPId (int num){
+   static public boolean buscarDPId (int id){
        for (Map.Entry<Integer,String> hashdp : Hashdepartamento.entrySet()) {
               
-                if (hashdp.getKey() == num){
+                if (hashdp.getKey() == id){
                     System.out.println("ID: "+hashdp.getKey()+" | Nome: "+hashdp.getValue());
                     return true;
                 }
@@ -106,25 +111,12 @@ public class ArraydeDadosDepartamento {
                     return false;
                }
         
-   /**
-    * 
-    * Verifica existe um deperminado Departamento
-    * @param nome é o nome do departamento que se deseja verificar a Existencia
-    * @return O retorno é True: Caso o departamendo seja encontrado, ou falso, caso esse departamento não exista no Banco de Dados
-    */
-   static private boolean SaberseExisteDP(int id){
-       
-       for (Map.Entry<Integer,String> hashdp : Hashdepartamento.entrySet()) {
-              
-                if (hashdp.getKey() == id){
-                    return true;
-                }
-   }
-       return false;
-               }
+
+
  
    /**
-    * Aqui acontece a Edição do id do departamento. OBS: Não é possivel editar o ID.
+    * Aqui acontece a Edição do id do departamento. 
+    * 
     * @param id o id do departamento que o cliente deseja editar
     */
    static public void editardp(int id){
@@ -132,7 +124,7 @@ public class ArraydeDadosDepartamento {
         
             System.out.println("Digite o novo Departamento: ");
             String Novonome = ValidarEntrada.validarString();
-            Criar_Conexao_Departamento conexao = new Criar_Conexao_Departamento();
+            CriarConexao_Departamento conexao = new CriarConexao_Departamento();
              conexao.conectar();
 
                 PreparedStatement prepareStatement = null;
@@ -157,18 +149,18 @@ public class ArraydeDadosDepartamento {
                         if(resultset.getInt("id")==id){
                             prepareStatement = conexao.criarPreparedStatement(sql);
                               
-                                prepareStatement.setString(1,Novonome); //primeiro numero = saldo (primeiro "?", o segundo é o valor
-                                prepareStatement.setInt(2, resultset.getInt("id")); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.setString(1,Novonome); 
+                                prepareStatement.setInt(2, resultset.getInt("id")); 
                                 prepareStatement.executeUpdate();
-                                //System.out.println(prepareStatement.executeUpdate());
-                                ArraydeDadosDepartamento.inicializarArrayDepartamento();
+                             
+                                ArraydeDados_Departamento.inicializarArrayDepartamento();
                                                                   
                         }
                     
                 }
-                  // codigo++;
+                 
                 prepareStatement.close();
-                 // conexao.desconectar();
+               
                     }catch(SQLException e){
                         System.err.println("Ocorreu o seguinte erro: "+e);
                     }
@@ -181,7 +173,7 @@ public class ArraydeDadosDepartamento {
    /**
     * 
     * Esse metodo faz a exclusão de um departamento.
-    *
+    *@param id parametro é o ID do departamento que deseja excluir
    
     */
    
@@ -189,11 +181,11 @@ public class ArraydeDadosDepartamento {
        
        
     
-      Criar_Conexao_Departamento conexao = new Criar_Conexao_Departamento(); 
+      CriarConexao_Departamento conexao = new CriarConexao_Departamento(); 
          conexao.conectar();
        
-          ResultSet resultset = null;
-           Statement statement = null;
+          ResultSet resultset;
+           Statement statement;
         
           
           String sql = "SELECT * FROM departamento;";
@@ -215,6 +207,7 @@ public class ArraydeDadosDepartamento {
                           if (resultset.getInt("id") == id){
 
                                   PreparedStatement prepared;
+                                  // cria uma string com o comando delete dentro do sqlite
                                   String delete = "DELETE FROM departamento"
                                   + " WHERE id = ?;";
                                   

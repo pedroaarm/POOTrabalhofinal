@@ -10,11 +10,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
+/**Cria o Banco de dados funcionario
  *
  * @author pedro
  */
-public class CriarTabelaFuncionario {
+public class CriarBD_Funcionario {
     
      public static void criarTab() {
         // SQLite connection string
@@ -35,7 +35,6 @@ public class CriarTabelaFuncionario {
                 Statement stmt = conn.createStatement()) {
             // create a new table
             stmt.execute(sql);
-            System.out.println("Tabela Criada com Sucesso!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

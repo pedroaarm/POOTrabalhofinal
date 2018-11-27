@@ -5,10 +5,10 @@
  */
 package Venda;
 
-import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
+import GestaoPessoas.cliente.BancoDeDados.ArrayDeDados_Cliente;
 import GestaoPessoas.cliente.CadastroCliente;
 import GestaoPessoas.cliente.Cliente;
-import Produtos.BancoDeDados.ArrayDeDadosProdutos;
+import Produtos.BancoDeDados.ArrayDeDados_Produtos;
 import TratamentodeErros.ValidarEntrada;
 import Venda.BancoDeDados.BDTabelaVendasMistas;
 import java.math.BigDecimal;
@@ -34,7 +34,7 @@ public class PapamentoMixto {
                     do{
                     System.out.println("Digite o ID do cliente: ");
                     id = ValidarEntrada.validarInteiro();
-                   cliente = ArrayDadosCliente.verificaexistenciaretornacliente(id);
+                   cliente = ArrayDeDados_Cliente.verificaexistenciaretornacliente(id);
                     if(cliente == null){
                         System.out.println("Cliente nao encontrado");
                     }else{
@@ -70,14 +70,14 @@ public class PapamentoMixto {
                             PapamentoMixto pagamentomisto = new PapamentoMixto(quantidadedevezes, valorparcela, ControleVendas.valortotal,valoravista);
                             BDTabelaVendasMistas.adicionarcompramista(cliente, pagamentomisto);
                             System.out.println("");
-                            ArrayDadosCliente.adicionarpontos(id, pontosganho);
+                            ArrayDeDados_Cliente.adicionarpontos(id, pontosganho);
                             ControleVendas.arraycloneproduto.clear();
                             ControleVendas.valortotal = new BigDecimal("0");
                             ControleVendas.arrayvendaslocal.clear();
-                            ArrayDeDadosProdutos.inicializarArrayProdutos();
-                            ArrayDadosCliente.InicializararrayCliente();
+                            ArrayDeDados_Produtos.inicializarArrayProdutos();
+                            ArrayDeDados_Cliente.InicializararrayCliente();
                              for (int i=0;i<ControleVendas.arrayvendaslocal.size();i++){
-                ArrayDeDadosProdutos.subtrairestoque(ControleVendas.arrayvendaslocal.get(i).getIdproduto(), ControleVendas.arrayvendaslocal.get(i));
+                ArrayDeDados_Produtos.subtrairestoque(ControleVendas.arrayvendaslocal.get(i).getIdproduto(), ControleVendas.arrayvendaslocal.get(i));
                              }
                             
                         }

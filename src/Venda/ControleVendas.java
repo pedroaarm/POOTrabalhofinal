@@ -43,7 +43,7 @@ public class ControleVendas {
     
     public static void removerprodutocarrinho(int id){
         
-       boolean existe = ArrayDeDadosProdutos.verificarexistencia(id);
+       boolean existe = ArrayDeDados_Produtos.verificarexistencia(id);
         
        if(existe == true){
       for (int i=0; i<arrayvendaslocal.size();i++){
@@ -70,7 +70,7 @@ public class ControleVendas {
     
     public static void inicializarclone(){
         arraycloneproduto.clear();
-            for (Produtos ArrayVendas : ArrayDeDadosProdutos.arrayprodutos) {
+            for (Produtos ArrayVendas : ArrayDeDados_Produtos.arrayprodutos) {
                 arraycloneproduto.add(ArrayVendas);
         }
             

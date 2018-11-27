@@ -26,7 +26,6 @@ public class CriaConexaoVendas {
          System.err.println( e.getClass().getName() + ": " + e.getMessage() );
          System.exit(0);
       }
-      System.out.println("Banco de Dados aberto!!");
       return true;
    } 
         
@@ -35,7 +34,6 @@ public class CriaConexaoVendas {
             
             try{                  
                     c.close();    
-                    System.out.println("Desconectou");
                  }catch(SQLException e){
                      System.err.println(e.getMessage());
                     return false;

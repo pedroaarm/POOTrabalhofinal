@@ -5,7 +5,7 @@
  */
 package Produtos.Cadastro;
 
-import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
+import Departamentos.BancoDeDados.ArraydeDados_Departamento;
 import Produtos.Produtos;
 import TratamentodeErros.ValidarEntrada;
 import java.io.IOException;
@@ -45,14 +45,14 @@ public class CadastroProduto {
         
             switch(op){
                 case 1:
-                    ArraydeDadosDepartamento.imprimirTodosDepartamentos();
+                    ArraydeDados_Departamento.imprimirTodosDepartamentos();
                     break;
                 case 2:
                     int chave =0;
                         do{
                        System.out.println("Digite o numero do departamento: ");
                        departamento = ValidarEntrada.validarInteiro();
-                       boolean verifica = ArraydeDadosDepartamento.buscarDPId(departamento);
+                       boolean verifica = ArraydeDados_Departamento.buscarDPId(departamento);
                         if(verifica == true){
                             System.out.println("");
                             System.out.println("Produto Cadastrado!");

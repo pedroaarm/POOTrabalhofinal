@@ -7,7 +7,7 @@ package GestaoPessoas.cliente;
 
 import TratamentodeErros.ValidarEntrada;
 
-/**
+/**Classe onde reune a informação de RG, onde será necessário para cadastro de cliente
  *
  * @author pedro
  */
