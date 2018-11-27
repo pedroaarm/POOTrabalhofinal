@@ -113,8 +113,8 @@ public abstract class ArrayDeDados_Funcionario {
        CriarConexao_Funcionario conexao = new CriarConexao_Funcionario(); 
          conexao.conectar();
        
-          ResultSet resultset = null;
-           Statement statement = null;
+          ResultSet resultset;
+           Statement statement;
         
           
           String sql = "SELECT * FROM funcionarios;";
@@ -134,7 +134,7 @@ public abstract class ArrayDeDados_Funcionario {
                                 System.out.println("1 - SIM | 2 - NAO");
                                 int excluirfuncionario = ValidarEntrada.validaropcao();
                                 if (excluirfuncionario == 1){
-                                PreparedStatement prepared= null;
+                                PreparedStatement prepared;
                                   String delete = "DELETE FROM funcionarios"
                                   + " WHERE id = ?;";
                                   try{
@@ -142,7 +142,7 @@ public abstract class ArrayDeDados_Funcionario {
                                   prepared.setInt(1, id);
                                   prepared.executeUpdate();
                                  ArrayDeDados_Cliente.InicializararrayCliente();
-                              }catch(Exception e){
+                              }catch(SQLException e){
                                       System.out.println("erro "+e);
                                       
                               }
@@ -174,8 +174,8 @@ public abstract class ArrayDeDados_Funcionario {
             CriarConexao_Funcionario conexao = new CriarConexao_Funcionario();
              conexao.conectar();
 
-                PreparedStatement prepareStatement = null;
-                ResultSet resultset = null;
+                PreparedStatement prepareStatement;
+                ResultSet resultset;
 
                 Statement statement;
 

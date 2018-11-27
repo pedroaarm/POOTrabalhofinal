@@ -118,7 +118,7 @@ public static void excluircliente(int id){
                                 System.out.println("1 - SIM | 2 - NAO");
                                 int clienteexcluir = ValidarEntrada.validaropcao();
                                 if (clienteexcluir == 1){
-                                PreparedStatement prepared= null;
+                                PreparedStatement prepared;
                                   String delete = "DELETE FROM cliente"
                                   + " WHERE id = ?;";
                                   try{

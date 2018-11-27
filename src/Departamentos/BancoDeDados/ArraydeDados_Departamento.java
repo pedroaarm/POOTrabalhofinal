@@ -31,8 +31,8 @@ public class ArraydeDados_Departamento {
          criarConex.conectar();
          
        
-          ResultSet resultset = null;
-           Statement statement = null;
+          ResultSet resultset;
+           Statement statement;
         
           
           String sql = "SELECT * FROM Departamento;";
@@ -128,7 +128,7 @@ public class ArraydeDados_Departamento {
              conexao.conectar();
 
                 PreparedStatement prepareStatement = null;
-                ResultSet resultset = null;
+                ResultSet resultset;
 
                 Statement statement;
 
