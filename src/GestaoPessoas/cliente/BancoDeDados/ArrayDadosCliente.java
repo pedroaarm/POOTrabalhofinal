@@ -58,7 +58,7 @@ public class ArrayDadosCliente {
     }
     
      public static void imprimirArrayCliente(){
-        System.out.println("---Produtos Cadastrados---");
+        System.out.println("---Clientes Cadastrados---");
             for (Cliente cliente : arraycliente) {
             System.out.println("ID: "+cliente.getIdcliente()+"| nome: "+cliente.getNome()+" |Telefone: "+cliente.getTelefone()+" |CPF: "+cliente.getCPF()+" |Endereco: "+cliente.getEndereco());   
         }
@@ -71,6 +71,17 @@ public class ArrayDadosCliente {
          }
      }    
      }
+    public static void buscarClienteID (int id){
+        for (Cliente cliente : arraycliente) {
+            if(cliente.getIdcliente() == id){
+            System.out.println("ID: "+cliente.getIdcliente()+"| nome: "+cliente.getNome()+" |Telefone: "+cliente.getTelefone()+" |CPF: "+cliente.getCPF()+" |Endereco: "+cliente.getEndereco());   
+
+                
+            }
+            
+        }
+        
+    }
     
 
 public static void excluircliente(int id){

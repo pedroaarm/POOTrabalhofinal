@@ -57,7 +57,7 @@ public class VendaParcelada {
                 Integer numerocartao = ValidarEntrada.validarInteiro();
                 System.out.println("Digite o codigo de seguranca");
                 int codigoseguranca = ValidarEntrada.validarInteiro();
-               Integer parcelas;
+               int parcelas;
                 do{
                 System.out.println("Digite o numero de vezes que o cliente deseja pagar: ");
                  parcelas = ValidarEntrada.validarInteiro();

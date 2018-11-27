@@ -6,19 +6,14 @@
 package Main;
 
 import Utilitarios.Menus;
-import Departamentos.BancoDeDados.Criar_BD_departamentos;
-import Departamentos.BancoDeDados.Criar_Conexao_Departamento;
+
 import TratamentodeErros.ValidarEntrada;
 import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
 import Departamentos.CadastroDepartamento;
 import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
 import Produtos.BancoDeDados.ArrayDeDadosProdutos;
-import Produtos.BancoDeDados.CriarBancoProdutos;
 import Produtos.Cadastro.CadastroProduto;
 import Utilitarios.InicializarDados;
-import java.io.Console;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
 import GestaoPessoas.cliente.CadastroCliente;
 import GestaoPessoas.funcionario.BancoDedadosFuncionario.ArrayFuncionario;
@@ -243,6 +238,9 @@ public class System_overflow {
                                             if(sabexexiste == true){
                                                 
                                                 VendasPorcliente.vendascliente(idcliente);
+                                                 System.out.println("Pressione Enter para continuar...");
+                                                System.in.read(); 
+                                                
                                             }else{
                                                 System.out.println("Cliente nao encontrado!");
                                             }
@@ -271,12 +269,25 @@ public class System_overflow {
                                                clientebusca = acessorios.MenuGestaopessoasClienteBusca();
                                                switch(clientebusca){
                                                    case 1:
+                                                       System.out.println("\n\n");
                                                        ArrayDadosCliente.imprimirArrayCliente();
+                                                        System.out.println("\n\nPressione Enter para continuar...");
+                                                System.in.read(); 
                                                        break;
                                                    case 2:
-                                                       System.out.println("Digite o nome do Cliente: ");
-                                                       String nomecliente = ValidarEntrada.validarString();
-                                                     ArrayDadosCliente.buscarCliente(nomecliente);
+                                                       boolean existeverifica;
+                                                       System.out.println("Digite o ID do Cliente: ");
+                                                       int idcliente = ValidarEntrada.validarInteiro();
+                                                      existeverifica = ArrayDadosCliente.verificarexistenciacliente(idcliente);
+                                                      if(existeverifica == true){
+                                                      ArrayDadosCliente.buscarClienteID(idcliente);                                                       System.out.println("\n\n");
+ 
+                                                        System.out.println("\n\nPressione Enter para continuar...");
+                                                        System.in.read();
+                                                      
+                                                      }else{
+                                                          System.out.println("Cliente nao encontrado");
+                                                      }
                                                        break;
                                                    
                                                }
@@ -296,7 +307,10 @@ public class System_overflow {
                                                        
                                                         switch(opc){
                                                             case 1:
+                                                                System.out.println("\n\n");
                                                                 ArrayDadosCliente.imprimirArrayCliente();
+                                                                 System.out.println("Pressione Enter para continuar...");
+                                                                 System.in.read(); 
                                                                 break;
                                                             case 2:
                                                                 System.out.println("Digite o ID do cliente: ");
@@ -339,13 +353,19 @@ public class System_overflow {
                                     opbfuncionarios = acessorios.MenuGestaopessoasFuncionarioBusca();
                                         switch(opbfuncionarios){
                                             case 1:
+                                                System.out.println("\n\n");
                                                 ArrayFuncionario.imprimirArrayCliente();
+                                                System.out.println("\n\n");
+                                                 System.out.println("Pressione Enter para continuar...");
+                                                System.in.read(); 
                                                 break;
                                             case 2:
                                                
                                                 System.out.println("Digite o ID do funcionario: ");
                                                 int idfuncionaro = ValidarEntrada.validarInteiro();
                                                 ArrayFuncionario.buscarFuncionario(idfuncionaro);
+                                                 System.out.println("\n\nPressione Enter para continuar...");
+                                                System.in.read(); 
                                                 break;
                                                 
                                             }

@@ -14,12 +14,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Scanner;
-import javax.swing.JOptionPane;
+
 
 /**
- *
+ *Essa classe serve para o cadastro de clientes no programa
  * @author pedro
  */
 public class CadastroDepartamento {
@@ -44,8 +42,8 @@ public class CadastroDepartamento {
             Criar_BD_departamentos.criarTab();
             criarConexaoDP.conectar();
            
-            ResultSet resulset = null;
-            Statement statement = null;
+            ResultSet resulset;
+            Statement statement;
                      
             String query = "SELECT * FROM Departamento";
             statement = criarConexaoDP.CriarStatement();
@@ -57,8 +55,6 @@ public class CadastroDepartamento {
                          System.err.println("Aconteceu algum erro: "+e);
                     }
                      
-                  
-                    
                      String sqlInsert = "INSERT INTO departamento("
                           + "nomedp"
                           + ") VALUES(?)"

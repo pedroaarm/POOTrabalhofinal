@@ -38,28 +38,44 @@ public class VendasPorcliente {
                         
                   
             resultset = statement.executeQuery(select);
+            int aux=0;
               
                        // public Vendas(int idproduto, int quantidade, BigDecimal precounitario,BigDecimal precototal, String nomeproduto)
                                   System.out.println("1");
+                                  System.out.println("Compras a vista");
                       while (resultset.next()) {
                       if(resultset.getInt("idcliente") == id){
+                         aux = 1;
                           System.out.println("Data: "+resultset.getString("data")+"Produto(s)"+resultset.getString("produtos")+"Valor: "+resultset.getString("valor"));
                       }
                       
                       }
-;
+                      if(aux == 0){
+                          System.out.println("Nao consta nenhuma compra a vista");
+                      }
+                      aux =0;
+                        System.out.println("Compras mistas");
                       resultset = statement.executeQuery(selecttab2);
                       while (resultset.next()) {
                       if(resultset.getInt("idcliente") == id){
+                         aux = 1;
                           System.out.println("Data: "+resultset.getString("data")+"Valor total: "+resultset.getString("valortotal"));
                       }
                       }
-
+                        if(aux == 0){
+                          System.out.println("Nao consta nenhuma compra mista");
+                      }
+                      aux =0;
+                        System.out.println("Compra parcelada/cartao");
                      resultset = statement.executeQuery(selecttab3);
                       while (resultset.next()) {
                       if(resultset.getInt("idcliente") == id){
+                          aux = 1;
                           System.out.println("Data: "+resultset.getString("data")+"Valor total: "+resultset.getString("valor"));
                       }
+                      }
+                          if(aux == 0){
+                          System.out.println("Nao consta nenhuma compra parcelada");
                       }
                       
                               statement.close();
