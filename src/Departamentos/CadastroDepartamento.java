@@ -31,15 +31,14 @@ public class CadastroDepartamento {
         Integer codigo;
         
         public static  void cadastrar(){
-            for (int i=0;i<20;i++){
-                System.out.println("");
-            }
+            System.out.println("");
+            System.out.println("");
         System.out.println("----Cadastro de Departamento----");
         System.out.println("Insira o Nome do Departamento: ");
         Nome = ValidarEntrada.validarString();
-        boolean checarDP= validarDP.validar(Nome);
+
         
-                if(checarDP = true){
+               
             Criar_Conexao_Departamento criarConexaoDP = new Criar_Conexao_Departamento();
             Criar_BD_departamentos novoBD = new Criar_BD_departamentos();
             Criar_BD_departamentos.criarTab();
@@ -68,9 +67,9 @@ public class CadastroDepartamento {
                       PreparedStatement preparedstatment = criarConexaoDP.criarPreparedStatement(sqlInsert);
                       try {
                           
-          preparedstatment.setString(1,Nome);
+                                preparedstatment.setString(1,Nome);
             
-            int resulado = preparedstatment.executeUpdate();
+                     int resulado = preparedstatment.executeUpdate();
                   
             
             if(resulado == 1){
@@ -96,12 +95,11 @@ public class CadastroDepartamento {
 
                     
        
-                }  
+                }
+                      System.out.println("Departamento Cadastrado!");
                       ArraydeDadosDepartamento.inicializarArrayDepartamento(); // Atualizando o Array de Departamentos.
               criarConexaoDP.desconectar();
-    }else{
-                    System.out.println("Já existe um departamento cadastrado com esse nome!");
-                }
+  
                 
        
         }   

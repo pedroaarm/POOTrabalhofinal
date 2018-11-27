@@ -9,6 +9,7 @@ package GestaoPessoas.funcionario.BancoDedadosFuncionario;
 import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
 import GestaoPessoas.cliente.BancoDeDados.ArrayDadosCliente;
 import GestaoPessoas.cliente.BancoDeDados.Conexao_cliente;
+import GestaoPessoas.cliente.Cliente;
 import GestaoPessoas.funcionario.Funcionario;
 import TratamentodeErros.ValidarEntrada;
 import java.sql.PreparedStatement;
@@ -80,7 +81,17 @@ public abstract class ArrayFuncionario {
          }
      }    
      }
-              
+    public static boolean saberseexistefuncionario(int id){
+        
+        for (Funcionario funcionario : arrayfuncionario) {
+            if(funcionario.getIDfuncionario() == id){
+                return true;
+            }
+        }
+        return false;
+        
+        
+    }
     public static void excluirfuncionario(int id){
 
            
@@ -372,4 +383,16 @@ public abstract class ArrayFuncionario {
     }
 }
     }
+    
+    public static Funcionario retornafuncionario(int id){
+    
+        for (Funcionario funcionario : arrayfuncionario) {
+            
+        if(funcionario.getIDfuncionario() == id){
+            return funcionario;
+        }
+        
+    }
+    return null;
+}
 }

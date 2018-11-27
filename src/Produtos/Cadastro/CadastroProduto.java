@@ -8,6 +8,7 @@ package Produtos.Cadastro;
 import Departamentos.BancoDeDados.ArraydeDadosDepartamento;
 import Produtos.Produtos;
 import TratamentodeErros.ValidarEntrada;
+import java.io.IOException;
 import java.math.BigDecimal;
 
 
@@ -17,9 +18,9 @@ import java.math.BigDecimal;
  */
 public class CadastroProduto {
 
-    public static Produtos cadastro(){
+    public static Produtos cadastro() throws IOException{
 
-        System.out.println("---Cadastro de Produto do departamento Casa---");
+        System.out.println("---Cadastro de Produto---");
         System.out.println("");
         System.out.println("");
         
@@ -39,7 +40,7 @@ public class CadastroProduto {
         System.out.println("---Cadastro do produto em um departamento---");
         int numero,departamento=0,sair=0;
        do{
-        System.out.printf("Digite:\n1 - Mostrar Departamentos para cadastro do produto "+nomeproduto+"|2-Cadastrar"+" "+nomeproduto+" em um Departamento");
+        System.out.printf("Digite:\n1 - Mostrar Departamentos para cadastro do produto |2-Cadastrar em um Departamento:\n");
         int op = ValidarEntrada.validaropcao();
         
             switch(op){
@@ -53,6 +54,11 @@ public class CadastroProduto {
                        departamento = ValidarEntrada.validarInteiro();
                        boolean verifica = ArraydeDadosDepartamento.buscarDPId(departamento);
                         if(verifica == true){
+                            System.out.println("");
+                            System.out.println("Produto Cadastrado!");
+                              System.out.println("pressione Enter para continuar...");
+                               System.in.read();
+                               System.out.println("");
                             chave =1;
                             sair = 1;
                         }else{

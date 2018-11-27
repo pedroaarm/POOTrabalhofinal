@@ -25,9 +25,10 @@ public class ControleVendas {
         if(arrayvendaslocal.isEmpty()){
             System.out.println("Não há produtos no carrinho");
         }else{
-
+            System.out.println("\n\n");
+            System.out.println("Produtos no carrinho:");
             for (Vendas vendas : arrayvendaslocal) {
-                System.out.println("Produtos: "+vendas.getNomeproduto()+ " |Valor unitario"+vendas.getPrecounitario()+" |Quantidade: "+vendas.getQuantidade()+"Valor total: "+vendas.getPrecototal());
+                System.out.println("Produto: "+vendas.getNomeproduto()+ " |Valor unitario: "+vendas.getPrecounitario()+" |Quantidade: "+vendas.getQuantidade()+" |Valor total: "+vendas.getPrecototal());
                 
             }
             System.out.println("VALOR TOTAL DA COMPRA: "+valortotal);
@@ -37,8 +38,7 @@ public class ControleVendas {
     public static void adicionarcarrinho(Vendas vendas){
         arrayvendaslocal.add(vendas);
       valortotal= valortotal.add(vendas.getPrecototal());
-        
-        
+               
     }
     
     public static void removerprodutocarrinho(int id){
@@ -56,6 +56,7 @@ public class ControleVendas {
                   }
                   
               }
+               System.out.println("Produto Removido!");
               arrayvendaslocal.remove(i);
           }
             

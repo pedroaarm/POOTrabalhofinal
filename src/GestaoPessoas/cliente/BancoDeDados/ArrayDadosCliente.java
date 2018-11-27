@@ -404,6 +404,57 @@ public static void retirarpontos(int id) throws SQLException{
                     }
 
 }
+
+
+
+public static void adicionarpontos(int id, int pontosganhos){
+    Conexao_cliente conexao = new Conexao_cliente();
+             conexao.conectar();
+
+                PreparedStatement prepareStatement = null;
+                ResultSet resultset = null;
+
+                Statement statement;
+
+                    
+                String sql = "UPDATE cliente"
+                + " SET "
+                + " pontos = ?"
+                + "WHERE id = ?";
+                String select = "SELECT * FROM cliente;";
+                
+                    try{
+                statement = conexao.CriarStatement();
+                        
+                resultset = statement.executeQuery(select);
+
+                while (resultset.next()){
+
+
+                        if(resultset.getInt("id") == id){
+                            prepareStatement = conexao.criarPreparedStatement(sql);
+                            int pontosatual = resultset.getInt("pontos")+pontosganhos;
+                                if(pontosatual >0){
+                                prepareStatement.setInt(1,pontosatual); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+
+                                }else{
+                                    prepareStatement.setInt(1,0); //primeiro numero = saldo (primeiro "?", o segundo é o valor
+                                prepareStatement.setInt(2, id); // primeiro numero segunda? == segundo numero numero do id
+                                prepareStatement.executeUpdate();
+
+                        }
+                    
+                }}
+                }catch(SQLException e){
+                        System.err.println("Ocorreu o seguinte erro: "+e);
+                    }
+
 }
+    
+    
+}
+
 
 

@@ -10,9 +10,12 @@ import GestaoPessoas.cliente.CadastroCliente;
 import GestaoPessoas.cliente.Cliente;
 import Produtos.BancoDeDados.ArrayDeDadosProdutos;
 import TratamentodeErros.ValidarEntrada;
+import Venda.BancoDeDados.BDTabelaComprasParceladas;
 import Venda.BancoDeDados.ManipulacaoBDVendas;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.sql.SQLException;
 
 /**
  *
@@ -20,67 +23,99 @@ import java.math.BigDecimal;
  */
 public class EncerrarCompra {
     static Cliente cliente;
-    public static void encerrar() throws IOException{
+    public static void encerrar() throws IOException, SQLException{
         int idcliente;
-        boolean verificarexistenciacliente;
-    
-        System.out.println("Forma de pagamento: 1-A Vista | 2 - Cartao de credito 3 - Pagamento Misto");
-        int op = ValidarEntrada.validarInteiro();
+
+        int op; 
+        if(ControleVendas.valortotal.intValue()>0){
+          do{
+        System.out.println("\n\n\n");
+        System.out.println("Forma de pagamento: 1-A Vista |2 -Cartao de credito |3 -Pagamento Misto |0 -Voltar");
+        System.out.print("Opcao -> ");
+         op = ValidarEntrada.validarInteiro();
+      
             if(op ==1){
                 int ident;
-                System.out.println("O Cliente deseja se identificar? 1-SIM | 2-NAO");
+                System.out.println("\nO Cliente deseja se identificar? 1-SIM | 2-NAO");
+                System.out.print("Opcao -> ");
                 ident = ValidarEntrada.validarInteiro();
                     if(ident ==1){
                         int ecadastrado;
-                        System.out.println("O cliente é cadastrado? 1-SIM | 2-NAO");
+                        System.out.println("\nO cliente é cadastrado? 1-SIM | 2-NAO");
+                        System.out.print("Opcao ->");
                         ecadastrado = ValidarEntrada.validarInteiro();
                         if(ecadastrado == 1){
                                     boolean verificacliente=false;
                                     int idcliente1;
                                     do{
-                                        System.out.println("1 - Mostrar Lista de Clientes | 2 - Fazer identificacao:");
+                                        System.out.println("\n1 - Mostrar Lista de Clientes | 2 - Fazer identificacao:");
+                                        System.out.print("Opcao -> ");
                                         idcliente1 = ValidarEntrada.validarInteiro();
                                             if(idcliente1 == 1){
+                                                System.out.println("\n\n");
                                                 ArrayDadosCliente.imprimirArrayCliente();
+                                               System.out.println("Press Enter to continue...");
+                                                System.in.read();
+                                                System.out.println("");
+                                                System.out.println("");
+                                                
                                                 
                                             }if(idcliente1 == 2){
                                                 do{
-                                                System.out.println("Digite o id do cliente: ");
+                                                System.out.println("\nDigite o id do cliente: ");
+                                                System.out.print("ID -> ");
                                                 idcliente = ValidarEntrada.validarInteiro();
                                                 cliente = ArrayDadosCliente.verificaexistenciaretornacliente(idcliente);
                                                 if(cliente  == null){
-                                                    System.out.println("Cliente nao encontrado, tente novamente.");
+                                                    System.out.println("\nCliente nao encontrado, tente novamente.");
                                                 }else{
                                                     //parte do cliente identificado a vista
-                                                    System.out.println("O cliente deseja participar do programa de pontos? o cliente possui"+cliente.getPontos()+" pontos ");
+                                                    System.out.println("\nO cliente deseja participar do programa de pontos? o cliente possui"+cliente.getPontos()+" pontos ");
                                                     System.out.println("1 - SIM | 2 - NAO");
+                                                    System.out.print("Opcao -> ");
                                                     int opcaopontos = ValidarEntrada.validarInteiro();
                                                         if(opcaopontos == 1){
                                                             ProgramadeDesconto.programadevantagens(cliente);
                                                             if(ControleVendas.valortotal.doubleValue()>0){
                                                                 boolean verificar=false;
                                                                 do{
-                                                                System.out.println("Valor final da compra: "+ControleVendas.valortotal);
+                                                                System.out.println("\nValor final da compra: "+ControleVendas.valortotal);
+                                                                if(ControleVendas.valortotal.intValue()>0){
                                                                 System.out.println("Digite o valor em R$ dado pelo cliente: ");
+                                                                System.out.print("Valor -> ");
                                                                 BigDecimal valordado = ValidarEntrada.validarBigDecimal();
                                                                     if(valordado.compareTo(ControleVendas.valortotal)>=0){//verifica se o valor total com descontos eh maios que 0;
-                                                                        System.out.println("Troco: "+valordado.subtract(ControleVendas.valortotal));
+                                                                        System.out.println("\nTroco: "+valordado.subtract(ControleVendas.valortotal));
                                                                         System.out.println("Compra efetivada!");
                                                                         System.out.println("Press Enter to continue...");
                                                      System.in.read(); // esperar digitar enter pra sair;
                                                                         //efetivar compra, gravar no banco;
                                                                         ManipulacaoBDVendas.adicionaraobanco(cliente);
                                                                         for (int i=0;i<ControleVendas.arrayvendaslocal.size();i++){
-                                                                        ArrayDeDadosProdutos.subtrairestoque(cliente.getIdcliente(), ControleVendas.arrayvendaslocal.get(i));
+                                                                        ArrayDeDadosProdutos.subtrairestoque(ControleVendas.arrayvendaslocal.get(i).getIdproduto(), ControleVendas.arrayvendaslocal.get(i));
                                                                         verificar = true;
                                                                         }
                                                                     }else{
-                                                                        System.out.println("Valor insuficiente");
+                                                                        System.err.println("\nValor insuficiente");
                                                                         verificar = false;
                                                                     }
+                                                                }
+                                                                    System.out.println("\nCompra Efetivada!");
+                                                                    ManipulacaoBDVendas.adicionaraobanco(cliente);
+                                                                    ArrayDadosCliente.retirarpontos(idcliente);
+                                                                     System.out.println("\nPress Enter to continue...");
+                                                                     System.in.read();
                                                                 }while(verificar == false);
                                                             }else{
-                                                                System.out.println("Compra Efetivada!");
+
+                            ControleVendas.arraycloneproduto.clear();
+                            ControleVendas.valortotal = new BigDecimal("0");
+                            ControleVendas.arrayvendaslocal.clear();
+                            ArrayDeDadosProdutos.inicializarArrayProdutos();
+                            ArrayDadosCliente.InicializararrayCliente();
+                                                                                 
+                                                                System.out.println("\nPress Enter to continue...");
+                                                              System.in.read();
                                                                 
                                                             }
                                                         }
@@ -98,83 +133,74 @@ public class EncerrarCompra {
                        
                         CadastroCliente.cadastroCliente();
                     }if(ecadastrado > 2){
-                        System.out.println("opcao invalida");
+                        System.out.println("\nopcao invalida");
                     }
             }if(ident == 2){
-                System.out.println("");
                 
-                ControleVendas.mostrarcarrinho();
-                boolean valorsuficiente=true;
+  if(ControleVendas.valortotal.doubleValue()>0){
+             boolean verificar=false;
                 do{
-                System.out.println("Valor em dinheiro dado pelo cliente: ");
-                BigDecimal valor = ValidarEntrada.validarBigDecimal();
-                    if(valor.compareTo(ControleVendas.valortotal)<0  ){
-                        System.out.println("Valor insuficiente");
-                    }else{
-                        valorsuficiente =true;
-                    }
-            }while(valorsuficiente == true);
-                System.out.println("");
-         }
+                 System.out.println("\nValor final da compra: "+ControleVendas.valortotal);
+                  if(ControleVendas.valortotal.intValue()>0){
+                  System.out.println("Digite o valor em R$ dado pelo cliente: ");
+                  System.out.print("Valor -> ");
+                  BigDecimal valordado = ValidarEntrada.validarBigDecimal();
+                   if(valordado.compareTo(ControleVendas.valortotal)>=0){//verifica se o valor total com descontos eh maios que 0;
+                   System.out.println("\nTroco: "+valordado.subtract(ControleVendas.valortotal));
+                  System.out.println("Compra efetivada!");
+                  op=0;
+                   System.out.println("Press Enter to continue...");
+                     System.in.read(); // esperar digitar enter pra sair;
+                                                                        //efetivar compra, gravar no banco;
+ 
+                     for (int i=0;i<ControleVendas.arrayvendaslocal.size();i++){
+                      ArrayDeDadosProdutos.subtrairestoque(ControleVendas.arrayvendaslocal.get(i).getIdproduto(),ControleVendas.arrayvendaslocal.get(i));
+                        verificar = true;
+                              }
+                        }else{
+                           System.out.println("\nValor insuficiente");
+                        verificar = false;
+                                     }
+                       }
+  
+                                  }while(verificar == false);
+                                   }else{
+                                  ManipulacaoBDVendas.adicionaraobanco(null);
+                                  System.out.println("\nCompra Efetivada!");
+                                   ControleVendas.arraycloneproduto.clear();
+                                                                
+                                                                
+                                                            }
+                                                        }
+                                                    
             //jogar no BD;
     }if(op == 2){
-        //parcelado com cartao
-        
-       int idcliente1;
-        System.out.println("1 - Mostrar Lista de Clientes | 2 - Fazer identificacao:");
-        idcliente1 = ValidarEntrada.validarInteiro();
-            if(idcliente1 == 1){
-              ArrayDadosCliente.imprimirArrayCliente();
-                                          
-            }if(idcliente1 == 2){
-              do{
-                 System.out.println("Digite o id do cliente: ");
-                idcliente = ValidarEntrada.validarInteiro();
-                cliente = ArrayDadosCliente.verificaexistenciaretornacliente(idcliente);
-                  if(cliente  == null){
-                      System.out.println("Cliente nao encontrado, tente novamente.");
-                   }
-             }while(cliente == null);
-               }if(idcliente1>2){
-                     System.out.println("Opcao invalida");
-              
-               }
-                System.out.println("Digite o numero do cartão");
-                Integer numerocartao = ValidarEntrada.validarInteiro();
-                System.out.println("Digite o codigo de seguranca");
-                int codigoseguranca = ValidarEntrada.validarInteiro();
-                System.out.println("Digite o numero de vezes que o cliente deseja pagar: ");
-                int parcelas = ValidarEntrada.validarInteiro();
-                
-                BigDecimal valorparcelas = Vender.valortotal.divide(BigDecimal.valueOf(parcelas));
-                System.out.println(parcelas+ " parcelas de "+valorparcelas);
-                    System.out.println("Deseja confirmar a compa? 1-SIM | 2-NAO");
-                    int encerrar;
-                    do{
-                encerrar = ValidarEntrada.validarInteiro();
-                    if(encerrar == 1){
-                        //fazer o Banco encerrar a compra
-                        encerrar = 1;
-                    }if(encerrar == 2){
-                        encerrar =1;
-                    }if(encerrar > 3){
-                        System.out.println("opcao invalida");
-                    }
-                    }while(encerrar == 1);
-                
-        
-        
-        
-        
-        
-        
+        VendaParcelada.vendaparcelada();
+        op=0;
+
+               
+    }if(op ==3){
+        PapamentoMixto.pagarMisto();
+        op=0;
     }
-    
+    if(op >3){
+        System.out.println("Opcao Invalida!");
+    }
+    }while(op!=0 );
+    }
+        else{
+            System.out.println("Carrinho Vazio!");
+    }
 }
+
+ 
+    
+
     public static void encerrarcomcadastro(Cliente cliente){
         
-        System.out.println("O cliente tem "+cliente.getPontos()+ " no programa de vantagens, deseja utilizar como desconto? ");
+        System.out.println("\nO cliente tem "+cliente.getPontos()+ " no programa de vantagens, deseja utilizar como desconto? ");
         System.out.println("1 - SIM | 2 - NAO");
+        System.out.print("Opcao -> ");
           int op = ValidarEntrada.validarInteiro();
           do{
             if(op == 1){
@@ -185,4 +211,5 @@ public class EncerrarCompra {
             }
           } while(op == 1 || op ==2);
     }
+    
 }

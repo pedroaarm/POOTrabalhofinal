@@ -32,7 +32,7 @@ public class Adicionar_Produto {
             ResultSet resulset = null;
             Statement statement = null;
                      
-            String query = "SELECT * FROM Produtos";
+            String query = "SELECT * FROM produto";
             statement = criarConexaoDP.CriarStatement();
                      
                      try {

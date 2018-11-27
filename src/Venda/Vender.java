@@ -9,6 +9,7 @@ import Produtos.BancoDeDados.ArrayDeDadosProdutos;
 import Produtos.Produtos;
 import TratamentodeErros.ValidarEntrada;
 import Utilitarios.LimparTela;
+import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
@@ -17,7 +18,7 @@ import java.math.BigDecimal;
  */
 public class Vender {
     public static BigDecimal valortotal = new BigDecimal("0");
-     public static void venda(){
+     public static void venda() throws IOException{
 
          
 
@@ -30,19 +31,26 @@ public class Vender {
         int saidageral=1;
         int opcaoum;
         do{
-            System.out.println("1 - Mostrar Produtos em estoque | 2 - adicionar produto no carrinho:  ");
+            System.out.println("1 -Mostrar Produtos em estoque | 2 -Adicionar produto no carrinho  ");
+            System.out.print("Opção -> ");
             opcaoum = ValidarEntrada.validarInteiro();
             
             
             if(opcaoum == 1){
+                System.out.printf("\n\n");
                 ControleVendas.imprimeprodutosemestoque();
+                System.out.println("");
+               System.out.println("Pressione Enter para continuar...");
+               System.in.read(); 
+                
             }
            
            if(opcaoum ==2) {
             
             int id ;
         do{
-            System.out.println("Digite o ID do produto ou 0 pra sair ");
+            System.out.println("\nDigite o ID do produto: ");
+            System.out.print("ID -> ");
                          id = ValidarEntrada.validarInteiro();
              verifica = ArrayDeDadosProdutos.verificarexistencia(id);
              if(verifica == false){
@@ -53,9 +61,10 @@ public class Vender {
         Produtos produto = ControleVendas.retornaprodutoespecifico(id);
         
  
-        System.out.println("Produto: "+ produto.getNome()+ " |Referencia: "+produto.getReferencia()+" |Valor por unidade: "+produto.getValor());
-        System.out.println("Deseja continuar a operação?");
+        System.out.println("\n\nProduto: "+ produto.getNome()+ " |Referencia: "+produto.getReferencia()+" |Valor por unidade: "+produto.getValor());
+        System.out.println("\nDeseja continuar a operação?");
         System.out.println("1 - SIM |2- NAO");
+        System.out.print("Opção -> ");
         sai = ValidarEntrada.validarInteiro();
         
         
@@ -64,7 +73,8 @@ public class Vender {
                 boolean verificaquantidade = false;
             do{
               
-        System.out.println("Digite a quantidade: ");
+        System.out.println("\nDigite a quantidade: ");
+        System.out.print("Quantidade -> ");
        int quantidade;
         do{
         quantidade = ValidarEntrada.validarInteiro();
@@ -75,15 +85,16 @@ public class Vender {
         
             if(quantidade > produto.getQuantidadeestoque()){
                 System.out.println("");
-                System.err.println("Nao é possivel fazer essa operacao, quantidade em estoque insuficiente | Quantidade atual: "+produto.getQuantidadeestoque());
+                System.err.println("\nNao é possivel fazer essa operacao, quantidade em estoque insuficiente | Quantidade atual: "+produto.getQuantidadeestoque());
             }else{
             verificaquantidade = true;    
              preco = valorproduto.multiply(BigDecimal.valueOf(quantidade));
-             
-                System.out.println("Produto: "+produto.getNome()+ " |R$: "+produto.getValor()+ " X "+quantidade+" = "+ preco);
+                System.out.println("\n\n");
+                System.out.println("\nProduto: "+produto.getNome()+ " |Valor (R$): "+produto.getValor()+ " X "+quantidade+" = "+ preco);
                 boolean saida = false;
                 do{
-                System.out.println("Colocar no carrinho? 1-SIM | 2-NAO");
+                System.out.println("\nColocar no carrinho? 1-SIM | 2-NAO");
+                System.out.print("Opção -> ");
                 int opcao = ValidarEntrada.validarInteiro();
                
                     if(opcao == 1){ 
@@ -111,10 +122,10 @@ public class Vender {
     }while (sair == false);
         }
             LimparTela.limparpouco();
-            System.out.println("Produtos no carrinho:");
             ControleVendas.mostrarcarrinho();
              LimparTela.limparpouco();
-            System.out.println("Deseja continuar comprando? 1-SIM | 2-NAO ");
+            System.out.println("\nDeseja continuar comprando? 1-SIM | 2-NAO ");
+            System.out.print("Opção -> ");
             saidageral = ValidarEntrada.validarInteiro();
              LimparTela.limparpouco();
            }

@@ -13,7 +13,7 @@ import GestaoPessoas.Pessoa;
  */
 public class Cliente extends Pessoa {
     
-    private int idcliente;
+    private int idcliente=0;
     private String rg;
     private Integer pontos;
 

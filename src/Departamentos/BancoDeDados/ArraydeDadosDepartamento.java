@@ -1,15 +1,12 @@
 package Departamentos.BancoDeDados;
 
 
-import Utilitarios.ValidarNovoDepartamento;
 import TratamentodeErros.ValidarEntrada;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -100,10 +97,13 @@ public class ArraydeDadosDepartamento {
        for (Map.Entry<Integer,String> hashdp : Hashdepartamento.entrySet()) {
               
                 if (hashdp.getKey() == num){
+                    System.out.println("ID: "+hashdp.getKey()+" | Nome: "+hashdp.getValue());
                     return true;
                 }
+                System.out.println("Departamento nao encontrado!");
    }
-       return false;
+       
+                    return false;
                }
         
    /**
@@ -112,24 +112,24 @@ public class ArraydeDadosDepartamento {
     * @param nome é o nome do departamento que se deseja verificar a Existencia
     * @return O retorno é True: Caso o departamendo seja encontrado, ou falso, caso esse departamento não exista no Banco de Dados
     */
-   static private boolean SaberseExisteDP(String nome){
+   static private boolean SaberseExisteDP(int id){
        
        for (Map.Entry<Integer,String> hashdp : Hashdepartamento.entrySet()) {
               
-                if (hashdp.getValue().equals(nome)){
+                if (hashdp.getKey() == id){
                     return true;
                 }
    }
        return false;
                }
-   
+ 
    /**
-    * Aqui acontece a Edição do nome do departamento. OBS: Não é possivel editar o ID.
-    * @param nome o nome do departamento que o cliente deseja editar
+    * Aqui acontece a Edição do id do departamento. OBS: Não é possivel editar o ID.
+    * @param id o id do departamento que o cliente deseja editar
     */
-   static public void editardp(String nome){
-     boolean Departamentoexiste= ValidarNovoDepartamento.validar(nome);//Aqui é veridicado se ja existe um departamento com esse nome
-        if (Departamentoexiste == false){
+   static public void editardp(int id){
+    
+        
             System.out.println("Digite o novo Departamento: ");
             String Novonome = ValidarEntrada.validarString();
             Criar_Conexao_Departamento conexao = new Criar_Conexao_Departamento();
@@ -154,7 +154,7 @@ public class ArraydeDadosDepartamento {
                 while (resultset.next()){
                    // codigo++;
                     System.out.println(resultset.getString("nomedp"));
-                        if(resultset.getString("nomedp").equals(nome)){
+                        if(resultset.getInt("id")==id){
                             prepareStatement = conexao.criarPreparedStatement(sql);
                               
                                 prepareStatement.setString(1,Novonome); //primeiro numero = saldo (primeiro "?", o segundo é o valor
@@ -172,27 +172,23 @@ public class ArraydeDadosDepartamento {
                     }catch(SQLException e){
                         System.err.println("Ocorreu o seguinte erro: "+e);
                     }
-            
-            
-        }else{
-            System.out.println("Esse departamento não existe");
+
         }
+
        
-   }
+   
    
    /**
     * 
     * Esse metodo faz a exclusão de um departamento.
     *
-    * @param nome O nome do departamento que o cliente deseja excluir 
+   
     */
    
-   static public void excluirdepartamento (String nome){
+   static public void excluirdepartamento (int id){
        
-       boolean ExisteDepartamento = ValidarNovoDepartamento.validar(nome);
        
-       if(ExisteDepartamento == true){
-   
+    
       Criar_Conexao_Departamento conexao = new Criar_Conexao_Departamento(); 
          conexao.conectar();
        
@@ -203,8 +199,7 @@ public class ArraydeDadosDepartamento {
           String sql = "SELECT * FROM departamento;";
                  
                   statement = conexao.CriarStatement();
-                  
-                  int entrou=0;
+
                   
                    try {
                        
@@ -217,9 +212,9 @@ public class ArraydeDadosDepartamento {
                           ResultSet s = resultset;
                           
                             
-                          if (resultset.getString("nomedp").equalsIgnoreCase(nome)){
+                          if (resultset.getInt("id") == id){
 
-                                  PreparedStatement prepared= null;
+                                  PreparedStatement prepared;
                                   String delete = "DELETE FROM departamento"
                                   + " WHERE id = ?;";
                                   
@@ -230,18 +225,16 @@ public class ArraydeDadosDepartamento {
                           }
                       }
                                   
-                              }catch(Exception e){
+                              }catch(SQLException e){
                                       System.out.println("erro "+e);
                                       
                               }
-    
+                   System.out.println("Departamento excluido!");
                    inicializarArrayDepartamento();
        }
-       else{
-           System.out.println("Esse Departamento não existe");
-       }
+       
 }
-}
+
                           
         
 

@@ -21,16 +21,16 @@ public class ValidarNovoDepartamento {
      * 
      * 
      * 
-   * @param nome esse paramentro é o nome do departamento que o cliente deseja buscar.
+
      * @return Retorna true caso o departamento seja encontrado, ou false caso o departamento não exista no banco de dados. 
      */
-   public static boolean validar(String nome){
+   public static boolean validar(int id){
        
         //Saber se o departamento existe;
         
             for (int i=0;i<ArraydeDadosDepartamento.Hashdepartamento.size();i++){
                     for (Map.Entry<Integer,String> hashdp : Hashdepartamento.entrySet()) {
-                        if (hashdp.getValue().equalsIgnoreCase(nome)){
+                        if (hashdp.getKey() == id){
                             return false;
                         }
                     }

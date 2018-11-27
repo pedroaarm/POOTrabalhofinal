@@ -57,10 +57,10 @@ public abstract class ArrayDeDadosProdutos  {
 
     }
     
-   static public void buscarProdutoNome(String nome){
+   static public void buscarProdutoNome(int id){
           for (Produtos arrayproduto : arrayprodutos) {
              
-                if (arrayproduto.getNome().equalsIgnoreCase(nome)){
+                if (arrayproduto.getId() == id){
                     System.out.println("***Produto Encontrado***");
             System.out.println("ID: "+arrayproduto.getId()+"| nome: "+arrayproduto.getNome()+" |Marca: "+ arrayproduto.getReferencia()+" |Departamento: "+arrayproduto.getDepartamento()+"|Referencia: "+arrayproduto.getReferencia()+ "| Preço: "+arrayproduto.getValor()+"| Quantidade em Estoque: "+arrayproduto.getQuantidadeestoque());   
 
@@ -103,7 +103,9 @@ public abstract class ArrayDeDadosProdutos  {
                             if(resultset.getInt("id") == id){
                                 System.out.println("Deseja mesmo excluir "+resultset.getString("nome_produto")+" |ID: "+resultset.getInt("id"));
                                 System.out.println("1 - SIM | 2 - NAO");
-                                int opexcluir = ValidarEntrada.validaropcao();
+                                int opexcluir;
+                               do{
+                                   opexcluir = ValidarEntrada.validaropcao();
                                 if (opexcluir == 1){
                                 PreparedStatement prepared= null;
                                   String delete = "DELETE FROM produto"
@@ -117,10 +119,15 @@ public abstract class ArrayDeDadosProdutos  {
                                       System.out.println("erro "+e);
                                       
                               }
-                                }else{
+                                   System.out.println("Produto Excluido!");
+                                }if(opexcluir == 2){
                                     System.out.println("Operação cancelada");
                                 }
-                            }
+                                if(opexcluir > 3){
+                                    System.out.println("Opcao invalida!");
+                                }
+                            }while(opexcluir !=2);
+                               }
                       }
                       
                    }catch(SQLException e){

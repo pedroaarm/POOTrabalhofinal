@@ -28,12 +28,12 @@ public class Menus {
         
                          
             opcao = 0;
-         System.out.println("\n  ==================================");
-			System.out.println("  |     1 - Gestão de Produtos      |");
-			System.out.println("  |     2 - Gestão de Vendas -Não implementado        |");
-			System.out.println("  |     3 - Gestão de Pessoas  -NI     |");
-			System.out.println("  |     0 - Sair    -- NI                |");
-			System.out.println("  ===================================\n");
+                        System.out.println("\n   ================================================");
+			System.out.println("  |     1 - Gestão de Produtos & Departamentos      |");
+			System.out.println("  |     2 - Gestão de Vendas                        |");
+			System.out.println("  |     3 - Gestão de Pessoas                       |");
+			System.out.println("  |     0 - Sair                                    |");
+			System.out.println("  ===================================================\n");
                         System.out.print(" Opção -> ");
                         opcao = ValidarEntrada.validaropcao();
          
@@ -51,7 +51,7 @@ public class Menus {
          System.out.println("\n  ==================================");
 			System.out.println("  |     1 - Adicionar Produtos         |");
 			System.out.println("  |     2 - Buscar Produto             |");			
-                        System.out.println("  |     3 - Remover Produtos  -        |");
+                        System.out.println("  |     3 - Remover Produtos           |");
 			System.out.println("  |     4 - Editar Produto             |");
 			System.out.println("  |     5 - Gestão de Departamentos    |");
 			System.out.println("  |     0 - Voltar                     |");
@@ -84,14 +84,14 @@ public class Menus {
 3      */
      public Integer MenuGestaoDepartamentos(){
           int opcao =0;
-         System.out.println("\n  ==================================");
-         		System.out.println("  |     1 - Adicionar Departamento |");  
-			System.out.println("  |     2 - Mostrar Todos os Departamentos   |");
+                        System.out.println("\n  =========================================");
+         		System.out.println("  |     1 - Adicionar Departamento          |");  
+			System.out.println("  |     2 - Mostrar Todos os Departamentos  |");
 			System.out.println("  |     3 - Mostrar Departamento Especifico |");                        
 			System.out.println("  |     4 - Editar Departamentos            |");
 			System.out.println("  |     5 - Excluir Departamento            |");
-			System.out.println("  |     0 - Voltar                            |");
-			System.out.println("  ===================================\n");
+			System.out.println("  |     0 - Voltar                          |");
+			System.out.println("  ===========================================\n");
                         System.out.print(" Opção -> ");
                         opcao = ValidarEntrada.validaropcao();
          
@@ -103,11 +103,11 @@ public class Menus {
         
                          
             opcao = 0;
-         System.out.println("\n  ==================================");
-			System.out.println("  |     1 - Mostrar Todos os produtos      |");
-			System.out.println("  |     2 - Buscar Produto Especifico        |");
-			System.out.println("  |     0 - Sair    -- NI                |");
-			System.out.println("  ===================================\n");
+                        System.out.println("\n  ===================================");
+			System.out.println("  |     1 - Mostrar Todos os produtos  |");
+			System.out.println("  |     2 - Buscar Produto Especifico  |");
+			System.out.println("  |     0 - Sair                       |");
+			System.out.println("  ====================================\n");
                         System.out.print(" Opção -> ");
                         opcao = ValidarEntrada.validaropcao();
          
@@ -136,7 +136,8 @@ public class Menus {
 			System.out.println("  |     1 - Buscar Clientes    |");
 			System.out.println("  |     2 - Adicionar Clientes |");
 			System.out.println("  |     3 - Excluir Cliente    |");   
-			System.out.println("  |     4 - Editar Cliente     |");                        
+			System.out.println("  |     4 - Editar Cliente     |");
+			System.out.println("  |     5 - Gerar ContraCheque |");                        
 			System.out.println("  |     0 - Voltar             |");
 			System.out.println("  ===================================\n");
                         System.out.print(" Opção -> ");
@@ -149,9 +150,9 @@ public class Menus {
          
          int opcao =0;
          System.out.println("\n  ==================================");
-			System.out.println("  |     1 - Mostrar todos os clintes        |");
-			System.out.println("  |     2 - Buscar Especifico    |");                      
-			System.out.println("  |     0 - Voltar          |");
+			System.out.println("  |     1 - Mostrar todos os clintes   |");
+			System.out.println("  |     2 - Buscar Especifico          |");                      
+			System.out.println("  |     0 - Voltar                     |");
 			System.out.println("  ===================================\n");
                         System.out.print(" Opção -> ");
                         opcao = ValidarEntrada.validaropcao();
@@ -191,10 +192,10 @@ public class Menus {
           int opcao =0;
          System.out.println("\n  ==================================");
          		System.out.println("  |     1 - Editar Nome            |");  
-			System.out.println("  |     2 - Editar CPF      |");
-			System.out.println("  |     3 - Editar RG          |");                        
-			System.out.println("  |     4 - Editar Endereco       |");
-			System.out.println("  |     5 - Editar telefone      |");
+			System.out.println("  |     2 - Editar CPF             |");
+			System.out.println("  |     3 - Editar RG              |");                        
+			System.out.println("  |     4 - Editar Endereco        |");
+			System.out.println("  |     5 - Editar telefone        |");
 			System.out.println("  |     0 - Voltar                 |");
 			System.out.println("  ===================================\n");
                         System.out.print(" Opção -> ");
@@ -206,13 +207,13 @@ public class Menus {
                   public Integer MenuFuncionarioEditar(){
           int opcao =0;
          System.out.println("\n  ==================================");
-         		System.out.println("  |     1 - Editar Nome            |");  
-			System.out.println("  |     2 - Editar CPF      |");
-			System.out.println("  |     3 - Editar salario        |");     
+         		System.out.println("  |     1 - Editar Nome                       |");  
+			System.out.println("  |     2 - Editar CPF                        |");
+			System.out.println("  |     3 - Editar salario                    |");     
                         System.out.println("  |     4 - Editar Jornada de trabalho        |");   
-			System.out.println("  |     5 - Editar Endereco       |");
-			System.out.println("  |     6 - Editar telefone      |");
-			System.out.println("  |     0 - Voltar                 |");
+			System.out.println("  |     5 - Editar Endereco                   |");
+			System.out.println("  |     6 - Editar telefone                   |");
+			System.out.println("  |     0 - Voltar                            |");
 			System.out.println("  ===================================\n");
                         System.out.print(" Opção -> ");
                         opcao = ValidarEntrada.validaropcao();
@@ -224,15 +225,11 @@ public class Menus {
                   
                                 public Integer Menuvendas(){
           int opcao =0;
-         System.out.println("\n  ==================================");
-         		System.out.println("  |     1 - NOVA VENDA                        |");  
-			System.out.println("  |     2 - Verificar Vendas nessa sessao     |");
-			System.out.println("  |     3 - Dados de comprar por cliente      |");     
-                        System.out.println("  |     4 - Editar Jornada de trabalho        |");   
-			System.out.println("  |     5 - Editar Endereco                   |");
-			System.out.println("  |     6 - Editar telefone                   |");
-			System.out.println("  |     0 - Voltar                            |");
-			System.out.println("  ===================================\n");
+                        System.out.println("\n  ============================================");
+         		System.out.println("  |     1 - Realizar venda                   |");  
+                        System.out.println("  |     2 - Verificar vendas por cliente     |");
+			System.out.println("  |     0 - Voltar                           |");
+			System.out.println("  ============================================\n");
                         System.out.print(" Opção -> ");
                         opcao = ValidarEntrada.validaropcao();
          
@@ -241,14 +238,14 @@ public class Menus {
                                 
      public Integer MenuEscolhaproduto(){
           int opcao =0;
-         System.out.println("\n  ==================================");
-         		System.out.println("  |     1 -Colocar um produto no carrinho    |");  
-			System.out.println("  |     2 -Mostrar Produtos no carrinho      |");
+                        System.out.println("\n  ==========================================");
+         		System.out.println("  |     1 -Colocar um produto no carrinho  |");  
+			System.out.println("  |     2 -Mostrar produtos no carrinho    |");
 			System.out.println("  |     3 -Remover Produto do carrinho     |");   
-                        System.out.println("  |     4 -FINALIZAR COMPRA     |"); 
-                         System.out.println("  |    5 - cancelar compra     |"); 
-                        System.out.println("  |     0 -Sair                              |");
-                         System.out.println("\n  ==================================");
+                        System.out.println("  |     4 -**Finalizar Compra**            |"); 
+                        System.out.println("  |     5 -Cancelar compra                 |"); 
+                        System.out.println("  |     0 -Voltar                          |");
+                        System.out.println("  ==========================================");
                         System.out.print(" Opção -> ");
                         opcao = ValidarEntrada.validaropcao();
          
