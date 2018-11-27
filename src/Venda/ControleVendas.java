@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 
-/**
+/**Faz os controles e atualizacoes do array de vendas, alem de mostrar os produtos adicionados no carrinho
  *
  * @author pedro
  */

@@ -8,16 +8,13 @@ package Venda;
 import GestaoPessoas.cliente.BancoDeDados.ArrayDeDados_Cliente;
 import GestaoPessoas.cliente.Cliente;
 import Produtos.BancoDeDados.ArrayDeDados_Produtos;
-import Produtos.BancoDeDados.MovimentacaoArray;
 import TratamentodeErros.ValidarEntrada;
 import Venda.BancoDeDados.BDTabelaComprasParceladas;
-import Venda.BancoDeDados.ManipulacaoBDVendas;
 import static Venda.EncerrarCompra.cliente;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.MathContext;
 
-/**
+/**Essa compra faz a venda de modo parcelado
  *
  * @author pedro
  */

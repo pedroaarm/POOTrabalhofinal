@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
+/**Essa classe mostra as vendas feiras por um determinado cliente
  *
  * @author pedro
  */
@@ -25,8 +25,8 @@ public class VendasPorcliente {
          conexaovendas.conectar();
          
        
-          ResultSet resultset = null;
-           Statement statement = null;
+          ResultSet resultset;
+           Statement statement ;
         
           
           String select = "SELECT * FROM vendas;";

@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
+/**Cria o banco de dados de vendas
  *
  * @author pedro
  */

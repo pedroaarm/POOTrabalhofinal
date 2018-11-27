@@ -9,7 +9,6 @@ import GestaoPessoas.cliente.Cliente;
 import Utilitarios.RetornaData;
 import Venda.ControleVendas;
 import Venda.VendaParcelada;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,7 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
+/**Cria o Banco de dados de compras parceladas
  *
  * @author pedro
  */

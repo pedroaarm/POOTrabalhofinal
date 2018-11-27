@@ -11,7 +11,7 @@ import TratamentodeErros.ValidarEntrada;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-/**
+/**Classe para inicializar as vendas
  *
  * @author pedro
  */
@@ -25,7 +25,7 @@ public class Vender {
         int sai;
         BigDecimal preco;
         BigDecimal valorproduto;
-        boolean verifica = false;
+        boolean verifica;
         boolean sair = false;
         int saidageral=1;
         int opcaoum;

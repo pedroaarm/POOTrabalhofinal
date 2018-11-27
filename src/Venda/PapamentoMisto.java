@@ -13,11 +13,11 @@ import TratamentodeErros.ValidarEntrada;
 import Venda.BancoDeDados.BDTabelaVendasMistas;
 import java.math.BigDecimal;
 
-/**
+/**Faz o pagamendo de forma mista
  *
  * @author pedro
  */
-public class PapamentoMixto {
+public class PapamentoMisto {
     
     private int quantidadeparcelas;
     private BigDecimal valorparcelado;
@@ -67,7 +67,7 @@ public class PapamentoMixto {
                     confirmar = ValidarEntrada.validarInteiro();
                         if(confirmar == 1){
                             System.out.println("Compra Efetivada!");
-                            PapamentoMixto pagamentomisto = new PapamentoMixto(quantidadedevezes, valorparcela, ControleVendas.valortotal,valoravista);
+                            PapamentoMisto pagamentomisto = new PapamentoMisto(quantidadedevezes, valorparcela, ControleVendas.valortotal,valoravista);
                             BDTabelaVendasMistas.adicionarcompramista(cliente, pagamentomisto);
                             System.out.println("");
                             ArrayDeDados_Cliente.adicionarpontos(id, pontosganho);
@@ -91,7 +91,7 @@ public class PapamentoMixto {
         
     }
 
-    public PapamentoMixto(int quantidadeparcelas, BigDecimal valorparcelado, BigDecimal valortotal, BigDecimal valorpagoavista) {
+    public PapamentoMisto(int quantidadeparcelas, BigDecimal valorparcelado, BigDecimal valortotal, BigDecimal valorpagoavista) {
         this.quantidadeparcelas = quantidadeparcelas;
         this.valorparcelado = valorparcelado;
         this.valortotal = valortotal;

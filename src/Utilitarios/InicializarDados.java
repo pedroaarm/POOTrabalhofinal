@@ -14,7 +14,7 @@ import GestaoPessoas.funcionario.BancoDedadosFuncionario.ArrayDeDados_Funcionari
 import GestaoPessoas.funcionario.BancoDedadosFuncionario.CriarConexao_Funcionario;
 import GestaoPessoas.funcionario.BancoDedadosFuncionario.CriarBD_Funcionario;
 import Produtos.BancoDeDados.ArrayDeDados_Produtos;
-import Produtos.BancoDeDados.CriarBancoProdutos;
+import Produtos.BancoDeDados.CriarBanco_Produtos;
 import Venda.BancoDeDados.BDTabelaComprasParceladas;
 import Venda.BancoDeDados.BDTabelaVendasMistas;
 import Venda.BancoDeDados.CriaBdVenda;
@@ -26,7 +26,7 @@ import Venda.BancoDeDados.CriaConexaoVendas;
  */
 public class InicializarDados {
     public static void inicializar(){
-             CriarBancoProdutos.criarTab();
+             CriarBanco_Produtos.criarTab();
         CriarBD_Cliente.criarTab(); 
         CriarBD_departamentos BdDep = new CriarBD_departamentos();
        CriarConexao_Departamento conexaoDp = new CriarConexao_Departamento();

@@ -23,7 +23,7 @@ public abstract class ArrayDeDados_Produtos  {
     public static void inicializarArrayProdutos(){
         arrayprodutos.clear();
         
-          Criar_Conexao_Produtos criarConex = new Criar_Conexao_Produtos();
+          CriarConexao_Produtos criarConex = new CriarConexao_Produtos();
          criarConex.conectar();
          
        
@@ -81,7 +81,7 @@ public abstract class ArrayDeDados_Produtos  {
    }
    public static void exluirProduto(int id){
        
-       Criar_Conexao_Produtos conexao = new Criar_Conexao_Produtos(); 
+       CriarConexao_Produtos conexao = new CriarConexao_Produtos(); 
          conexao.conectar();
        
           ResultSet resultset = null;
@@ -154,7 +154,7 @@ public abstract class ArrayDeDados_Produtos  {
    
    public static void subtrairestoque(int id, Vendas vendas){
        
-        Criar_Conexao_Produtos conexao = new Criar_Conexao_Produtos();
+        CriarConexao_Produtos conexao = new CriarConexao_Produtos();
              conexao.conectar();
 
                 PreparedStatement prepareStatement = null;
@@ -200,7 +200,7 @@ public abstract class ArrayDeDados_Produtos  {
                     boolean verificaid = verificarexistencia(id);
                     
                     if(verificaid == true){
-            Criar_Conexao_Produtos conexao = new Criar_Conexao_Produtos();
+            CriarConexao_Produtos conexao = new CriarConexao_Produtos();
              conexao.conectar();
 
                 PreparedStatement prepareStatement = null;

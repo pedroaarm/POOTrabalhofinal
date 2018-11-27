@@ -8,8 +8,7 @@ package Venda.BancoDeDados;
 import GestaoPessoas.cliente.Cliente;
 import Utilitarios.RetornaData;
 import Venda.ControleVendas;
-import Venda.PapamentoMixto;
-import Venda.VendaParcelada;
+import Venda.PapamentoMisto;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,7 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
+/**Cria o banco de dados de compras mistas
  *
  * @author pedro
  */
@@ -45,11 +44,11 @@ public class BDTabelaVendasMistas {
             System.out.println(e.getMessage());
         }   
 }
-  public static void adicionarcompramista(Cliente cliente, PapamentoMixto pagamentomisto){
+  public static void adicionarcompramista(Cliente cliente, PapamentoMisto pagamentomisto){
            CriaConexaoVendas conexaovendas = new CriaConexaoVendas();
           conexaovendas.conectar();
             ResultSet resulset = null;
-            Statement statement = null;
+            Statement statement;
                      
             String query = "SELECT * FROM vendasmista";
             statement = conexaovendas.CriarStatement();

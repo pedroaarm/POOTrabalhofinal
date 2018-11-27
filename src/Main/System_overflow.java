@@ -14,7 +14,7 @@ import GestaoPessoas.cliente.CadastroCliente;
 import GestaoPessoas.funcionario.BancoDedadosFuncionario.ArrayDeDados_Funcionario;
 import GestaoPessoas.funcionario.GerarContraCheque;
 import GestaoPessoas.funcionario.cadastro.CadastroFuncionario;
-import Utilitarios.Saudacao;
+import Utilitarios.EnumS;
 import Venda.CancelarVenda;
 import Venda.ControleVendas;
 import Venda.EncerrarCompra;
@@ -39,7 +39,7 @@ public class System_overflow {
      // conexaoDp.CriarStatement();
       // Criar_BD_departamentos.criarTab();
         System.out.println("\n\n### System Overflow - Sistema Comercial de Controle de Compras e Vendas ###");
-			     System.out.println(Saudacao.SAUDACAO);
+			     System.out.println(EnumS.SAUDACAO);
                         
                 do{
                   opcao = acessorios.MenuPrincipal(); //Menu Principal

@@ -2,11 +2,8 @@ package Venda;
 
 
 import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-/**
+/**Essa classe cria um objeto vendas
  *
  * @author pedro
  */

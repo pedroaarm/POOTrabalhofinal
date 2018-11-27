@@ -9,11 +9,12 @@ package Utilitarios;
  *
  * @author pedro
  */
-public enum Saudacao {
-   SAUDACAO("sEJA BEM VINDO!");
+public enum EnumS {
+   SAUDACAO("SEJA BEM VINDO!"),
+   PROXIMA("ATE A PROXIMA!");
 
    private String descricao;
-   Saudacao(String descricao) {
+   EnumS(String descricao) {
         this.descricao = descricao;
     }
  

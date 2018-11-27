@@ -28,7 +28,7 @@ import java.sql.Statement;
  *
  * @author pedro
  */
-public class CriarBancoProdutos {
+public class CriarBanco_Produtos {
 
      public static void criarTab() {
         // SQLite connection string

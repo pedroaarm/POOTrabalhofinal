@@ -11,17 +11,14 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
+
+
+
+/**Cria conexao com o BD produto
  *
  * @author pedro
  */
-
-
-/**
- *
- * @author pedro
- */
-public class Criar_Conexao_Produtos {
+public class CriarConexao_Produtos {
       Connection c = null;
         public boolean conectar(){
                                                               

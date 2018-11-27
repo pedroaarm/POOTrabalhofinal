@@ -1,29 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Produtos.Cadastro;
 
-import Departamentos.BancoDeDados.ArraydeDados_Departamento;
+
 import Departamentos.BancoDeDados.CriarBD_departamentos;
 import Produtos.BancoDeDados.ArrayDeDados_Produtos;
-import Produtos.BancoDeDados.CriarBancoProdutos;
-import Produtos.BancoDeDados.Criar_Conexao_Produtos;
+import Produtos.BancoDeDados.CriarConexao_Produtos;
 import Produtos.Produtos;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
+/**Acidiona um produto ao banco de dados
  *
  * @author pedro
  */
 public class Adicionar_Produto {
     
     public static void addBanco(Produtos produto){
-        Criar_Conexao_Produtos criarConexaoDP = new Criar_Conexao_Produtos();
+        CriarConexao_Produtos criarConexaoDP = new CriarConexao_Produtos();
         //conexao.conectar();
         String nome = produto.getNome();
         CriarBD_departamentos.criarTab();

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 
-/**
+/**Faz o cadastro de produtos e chammas as outras funcoes para isso
  public 
  * @author pedro
  */

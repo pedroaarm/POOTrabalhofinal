@@ -5,19 +5,16 @@
  */
 package Venda.BancoDeDados;
 
-import Departamentos.BancoDeDados.CriarBD_departamentos;
-import GestaoPessoas.cliente.BancoDeDados.ArrayDeDados_Cliente;
-import GestaoPessoas.cliente.BancoDeDados.CriarConexao_cliente;
+
 import GestaoPessoas.cliente.Cliente;
 import Utilitarios.RetornaData;
 import Venda.ControleVendas;
-import Venda.Vendas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
+/**Essa classe faz as devidas manipulacoes no banco de dados vendas
  *
  * @author pedro
  */
@@ -30,7 +27,7 @@ public class ManipulacaoBDVendas {
         CriaConexaoVendas conexaovendas = new CriaConexaoVendas();
           conexaovendas.conectar();
             ResultSet resulset = null;
-            Statement statement = null;
+            Statement statement ;
                      
             String query = "SELECT * FROM vendas";
             statement = conexaovendas.CriarStatement();

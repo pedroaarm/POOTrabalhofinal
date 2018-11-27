@@ -8,7 +8,7 @@ package Venda;
 import GestaoPessoas.cliente.Cliente;
 import java.math.BigDecimal;
 
-/**
+/**Programa de desconto, a cada 10 reais de compras a vista, o cliente ganha 1 ponto
  *
  * @author pedro
  */

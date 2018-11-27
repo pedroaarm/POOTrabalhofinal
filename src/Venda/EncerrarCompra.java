@@ -10,14 +10,12 @@ import GestaoPessoas.cliente.CadastroCliente;
 import GestaoPessoas.cliente.Cliente;
 import Produtos.BancoDeDados.ArrayDeDados_Produtos;
 import TratamentodeErros.ValidarEntrada;
-import Venda.BancoDeDados.BDTabelaComprasParceladas;
 import Venda.BancoDeDados.ManipulacaoBDVendas;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.sql.SQLException;
 
-/**
+/**Opcao de encerrar compra, chamas as outras funcoes de pagamento misto ou parcelado
  *
  * @author pedro
  */
@@ -180,7 +178,7 @@ public class EncerrarCompra {
 
                
     }if(op ==3){
-        PapamentoMixto.pagarMisto();
+        PapamentoMisto.pagarMisto();
         op=0;
     }
     if(op >3){

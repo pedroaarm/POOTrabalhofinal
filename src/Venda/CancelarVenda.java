@@ -5,7 +5,7 @@
  */
 package Venda;
 
-/**
+/**Cancela a venda
  *
  * @author pedro
  */
