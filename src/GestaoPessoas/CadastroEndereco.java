@@ -19,12 +19,15 @@ public class CadastroEndereco {
      */
         public static  Endereco cadendereco() {
       
-        System.out.println("---Cadastro de Endereco---");
+        System.out.println("\n\t***Cadastro informações de Endereco***\n");
         System.out.println("Digite o nome da rua: ");
+         System.out.print("Nome -> ");
         String rua = ValidarEntrada.validarString();
         System.out.println("Digite o nome do Bairro: ");
+        System.out.print("Nome -> ");
         String bairro = ValidarEntrada.validarString();
         System.out.println("Digite a cidade: ");
+        System.out.print("Nome -> ");
         String cidade = ValidarEntrada.validarString();
         Endereco endereco = new Endereco(rua,bairro,cidade);
         return endereco;

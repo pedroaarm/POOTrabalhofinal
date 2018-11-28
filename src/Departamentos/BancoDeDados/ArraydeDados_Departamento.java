@@ -2,6 +2,7 @@ package Departamentos.BancoDeDados;
 
 
 import TratamentodeErros.ValidarEntrada;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -64,16 +65,20 @@ public class ArraydeDados_Departamento {
      * 
      */
     
-   static public void imprimirTodosDepartamentos(){
-
+   static public void imprimirTodosDepartamentos() throws IOException{
        
-        System.out.println("***DEPARTAMENTOS***");
+       
+        System.out.println("\n\t***DEPARTAMENTOS***\n");
+        if(Hashdepartamento.isEmpty()){
+            System.out.println("Não existe departamento cadastrado");
+        }else{
         for (Map.Entry<Integer,String> hashdp : Hashdepartamento.entrySet()) {
              System.out.println("ID: "+hashdp.getKey()+"| Nome: "+hashdp.getValue());
          
-}
-	                        
-		
+        }                       
+        }
+        System.out.println("\nPressione Enter para continuar...");
+                                                System.in.read();
 	}
    /**
     * Esse metodo faz uma busca de um determinado Departamento e imprime, caso seja encontrado.
@@ -99,13 +104,17 @@ public class ArraydeDados_Departamento {
     */
    
    static public boolean buscarDPId (int id){
+       int i=0;
        for (Map.Entry<Integer,String> hashdp : Hashdepartamento.entrySet()) {
               
                 if (hashdp.getKey() == id){
                     System.out.println("ID: "+hashdp.getKey()+" | Nome: "+hashdp.getValue());
+                    i=1;
                     return true;
                 }
-                System.out.println("Departamento nao encontrado!");
+               
+   }    if(i==0){
+        System.out.println("Departamento nao encontrado!");
    }
        
                     return false;
@@ -122,7 +131,7 @@ public class ArraydeDados_Departamento {
    static public void editardp(int id){
     
         
-            System.out.println("Digite o novo Departamento: ");
+            System.out.println("Digite o novo nome do Departamento: ");
             String Novonome = ValidarEntrada.validarString();
             CriarConexao_Departamento conexao = new CriarConexao_Departamento();
              conexao.conectar();
@@ -145,7 +154,6 @@ public class ArraydeDados_Departamento {
                 // int codigo = 0;
                 while (resultset.next()){
                    // codigo++;
-                    System.out.println(resultset.getString("nomedp"));
                         if(resultset.getInt("id")==id){
                             prepareStatement = conexao.criarPreparedStatement(sql);
                               
@@ -164,7 +172,7 @@ public class ArraydeDados_Departamento {
                     }catch(SQLException e){
                         System.err.println("Ocorreu o seguinte erro: "+e);
                     }
-
+                    System.out.println("Nome alterado!");
         }
 
        

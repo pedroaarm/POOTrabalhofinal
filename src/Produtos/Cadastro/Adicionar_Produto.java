@@ -24,7 +24,7 @@ public class Adicionar_Produto {
             criarConexaoDP.conectar();
            
             ResultSet resulset = null;
-            Statement statement = null;
+            Statement statement;
                      
             String query = "SELECT * FROM produto";
             statement = criarConexaoDP.CriarStatement();
@@ -64,12 +64,9 @@ public class Adicionar_Produto {
             int resulado = preparedstatment.executeUpdate();
                   
             
-            if(resulado == 1){
             
-                    System.out.println("Departamento inserido");
-                }else{
-                        System.out.println("Departamento não inserido, tente novamente!");
-                        }
+                
+                        
         } catch (SQLException e) {
                     System.out.println(e);
         }finally{

@@ -123,10 +123,10 @@ public abstract class ArrayDeDados_Produtos  {
                                 }if(opexcluir == 2){
                                     System.out.println("Operação cancelada");
                                 }
-                                if(opexcluir > 3){
+                                if(opexcluir > 3 || opexcluir <1){
                                     System.out.println("Opcao invalida!");
                                 }
-                            }while(opexcluir !=2);
+                            }while(opexcluir !=2 || opexcluir != 1);
                                }
                       }
                       
@@ -144,11 +144,15 @@ public abstract class ArrayDeDados_Produtos  {
      * 
      */
    public static void imprimirArryProdutos(){
-        System.out.println("---Produtos Cadastrados---");
+        System.out.println("\n\t***Produtos Cadastrados***\n");
+        int i=0;
         for (Produtos arrayproduto : arrayprodutos) {
             System.out.println("ID: "+arrayproduto.getId()+"| nome: "+arrayproduto.getNome()+" |Marca: "+ arrayproduto.getReferencia()+" |Departamento: "+arrayproduto.getDepartamento()+"|Referencia: "+arrayproduto.getReferencia()+ "| Preço: "+arrayproduto.getValor()+"| Quantidade em Estoque: "+arrayproduto.getQuantidadeestoque());   
+            i = 1;
         }
-        
+        if(i==0){
+            System.out.println("Nao existe produto cadastrado");
+        }
         
     }
    
@@ -157,8 +161,8 @@ public abstract class ArrayDeDados_Produtos  {
         CriarConexao_Produtos conexao = new CriarConexao_Produtos();
              conexao.conectar();
 
-                PreparedStatement prepareStatement = null;
-                ResultSet resultset = null;
+                PreparedStatement prepareStatement;
+                ResultSet resultset;
 
                 Statement statement;
                  String sql = "UPDATE produto"

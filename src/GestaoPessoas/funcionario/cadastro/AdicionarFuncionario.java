@@ -88,6 +88,7 @@ public class AdicionarFuncionario {
                         }
                     }  
                 }  
+                      System.out.println("Funcionario Cadastrado");
                       ArrayDeDados_Cliente.InicializararrayCliente();
                       conexaofuncionario.desconectar();
     }

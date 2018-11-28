@@ -20,9 +20,8 @@ public class CadastroProduto {
 
     public static Produtos cadastro() throws IOException{
 
-        System.out.println("---Cadastro de Produto---");
-        System.out.println("");
-        System.out.println("");
+        System.out.println("\n\t***Cadastro de Produto***\n");
+
         
         System.out.println("Digite o nome do Produto: ");
         String nomeproduto = ValidarEntrada.validarString();
@@ -37,7 +36,7 @@ public class CadastroProduto {
         System.out.println("Digite a referencia: ");
         String referencia = ValidarEntrada.validarString();
         
-        System.out.println("---Cadastro do produto em um departamento---");
+        System.out.println("\n\t***Cadastro do produto em um departamento***\n");
         int numero,departamento=0,sair=0;
        do{
         System.out.printf("Digite:\n1 - Mostrar Departamentos para cadastro do produto |2-Cadastrar em um Departamento:\n");

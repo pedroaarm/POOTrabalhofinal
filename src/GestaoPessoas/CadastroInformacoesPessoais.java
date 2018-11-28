@@ -23,12 +23,15 @@ public class CadastroInformacoesPessoais {
     */
  public void cadastroinformacoespessoais(){
         
-        System.out.println("---Cadastro Informacoes Pessoais---");
+        System.out.println("\n\t***Cadastro Informacoes Pessoais***\n");
         System.out.println("Digite o nome: ");
+        System.out.print("Nome -> ");
         nome = ValidarEntrada.validarString();
         System.out.println("Digite o CPF: ");
+        System.out.print("CPF -> ");
         cpf = ValidarEntrada.validarString();
         System.out.println("Digite o numero do telefone: ");
+        System.out.print("Numero -> ");
         telefone = ValidarEntrada.validarString();
  }
 

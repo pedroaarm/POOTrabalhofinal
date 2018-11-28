@@ -56,7 +56,7 @@ public class ArrayDeDados_Cliente {
      */
     
      public static void imprimirArrayCliente(){
-        System.out.println("---Clientes Cadastrados---");
+        System.out.println("\n\t***Clientes Cadastrados***\n");
             for (Cliente cliente : arraycliente) {
             System.out.println("ID: "+cliente.getIdcliente()+"| nome: "+cliente.getNome()+" |Telefone: "+cliente.getTelefone()+" |CPF: "+cliente.getCPF()+" |Endereco: "+cliente.getEndereco());   
         }

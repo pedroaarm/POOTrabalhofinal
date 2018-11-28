@@ -23,15 +23,15 @@ public class CadastroTrabalhistaFuncionario {
      */
     public void cadastrotrabalhistas(){
         
-        System.out.println("---Cadastro Trabalhista---");
+        System.out.println("\n\t***Cadastro Trabalhista***\t");
         System.out.println("Digite a Funcao: ");
-        System.out.print("Funcao ->");
+        System.out.print("Funcao -> ");
        funcao = ValidarEntrada.validarString();
         System.out.println("\nDigite o salário: ");
-        System.out.print("Salario ->");
+        System.out.print("Salario -> ");
         salario = ValidarEntrada.validarFloat();
         System.out.println("Digite a jornada de Trabalho");
-        System.out.print("JT ->");
+        System.out.print("JT -> ");
         jornadadetrabalho = ValidarEntrada.validarInteiro();
     }
 

@@ -31,8 +31,9 @@ public class CadastroDepartamento {
         public static  void cadastrar(){
             System.out.println("");
             System.out.println("");
-        System.out.println("----Cadastro de Departamento----");
+        System.out.println("\n\t***Cadastro de Departamento***");
         System.out.println("Insira o Nome do Departamento: ");
+            System.out.print("nome ->  ");
         Nome = ValidarEntrada.validarString();
 
         
@@ -70,7 +71,6 @@ public class CadastroDepartamento {
             
             if(resulado == 1){
             
-                    System.out.println("Departamento inserido");
                 }else{
                         System.out.println("Departamento não inserido, tente novamente!");
                         }

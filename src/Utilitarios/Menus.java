@@ -118,11 +118,11 @@ public class Menus {
                public Integer MenuGestaopessoas(){
          
          int opcao =0;
-         System.out.println("\n  ==================================");
+                        System.out.println("\n  ===========================");
 			System.out.println("  |     1 - Clientes        |");
 			System.out.println("  |     2 - Funcionários    |");			
 			System.out.println("  |     0 - Voltar          |");
-			System.out.println("  ===================================\n");
+			System.out.println("  ===========================\n");
                         System.out.print(" Opção -> ");
                         opcao = ValidarEntrada.validaropcao();
          
@@ -132,14 +132,14 @@ public class Menus {
    public Integer MenuGestaopessoasCliente(){
          
          int opcao =0;
-         System.out.println("\n  ==================================");
+                        System.out.println("\n  ==============================");
 			System.out.println("  |     1 - Buscar Clientes    |");
-			System.out.println("  |     2 - Adicionar Clientes |");
+			System.out.println("  |     2 - Adicionar Cliente  |");
 			System.out.println("  |     3 - Excluir Cliente    |");   
 			System.out.println("  |     4 - Editar Cliente     |");
 			System.out.println("  |     5 - Gerar ContraCheque |");                        
 			System.out.println("  |     0 - Voltar             |");
-			System.out.println("  ===================================\n");
+			System.out.println("  ==============================\n");
                         System.out.print(" Opção -> ");
                         opcao = ValidarEntrada.validaropcao();
          
@@ -149,11 +149,11 @@ public class Menus {
                                 public Integer MenuGestaopessoasClienteBusca(){
          
          int opcao =0;
-         System.out.println("\n  ==================================");
+                        System.out.println("\n  ======================================");
 			System.out.println("  |     1 - Mostrar todos os clintes   |");
 			System.out.println("  |     2 - Buscar Especifico          |");                      
 			System.out.println("  |     0 - Voltar                     |");
-			System.out.println("  ===================================\n");
+			System.out.println("  ======================================\n");
                         System.out.print(" Opção -> ");
                         opcao = ValidarEntrada.validaropcao();
          
@@ -166,7 +166,7 @@ public class Menus {
 			System.out.println("  |     1 - Buscar Funcionario    |");
 			System.out.println("  |     2 - Adicionar Funcionario |");
 			System.out.println("  |     3 - Excluir Funcionario   |");   
-			System.out.println("  |     4 - Editar Funcionario    |");                        
+			System.out.println("  |     4 - Editar Funcionario    |");   
 			System.out.println("  |     0 - Voltar                |");
 			System.out.println("  ===================================\n");
                         System.out.print(" Opção -> ");

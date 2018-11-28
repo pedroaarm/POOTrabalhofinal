@@ -4,6 +4,7 @@ import GestaoPessoas.CadastroInformacoesPessoais;
 import GestaoPessoas.cliente.Endereco;
 import GestaoPessoas.funcionario.BancoDedadosFuncionario.ArrayDeDados_Funcionario;
 import GestaoPessoas.funcionario.Funcionario;
+import java.io.IOException;
 
 /**Faz o cadastro dos funcionarios
  *
@@ -13,7 +14,7 @@ public class CadastroFuncionario {
     /**Usa os metodos necessarios para fazer o cadstro
      * 
      */
-    public static void cadastro(){
+    public static void cadastro() throws IOException{
         
         CadastroInformacoesPessoais cadastropessoas = new CadastroInformacoesPessoais();
         CadastroEndereco cadastroendereco = new CadastroEndereco();
@@ -25,7 +26,9 @@ public class CadastroFuncionario {
 
         Funcionario funcionario = new Funcionario(trabalhista.getSalario(),trabalhista.getJornadadetrabalho(),cadastropessoas.getNome(),cadastropessoas.getCpf(),cadastropessoas.getTelefone(),endereco.toString(), trabalhista.getFuncao());
         AdicionarFuncionario.addfuncionario(funcionario);
-        ArrayDeDados_Funcionario.inicializarArrayFuncionario();
+
+        System.out.println("\nPressione Enter para continuar...");
+        System.in.read(); 
 
 }   
     }
