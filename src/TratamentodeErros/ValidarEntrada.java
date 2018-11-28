@@ -43,6 +43,7 @@ public class ValidarEntrada {
     
 }while(true);
 }
+
        
        public static int validarInteiro(){
                       Integer numero;

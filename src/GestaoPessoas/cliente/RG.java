@@ -5,6 +5,7 @@
  */
 package GestaoPessoas.cliente;
 
+import TratamentodeErros.ValidarDocumento;
 import TratamentodeErros.ValidarEntrada;
 
 /**Classe onde reune a informação de RG, onde será necessário para cadastro de cliente
@@ -25,10 +26,18 @@ public class RG {
    
 
     public void cadastroRG(){
-        
+        boolean verifica;
+         String rg;
         System.out.println("Digite o numero do RG: ");
-       java.lang.String rg = ValidarEntrada.validarString();
-        setNumero(rg);
+        do{
+            System.out.print("RG -> ");    
+         rg = ValidarEntrada.validarString();
+        verifica = ValidarDocumento.SoTemNumeros(rg);
+               if(verifica == false){
+                System.out.println("RG invalido, coloque apenas numeros");
+            }
+            }while(verifica == false);
+       setNumero(rg);
     }
     public String getNumero() {
         return numero;

@@ -132,7 +132,7 @@ public class System_overflow {
                                        int editarproduto;
                                        int opcaoexcluir;
                                        do{
-                                        System.out.println("1 - Mostrar Produtos cadastrados | 2- Editar um produto |0 - Voltar");
+                                        System.out.println("\n1 - Mostrar Produtos cadastrados | 2- Editar um produto |0 - Voltar");
                                         System.out.print("opcao ->");
                                         opcaoexcluir = ValidarEntrada.validarInteiro();
                                             if(opcaoexcluir == 1){
@@ -194,7 +194,7 @@ public class System_overflow {
                                                  case 5:
                                                      int opdp;
                                                      do{
-                                                     System.out.println("1 -Mostrar todos os departamentos | 2 -Excluir departamento | 0 -Voltar");
+                                                     System.out.println("\n1 -Mostrar todos os departamentos | 2 -Excluir departamento | 0 -Voltar");
                                                       System.out.print("Opcao ->");
                                                      opdp = ValidarEntrada.validarInteiro();
                                                      if(opdp == 1){
@@ -243,7 +243,7 @@ public class System_overflow {
                                                 break;
                                             case 2:
                                                 ControleVendas.mostrarcarrinho();
-                                                System.out.println("Pressione Enter para continuar...");
+                                                System.out.println("\nPressione Enter para continuar...");
                                                 System.in.read();  
                                                 break;
                                             case 3:
@@ -343,7 +343,7 @@ public class System_overflow {
                                                int opc;
                                                        
                                                do{
-                                              System.out.println("---Excluir Cliente---");
+                                              System.out.println("\n\t***Excluir Cliente---");
                                               System.out.println("\nDigite: 1 - Ver os clientes cadastrados | 2 - Excluir pelo ID do cliente | 0 - Voltar: ");
                                               System.out.print("Opcao -> ");
                                                      
